@@ -5,10 +5,10 @@
   "main": "index.js",
   "dependencies": {},
   "devDependencies": {
-    "watch-http-server": "^0.7.6"
+    "live-server": "^1.2.1"
   },
   "scripts": {
-    "start": "npx watch-http-server ."
+    "start": "npx live-server"
   },
   "repository": {
     "type": "git",
