@@ -1,0 +1,19 @@
+{
+  "nodes": [
+    { "id": "Kosmologia", "group": 1 },
+    { "id": "Ogolna teoria względności", "group": 1 },
+    { "id": "Astronomia obserwacyjna", "group": 1 },
+    { "id": "Teoria wielkiego wybuchu", "group": 1 },
+    { "id": "Astrofizyka układów planetarnych", "group": 1 },
+    { "id": "Heliofizyka", "group": 1 },
+    { "id": "Planetologia", "group": 1 }
+  ],
+  "links": [
+    { "source": "Kosmologia", "target": "Ogolna teoria względności", "value": 1 },
+    { "source": "Kosmologia", "target": "Teoria wielkiego wybuchu", "value": 8 },
+    { "source": "Kosmologia", "target": "Astronomia obserwacyjna", "value": 100 },
+    { "source": "Teoria wielkiego wybuchu", "target": "Kosmologia", "value": 100 },
+    { "source": "Teoria wielkiego wybuchu", "target": "Astronomia obserwacyjna", "value": 100 },
+    { "source": "Teoria wielkiego wybuchu", "target": "Ogolna teoria względności", "value": 100 }
+  ]
+}
