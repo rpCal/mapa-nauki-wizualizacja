@@ -25,7 +25,7 @@
       "color": "#a3cddf"
     },
     {
-      "id": "astrofizyka-układow-planetarnych",
+      "id": "astrofizyka-ukladow-planetarnych",
       "name": "Astrofizyka Układow Planetarnych",
       "group": 1,
       "color": "#a3cddf"
@@ -33,14 +33,20 @@
     {
       "id": "heliofizyka",
       "name": "Heliofizyka",
-      "group": 1,
+      "group": 2,
       "color": "#a88ebb"
     },
     {
       "id": "planetologia",
       "name": "Planetologia",
-      "group": 1,
+      "group": 2,
       "color": "#ce92b8"
+    },
+    {
+      "id": "geomorfologia",
+      "name": "Geomorfologia",
+      "color": "#bc937e",
+      "group": 2
     }
   ],
   "links": [
@@ -72,6 +78,71 @@
     {
       "source": "teoria-wielkiego-wybuchu",
       "target": "ogolna-teoria-wzglednosci",
+      "value": 100
+    },
+    {
+      "source": "ogolna-teoria-wzglednosci",
+      "target": "kosmologia",
+      "value": 100
+    },
+    {
+      "source": "ogolna-teoria-wzglednosci",
+      "target": "teoria-wielkiego-wybuchu",
+      "value": 100
+    },
+    {
+      "source": "ogolna-teoria-wzglednosci",
+      "target": "heliofizyka",
+      "value": 100
+    },
+    {
+      "source": "ogolna-teoria-wzglednosci",
+      "target": "astrofizyka-ukladow-planetarnych",
+      "value": 100
+    },
+    {
+      "source": "astronomia-obserwacyjna",
+      "target": "kosmologia",
+      "value": 100
+    },
+    {
+      "source": "astronomia-obserwacyjna",
+      "target": "teoria-wielkiego-wybuchu",
+      "value": 100
+    },
+    {
+      "source": "astronomia-obserwacyjna",
+      "target": "astrofizyka-ukladow-planetarnych",
+      "value": 100
+    },
+    {
+      "source": "astrofizyka-ukladow-planetarnych",
+      "target": "astronomia-obserwacyjna",
+      "value": 100
+    },
+    {
+      "source": "astrofizyka-ukladow-planetarnych",
+      "target": "ogolna-teoria-wzglednosci",
+      "value": 100
+    },
+    {
+      "source": "astrofizyka-ukladow-planetarnych",
+      "target": "heliofizyka",
+      "value": 100
+    },
+    {
+      "source": "planetologia",
+      "target": "astrofizyka-ukladow-planetarnych",
+      "value": 100
+    },
+    {
+      "source": "planetologia",
+      "target": "astronomia-obserwacyjna",
+      "value": 100
+    },
+    {
+      "source": "planetologia",
+      "target": "geomorfologia",
       "value": 100
     }
   ]
