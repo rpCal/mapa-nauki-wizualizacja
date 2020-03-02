@@ -1,0 +1,78 @@
+{
+  "nodes": [
+    {
+      "id": "kosmologia",
+      "name": "Kosmologia",
+      "group": 1,
+      "color": "#a3cddf"
+    },
+    {
+      "id": "ogolna-teoria-wzglednosci",
+      "name": "Ogolna Teoria Względności",
+      "group": 1,
+      "color": "#c57fac"
+    },
+    {
+      "id": "astronomia-obserwacyjna",
+      "name": "Astronomia Obserwacyjna",
+      "group": 1,
+      "color": "#a3cddf"
+    },
+    {
+      "id": "teoria-wielkiego-wybuchu",
+      "name": "Teoria Wielkiego Wybuchu",
+      "group": 1,
+      "color": "#a3cddf"
+    },
+    {
+      "id": "astrofizyka-układow-planetarnych",
+      "name": "Astrofizyka Układow Planetarnych",
+      "group": 1,
+      "color": "#a3cddf"
+    },
+    {
+      "id": "heliofizyka",
+      "name": "Heliofizyka",
+      "group": 1,
+      "color": "#a88ebb"
+    },
+    {
+      "id": "planetologia",
+      "name": "Planetologia",
+      "group": 1,
+      "color": "#ce92b8"
+    }
+  ],
+  "links": [
+    {
+      "source": "kosmologia",
+      "target": "ogolna-teoria-wzglednosci",
+      "value": 1
+    },
+    {
+      "source": "kosmologia",
+      "target": "teoria-wielkiego-wybuchu",
+      "value": 8
+    },
+    {
+      "source": "kosmologia",
+      "target": "astronomia-obserwacyjna",
+      "value": 100
+    },
+    {
+      "source": "teoria-wielkiego-wybuchu",
+      "target": "kosmologia",
+      "value": 100
+    },
+    {
+      "source": "teoria-wielkiego-wybuchu",
+      "target": "astronomia-obserwacyjna",
+      "value": 100
+    },
+    {
+      "source": "teoria-wielkiego-wybuchu",
+      "target": "ogolna-teoria-wzglednosci",
+      "value": 100
+    }
+  ]
+}
