@@ -149,7 +149,80 @@
       "name": "Mechanika skał, sedymentologia",
       "color": "#bc937e",
       "group": 2
+    },
+    {
+      "id": "gleboznawstwo",
+      "name": "Gleboznawstwo",
+      "color": "#bc937e",
+      "group": 2
+    },
+    {
+      "id": "pektrologia",
+      "name": "Pektrologia",
+      "color": "#bc937e",
+      "group": 2
+    },
+    {
+      "id": "mineralogia",
+      "name": "Mineralogia",
+      "color": "#bc937e",
+      "group": 2
+    },
+    {
+      "id": "protozoologia",
+      "name": "Protozoologia",
+      "color": "#bc937e",
+      "group": 2
+    },
+    {
+      "id": "pektologia",
+      "name": "Pektologia",
+      "color": "#bc937e",
+      "group": 2
+    },
+    {
+      "id": "reologia",
+      "name": "Reologia",
+      "color": "#bc937e",
+      "group": 2
+    },
+    {
+      "id": "paleontologia",
+      "name": "Paleontologia",
+      "color": "#bc937e",
+      "group": 2
+    },
+    {
+      "id": "krystalografia",
+      "name": "Krystalografia",
+      "color": "#bc937e",
+      "group": 2
+    },
+    {
+      "id": "chemia-fizyczna-teoria-wiazan",
+      "name": "Chemia fizyczna / Teoria wiązań",
+      "color": "#bc937e",
+      "group": 2
+    },
+    {
+      "id": "fizyka-materialow-materialoznawstwo",
+      "name": "Fizyka materiałów / Materiałoznawstwo",
+      "color": "#bc937e",
+      "group": 2
+    },
+    {
+      "id": "fizyka-ciala-stalego",
+      "name": "Fizyka ciała stałego",
+      "color": "#bc937e",
+      "group": 2
+    },
+    {
+      "id": "chemia-i-fizyka-polimerow",
+      "name": "Chemia i fizyka polimerów",
+      "color": "#bc937e",
+      "group": 2
     }
+    
   ],
   "links": [
     {
@@ -460,6 +533,221 @@
     {
       "source": "sejsmologia",
       "target": "mechanika-skal-sedymentologia",
+      "value": 100
+    },
+    {
+      "source": "geomorfologia",
+      "target": "planetologia",
+      "value": 100
+    },
+    {
+      "source": "geomorfologia",
+      "target": "geologia-strukturalna",
+      "value": 100
+    },
+    {
+      "source": "geomorfologia",
+      "target": "mechanika-skal-sedymentologia",
+      "value": 100
+    },
+    {
+      "source": "geomorfologia",
+      "target": "gleboznawstwo",
+      "value": 100
+    },
+    {
+      "source": "gleboznawstwo",
+      "target": "mikrobiologia-bakteriologia",
+      "value": 100
+    },
+    {
+      "source": "gleboznawstwo",
+      "target": "geomorfologia",
+      "value": 100
+    },
+    {
+      "source": "gleboznawstwo",
+      "target": "mechanika-skal-sedymentologia",
+      "value": 100
+    },
+    {
+      "source": "gleboznawstwo",
+      "target": "pektrologia",
+      "value": 100
+    },
+    {
+      "source": "gleboznawstwo",
+      "target": "mineralogia",
+      "value": 100
+    },
+    {
+      "source": "gleboznawstwo",
+      "target": "protozoologia",
+      "value": 100
+    },
+    {
+      "source": "geologia-strukturalna",
+      "target": "tektonika",
+      "value": 100
+    },
+    {
+      "source": "geologia-strukturalna",
+      "target": "reologia",
+      "value": 100
+    },
+    {
+      "source": "geologia-strukturalna",
+      "target": "pektologia",
+      "value": 100
+    },
+    {
+      "source": "geologia-strukturalna",
+      "target": "mechanika-skal-sedymentologia",
+      "value": 100
+    },
+    {
+      "source": "geologia-strukturalna",
+      "target": "geomorfologia",
+      "value": 100
+    },
+    {
+      "source": "geologia-strukturalna",
+      "target": "sejsmologia",
+      "value": 100
+    },
+    {
+      "source": "geologia-strukturalna",
+      "target": "tektonika",
+      "value": 100
+    },
+    {
+      "source": "mechanika-skal-sedymentologia",
+      "target": "geomorfologia",
+      "value": 100
+    },
+    {
+      "source": "mechanika-skal-sedymentologia",
+      "target": "sejsmologia",
+      "value": 100
+    },
+    {
+      "source": "mechanika-skal-sedymentologia",
+      "target": "geologia-strukturalna",
+      "value": 100
+    },
+    {
+      "source": "mechanika-skal-sedymentologia",
+      "target": "petrologia",
+      "value": 100
+    },
+    {
+      "source": "mechanika-skal-sedymentologia",
+      "target": "reologia",
+      "value": 100
+    },
+    {
+      "source": "mechanika-skal-sedymentologia",
+      "target": "paleontologia",
+      "value": 100
+    },
+    {
+      "source": "mechanika-skal-sedymentologia",
+      "target": "gleboznawstwo",
+      "value": 100
+    },
+    {
+      "source": "petrologia",
+      "target": "geologia-zloz-geologia-ekonomiczna",
+      "value": 100
+    },
+    {
+      "source": "petrologia",
+      "target": "geologia-strukturalna",
+      "value": 100
+    },
+    {
+      "source": "petrologia",
+      "target": "mineralogia",
+      "value": 100
+    },
+    {
+      "source": "petrologia",
+      "target": "gleboznawstwo",
+      "value": 100
+    },
+    {
+      "source": "petrologia",
+      "target": "mechanika-skal-sedymentologia",
+      "value": 100
+    },
+    {
+      "source": "reologia",
+      "target": "geologia-strukturalna",
+      "value": 100
+    },
+    {
+      "source": "reologia",
+      "target": "fizyka-ciala-stalego",
+      "value": 100
+    },
+    {
+      "source": "reologia",
+      "target": "krystalografia",
+      "value": 100
+    },
+    {
+      "source": "reologia",
+      "target": "fizyka-materialow-materialoznawstwo",
+      "value": 100
+    },
+    {
+      "source": "reologia",
+      "target": "mechanika-skal-sedymentologia",
+      "value": 100
+    },
+    {
+      "source": "mineralogia",
+      "target": "gleboznawstwo",
+      "value": 100
+    },
+    {
+      "source": "mineralogia",
+      "target": "petrologia",
+      "value": 100
+    },
+    {
+      "source": "mineralogia",
+      "target": "krystalografia",
+      "value": 100
+    },
+    {
+      "source": "mineralogia",
+      "target": "chemia-fizyczna-teoria-wiazan",
+      "value": 100
+    },
+    {
+      "source": "mineralogia",
+      "target": "fizyka-materialow-materialoznawstwo",
+      "value": 100
+    },
+    {
+      "source": "fizyka-materialow-materialoznawstwo",
+      "target": "reologia",
+      "value": 100
+    },
+    {
+      "source": "fizyka-materialow-materialoznawstwo",
+      "target": "fizyka-ciala-stalego",
+      "value": 100
+    },
+    {
+      "source": "fizyka-materialow-materialoznawstwo",
+      "target": "mineralogia",
+      "value": 100
+    },
+    {
+      "source": "fizyka-materialow-materialoznawstwo",
+      "target": "chemia-i-fizyka-polimerow",
       "value": 100
     }
   ]
