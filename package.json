@@ -1,0 +1,26 @@
+{
+  "name": "mapa-nauki-wizualizacja",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "gh-pages": "^2.2.0",
+    "live-server": "^1.2.1"
+  },
+  "scripts": {
+    "start": "npx live-server",
+    "deploy": "gh-pages -d .",
+    "postdeploy": "git add -A . && git commit -m \"gh deploy\" && git push"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rpCal/mapa-nauki-wizualizacja.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rpCal/mapa-nauki-wizualizacja/issues"
+  },
+  "homepage": "https://github.com/rpCal/mapa-nauki-wizualizacja#readme"
+}
