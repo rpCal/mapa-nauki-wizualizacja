@@ -107,6 +107,48 @@
       "name": "Mikrobiologia / Bakteriologia",
       "color": "#bc937e",
       "group": 2
+    },
+    {
+      "id": "sejsmologia",
+      "name": "Sejsmologia",
+      "color": "#bc937e",
+      "group": 2
+    },
+    {
+      "id": "hydrologia",
+      "name": "Hydrologia",
+      "color": "#bc937e",
+      "group": 2
+    },
+    {
+      "id": "meteorologia",
+      "name": "Meteorologia",
+      "color": "#bc937e",
+      "group": 2
+    },
+    {
+      "id": "mechanika-plynow",
+      "name": "Mechanika płynów",
+      "color": "#bc937e",
+      "group": 2
+    },
+    {
+      "id": "optyka-falowa-i-kwantowa",
+      "name": "Optyka falowa i kwantowa",
+      "color": "#bc937e",
+      "group": 2
+    },
+    {
+      "id": "geologia-strukturalna",
+      "name": "Geologia strukturalna",
+      "color": "#bc937e",
+      "group": 2
+    },
+    {
+      "id": "mechanika-skal-sedymentologia",
+      "name": "Mechanika skał, sedymentologia",
+      "color": "#bc937e",
+      "group": 2
     }
   ],
   "links": [
@@ -268,6 +310,156 @@
     {
       "source": "geologia-zloz-geologia-ekonomiczna",
       "target": "mikrobiologia-bakteriologia",
+      "value": 100
+    },
+    {
+      "source": "geotektonika-geofizyka",
+      "target": "planetologia",
+      "value": 100
+    },
+    {
+      "source": "geotektonika-geofizyka",
+      "target": "oceanologia",
+      "value": 100
+    },
+    {
+      "source": "geotektonika-geofizyka",
+      "target": "tektonika",
+      "value": 100
+    },
+    {
+      "source": "geotektonika-geofizyka",
+      "target": "sejsmologia",
+      "value": 100
+    },
+    {
+      "source": "geotektonika-geofizyka",
+      "target": "geologia-zloz-geologia-ekonomiczna",
+      "value": 100
+    },
+    {
+      "source": "oceanologia",
+      "target": "planetologia",
+      "value": 100
+    },
+    {
+      "source": "oceanologia",
+      "target": "fizyka-atmosfery",
+      "value": 100
+    },
+    {
+      "source": "oceanologia",
+      "target": "hydrologia",
+      "value": 100
+    },
+    {
+      "source": "oceanologia",
+      "target": "tektonika",
+      "value": 100
+    },
+    {
+      "source": "oceanologia",
+      "target": "geologia-zloz-geologia-ekonomiczna",
+      "value": 100
+    },
+    {
+      "source": "oceanologia",
+      "target": "geotektonika-geofizyka",
+      "value": 100
+    },
+    {
+      "source": "meteorologia",
+      "target": "fizyka-atmosfery",
+      "value": 100
+    },
+    {
+      "source": "meteorologia",
+      "target": "hydrologia",
+      "value": 100
+    },
+    {
+      "source": "fizyka-atmosfery",
+      "target": "planetologia",
+      "value": 100
+    },
+    {
+      "source": "fizyka-atmosfery",
+      "target": "meteorologia",
+      "value": 100
+    },
+    {
+      "source": "fizyka-atmosfery",
+      "target": "mechanika-plynow",
+      "value": 100
+    },
+    {
+      "source": "fizyka-atmosfery",
+      "target": "optyka-falowa-i-kwantowa",
+      "value": 100
+    },
+    {
+      "source": "fizyka-atmosfery",
+      "target": "oceanologia",
+      "value": 100
+    },
+    {
+      "source": "hydrologia",
+      "target": "oceanologia",
+      "value": 100
+    },
+    {
+      "source": "hydrologia",
+      "target": "meteorologia",
+      "value": 100
+    },
+    {
+      "source": "hydrologia",
+      "target": "mechanika-plynow",
+      "value": 100
+    },
+    {
+      "source": "tektonika",
+      "target": "geotektonika-geofizyka",
+      "value": 100
+    },
+    {
+      "source": "tektonika",
+      "target": "oceanologia",
+      "value": 100
+    },
+    {
+      "source": "tektonika",
+      "target": "geologia-strukturalna",
+      "value": 100
+    },
+    {
+      "source": "tektonika",
+      "target": "sejsmologia",
+      "value": 100
+    },
+    {
+      "source": "tektonika",
+      "target": "geologia-zloz-geologia-ekonomiczna",
+      "value": 100
+    },
+    {
+      "source": "sejsmologia",
+      "target": "geotektonika-geofizyka",
+      "value": 100
+    },
+    {
+      "source": "sejsmologia",
+      "target": "tektonika",
+      "value": 100
+    },
+    {
+      "source": "sejsmologia",
+      "target": "geologia-strukturalna",
+      "value": 100
+    },
+    {
+      "source": "sejsmologia",
+      "target": "mechanika-skal-sedymentologia",
       "value": 100
     }
   ]

@@ -10,7 +10,7 @@
   },
   "scripts": {
     "start": "npx live-server",
-    "deploy": "gh-pages -d .",
+    "deploy": "npx gh-pages -d public",
     "postdeploy": "git add -A . && git commit -m \"gh deploy\" && git push"
   },
   "repository": {
