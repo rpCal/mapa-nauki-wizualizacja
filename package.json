@@ -5,10 +5,13 @@
   "main": "index.js",
   "dependencies": {},
   "devDependencies": {
+    "gh-pages": "^2.2.0",
     "live-server": "^1.2.1"
   },
   "scripts": {
-    "start": "npx live-server"
+    "start": "npx live-server",
+    "deploy": "gh-pages -d .",
+    "postdeploy": "git add -A . && git commit -m \"gh deploy\" && git push"
   },
   "repository": {
     "type": "git",

@@ -43,8 +43,68 @@
       "color": "#ce92b8"
     },
     {
+      "id": "fizyka-atmosfery",
+      "name": "Fizyka atmosfery",
+      "color": "#bc937e",
+      "group": 2
+    },
+    {
+      "id": "oceanologia",
+      "name": "Oceanologia",
+      "color": "#bc937e",
+      "group": 2
+    },
+    {
+      "id": "geotektonika-geofizyka",
+      "name": "Geotektonika / Geofizyka",
+      "color": "#bc937e",
+      "group": 2
+    },
+    {
       "id": "geomorfologia",
       "name": "Geomorfologia",
+      "color": "#bc937e",
+      "group": 2
+    },
+    {
+      "id": "magnetohydrodynamika",
+      "name": "Magnetohydrodynamika",
+      "color": "#bc937e",
+      "group": 2
+    },
+    {
+      "id": "astrofizyka-jadrowa-teoria-nukleosyntezy",
+      "name": "Astrofizyka jądrowa, Teoria nukleosyntezy",
+      "color": "#bc937e",
+      "group": 2
+    },
+    {
+      "id": "termodynamika",
+      "name": "Termodynamika",
+      "color": "#bc937e",
+      "group": 2
+    },
+    {
+      "id": "geologia-zloz-geologia-ekonomiczna",
+      "name": "Geologia złóż / Geologia ekonomiczna",
+      "color": "#bc937e",
+      "group": 2
+    },
+    {
+      "id": "tektonika",
+      "name": "Tektonika",
+      "color": "#bc937e",
+      "group": 2
+    },
+    {
+      "id": "petrologia",
+      "name": "Petrologia",
+      "color": "#bc937e",
+      "group": 2
+    },
+    {
+      "id": "mikrobiologia-bakteriologia",
+      "name": "Mikrobiologia / Bakteriologia",
       "color": "#bc937e",
       "group": 2
     }
@@ -132,17 +192,82 @@
     },
     {
       "source": "planetologia",
-      "target": "astrofizyka-ukladow-planetarnych",
-      "value": 100
-    },
-    {
-      "source": "planetologia",
       "target": "astronomia-obserwacyjna",
       "value": 100
     },
     {
       "source": "planetologia",
+      "target": "astrofizyka-ukladow-planetarnych",
+      "value": 100
+    },
+    {
+      "source": "planetologia",
+      "target": "fizyka-atmosfery",
+      "value": 100
+    },
+    {
+      "source": "planetologia",
+      "target": "oceanologia",
+      "value": 100
+    },
+    {
+      "source": "planetologia",
+      "target": "geotektonika-geofizyka",
+      "value": 100
+    },
+    {
+      "source": "planetologia",
       "target": "geomorfologia",
+      "value": 100
+    },
+    {
+      "source": "heliofizyka",
+      "target": "ogolna-teoria-wzglednosci",
+      "value": 100
+    },
+    {
+      "source": "heliofizyka",
+      "target": "astrofizyka-ukladow-planetarnych",
+      "value": 100
+    },
+    {
+      "source": "heliofizyka",
+      "target": "magnetohydrodynamika",
+      "value": 100
+    },
+    {
+      "source": "heliofizyka",
+      "target": "astrofizyka-jadrowa-teoria-nukleosyntezy",
+      "value": 100
+    },
+    {
+      "source": "heliofizyka",
+      "target": "termodynamika",
+      "value": 100
+    },
+    {
+      "source": "geologia-zloz-geologia-ekonomiczna",
+      "target": "geotektonika-geofizyka",
+      "value": 100
+    },
+    {
+      "source": "geologia-zloz-geologia-ekonomiczna",
+      "target": "oceanologia",
+      "value": 100
+    },
+    {
+      "source": "geologia-zloz-geologia-ekonomiczna",
+      "target": "tektonika",
+      "value": 100
+    },
+    {
+      "source": "geologia-zloz-geologia-ekonomiczna",
+      "target": "petrologia",
+      "value": 100
+    },
+    {
+      "source": "geologia-zloz-geologia-ekonomiczna",
+      "target": "mikrobiologia-bakteriologia",
       "value": 100
     }
   ]
