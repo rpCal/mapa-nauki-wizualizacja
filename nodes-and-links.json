@@ -335,6 +335,54 @@
       "name": "Fizyka statystyczna",
       "color": "#bc937e",
       "group": 2
+    },
+    {
+      "id": "fizyka-jadrowa",
+      "name": "Fizyka jądrowa",
+      "color": "#bc937e",
+      "group": 2
+    },
+    {
+      "id": "kwantowa-teoria-pola",
+      "name": "Kwantowa teoria pola",
+      "color": "#bc937e",
+      "group": 2
+    },
+    {
+      "id": "fizyka-czastek-fizyka-wysokich-energii",
+      "name": "Fizyka cząstek / Fizyka wysokich energii",
+      "color": "#bc937e",
+      "group": 2
+    },
+    {
+      "id": "teoria-pola",
+      "name": "Teoria pola",
+      "color": "#bc937e",
+      "group": 2
+    },
+    {
+      "id": "mechanika-klasyczna",
+      "name": "Mechanika klasyczna",
+      "color": "#bc937e",
+      "group": 2
+    },
+    {
+      "id": "fizyka-statyczna",
+      "name": "Fizyka statyczna",
+      "color": "#bc937e",
+      "group": 2
+    },
+    {
+      "id": "fizyka-fal-i-wibracji-akustyka",
+      "name": "Fizyka fal i wibracji, akustyka",
+      "color": "#bc937e",
+      "group": 2
+    },
+    {
+      "id": "mechanika-bryly-sztywnej",
+      "name": "Mechanika bryły sztywnej",
+      "color": "#bc937e",
+      "group": 2
     }
   ],
   "links": [
@@ -1311,6 +1359,216 @@
     {
       "source": "termodynamika",
       "target": "fizyka-statystyczna",
+      "value": 100
+    },
+    {
+      "source": "mechanika-kwantowa",
+      "target": "chemia-kwantowa",
+      "value": 100
+    },
+    {
+      "source": "mechanika-kwantowa",
+      "target": "astrofizyka-jadrowa-teoria-nukleosyntezy",
+      "value": 100
+    },
+    {
+      "source": "mechanika-kwantowa",
+      "target": "fizyka-jadrowa",
+      "value": 100
+    },
+    {
+      "source": "mechanika-kwantowa",
+      "target": "fizyka-statystyczna",
+      "value": 100
+    },
+    {
+      "source": "mechanika-kwantowa",
+      "target": "kwantowa-teoria-pola",
+      "value": 100
+    },
+    {
+      "source": "astrofizyka-jadrowa-teoria-nukleosyntezy",
+      "target": "heliofizyka",
+      "value": 100
+    },
+    {
+      "source": "astrofizyka-jadrowa-teoria-nukleosyntezy",
+      "target": "fizyka-jadrowa",
+      "value": 100
+    },
+    {
+      "source": "astrofizyka-jadrowa-teoria-nukleosyntezy",
+      "target": "mechanika-kwantowa",
+      "value": 100
+    },
+    {
+      "source": "fizyka-jadrowa",
+      "target": "fizyka-atomu",
+      "value": 100
+    },
+    {
+      "source": "fizyka-jadrowa",
+      "target": "kwantowa-teoria-pola",
+      "value": 100
+    },
+    {
+      "source": "fizyka-jadrowa",
+      "target": "fizyka-czastek-fizyka-wysokich-energii",
+      "value": 100
+    },
+    {
+      "source": "fizyka-jadrowa",
+      "target": "mechanika-kwantowa",
+      "value": 100
+    },
+    {
+      "source": "fizyka-jadrowa",
+      "target": "astrofizyka-jadrowa-teoria-nukleosyntezy",
+      "value": 100
+    },
+    {
+      "source": "fizyka-czastek-fizyka-wysokich-energii",
+      "target": "fizyka-jadrowa",
+      "value": 100
+    },
+    {
+      "source": "fizyka-czastek-fizyka-wysokich-energii",
+      "target": "kwantowa-teoria-pola",
+      "value": 100
+    },
+    {
+      "source": "kwantowa-teoria-pola",
+      "target": "mechanika-kwantowa",
+      "value": 100
+    },
+    {
+      "source": "kwantowa-teoria-pola",
+      "target": "fizyka-czastek-fizyka-wysokich-energii",
+      "value": 100
+    },
+    {
+      "source": "kwantowa-teoria-pola",
+      "target": "fizyka-jadrowa",
+      "value": 100
+    },
+    {
+      "source": "kwantowa-teoria-pola",
+      "target": "teoria-pola",
+      "value": 100
+    },
+    {
+      "source": "fizyka-statyczna",
+      "target": "mechanika-kwantowa",
+      "value": 100
+    },
+    {
+      "source": "fizyka-statyczna",
+      "target": "termodynamika",
+      "value": 100
+    },
+    {
+      "source": "fizyka-statyczna",
+      "target": "mechanika-plynow",
+      "value": 100
+    },
+    {
+      "source": "fizyka-statyczna",
+      "target": "mechanika-klasyczna",
+      "value": 100
+    },
+    {
+      "source": "fizyka-atomu",
+      "target": "krystalografia",
+      "value": 100
+    },
+    {
+      "source": "fizyka-atomu",
+      "target": "fizyka-ciala-stalego",
+      "value": 100
+    },
+    {
+      "source": "fizyka-atomu",
+      "target": "fizyka-jadrowa",
+      "value": 100
+    },
+    {
+      "source": "fizyka-atomu",
+      "target": "mechanika-kwantowa",
+      "value": 100
+    },
+    {
+      "source": "fizyka-atomu",
+      "target": "chemia-fizyczna-teoria-wiazan",
+      "value": 100
+    },
+    {
+      "source": "krystalografia",
+      "target": "mineralogia",
+      "value": 100
+    },
+    {
+      "source": "krystalografia",
+      "target": "reologia",
+      "value": 100
+    },
+    {
+      "source": "krystalografia",
+      "target": "optyka-falowa-i-kwantowa",
+      "value": 100
+    },
+    {
+      "source": "krystalografia",
+      "target": "fizyka-ciala-stalego",
+      "value": 100
+    },
+    {
+      "source": "krystalografia",
+      "target": "fizyka-atomu",
+      "value": 100
+    },
+    {
+      "source": "krystalografia",
+      "target": "fizyka-atomu",
+      "value": 100
+    },
+    {
+      "source": "fizyka-ciala-stalego",
+      "target": "reologia",
+      "value": 100
+    },
+    {
+      "source": "fizyka-ciala-stalego",
+      "target": "fizyka-fal-i-wibracji-akustyka",
+      "value": 100
+    },
+    {
+      "source": "fizyka-ciala-stalego",
+      "target": "mechanika-bryly-sztywnej",
+      "value": 100
+    },
+    {
+      "source": "fizyka-ciala-stalego",
+      "target": "krystalografia",
+      "value": 100
+    },
+    {
+      "source": "optyka-falowa-i-kwantowa",
+      "target": "fizyka-atmosfery",
+      "value": 100
+    },
+    {
+      "source": "optyka-falowa-i-kwantowa",
+      "target": "optyka-geometryczna",
+      "value": 100
+    },
+    {
+      "source": "optyka-falowa-i-kwantowa",
+      "target": "fizyka-fal-i-wibracji-akustyka",
+      "value": 100
+    },
+    {
+      "source": "optyka-falowa-i-kwantowa",
+      "target": "krystalografia",
       "value": 100
     }
   ]
