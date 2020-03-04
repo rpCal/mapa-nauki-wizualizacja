@@ -69,7 +69,11 @@ function run() {
           .on("start", dragstarted)
           .on("drag", dragged)
           .on("end", dragended)
-      );
+      )
+      // .append("svg:image")
+      // .attr("xlink:href", function(d) {
+      //   return ".img/icon_" + d.id + ".png";
+      // });
 
     var label = svg
       .append("g")
@@ -153,6 +157,11 @@ function run() {
 (function() {
   run();
 })();
+
+// add for later
+// ------ 
+// Grouping nodes in a Force-Directed Graph
+// - https://bl.ocks.org/bumbeishvili/f027f1b6664d048e894d19e54feeed42
 
 // check if two-way connection exists, then remove it
 // graph.links.forEach(function(link) {
