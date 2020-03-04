@@ -275,6 +275,78 @@
       "name": "Ekologia",
       "color": "#bc937e",
       "group": 2
+    },
+    {
+      "id": "biologia-komorki",
+      "name": "Biologia komórki",
+      "color": "#bc937e",
+      "group": 2
+    },
+    {
+      "id": "wirologia",
+      "name": "Wirologia",
+      "color": "#bc937e",
+      "group": 2
+    },
+    {
+      "id": "biofizyka",
+      "name": "Biofizyka",
+      "color": "#bc937e",
+      "group": 2
+    },
+    {
+      "id": "biologia-komorki",
+      "name": "Biologia komórki",
+      "color": "#bc937e",
+      "group": 2
+    },
+    {
+      "id": "chemia-organiczna",
+      "name": "Chemia organiczna",
+      "color": "#bc937e",
+      "group": 2
+    },
+    {
+      "id": "biochemia-bioenergetyka",
+      "name": "Biochemia, bioenergetyka",
+      "color": "#bc937e",
+      "group": 2
+    },
+    {
+      "id": "chemia-fizyczna-teoria-wiazan",
+      "name": "Chemia fizyczna / Teoria wiązań",
+      "color": "#bc937e",
+      "group": 2
+    },
+    {
+      "id": "chemia-nieorganiczna",
+      "name": "Chemia nieorganiczna",
+      "color": "#bc937e",
+      "group": 2
+    },
+    {
+      "id": "fizyka-atomu",
+      "name": "Fizyka atomu",
+      "color": "#bc937e",
+      "group": 2
+    },
+    {
+      "id": "chemia-kwantowa",
+      "name": "Chemia kwantowa",
+      "color": "#bc937e",
+      "group": 2
+    },
+    {
+      "id": "mechanika-kwantowa",
+      "name": "Mechanika kwantowa",
+      "color": "#bc937e",
+      "group": 2
+    },
+    {
+      "id": "fizyka-statystyczna",
+      "name": "Fizyka statystyczna",
+      "color": "#bc937e",
+      "group": 2
     }
   ],
   "links": [
@@ -907,6 +979,351 @@
       "source": "teoria-ewolucji",
       "target": "paleontologia",
       "value": 100
-    } 
+    },
+    {
+      "source": "ekologia",
+      "target": "teoria-ewolucji",
+      "value": 100
+    },
+    {
+      "source": "ekologia",
+      "target": "biologia-organizmalna-anatomia-fizjologia",
+      "value": 100
+    },
+    {
+      "source": "ekologia",
+      "target": "etologia-ekologia-behawioralna",
+      "value": 100
+    },
+    {
+      "source": "etologia-ekologia-behawioralna",
+      "target": "ekologia",
+      "value": 100
+    },
+    {
+      "source": "etologia-ekologia-behawioralna",
+      "target": "teoria-ewolucji",
+      "value": 100
+    },
+    {
+      "source": "etologia-ekologia-behawioralna",
+      "target": "biologia-organizmalna-anatomia-fizjologia",
+      "value": 100
+    },
+    {
+      "source": "biologia-organizmalna-anatomia-fizjologia",
+      "target": "teoria-ewolucji",
+      "value": 100
+    },
+    {
+      "source": "biologia-organizmalna-anatomia-fizjologia",
+      "target": "embriologia",
+      "value": 100
+    },
+    {
+      "source": "biologia-organizmalna-anatomia-fizjologia",
+      "target": "biologia-komorki",
+      "value": 100
+    },
+    {
+      "source": "biologia-organizmalna-anatomia-fizjologia",
+      "target": "etologia-ekologia-behawioralna",
+      "value": 100
+    },
+    {
+      "source": "biologia-organizmalna-anatomia-fizjologia",
+      "target": "ekologia",
+      "value": 100
+    },
+    {
+      "source": "embriologia",
+      "target": "botanika-mykologia",
+      "value": 100
+    },
+    {
+      "source": "embriologia",
+      "target": "biologia-komorki",
+      "value": 100
+    },
+    {
+      "source": "embriologia",
+      "target": "biologia-organizmalna-anatomia-fizjologia",
+      "value": 100
+    },
+    {
+      "source": "embriologia",
+      "target": "teoria-ewolucji",
+      "value": 100
+    },
+    {
+      "source": "embriologia",
+      "target": "zoologia",
+      "value": 100
+    },
+    {
+      "source": "mikrobiologia-bakteriologia",
+      "target": "geologia-zloz-geologia-ekonomiczna",
+      "value": 100
+    },
+    {
+      "source": "mikrobiologia-bakteriologia",
+      "target": "gleboznawstwo",
+      "value": 100
+    },
+    {
+      "source": "mikrobiologia-bakteriologia",
+      "target": "genetyka-molekularna",
+      "value": 100
+    },
+    {
+      "source": "genetyka-molekularna",
+      "target": "wirologia",
+      "value": 100
+    },
+    {
+      "source": "genetyka-molekularna",
+      "target": "biofizyka",
+      "value": 100
+    },
+    {
+      "source": "genetyka-molekularna",
+      "target": "chemia-i-fizyka-polimerow",
+      "value": 100
+    },
+    {
+      "source": "genetyka-molekularna",
+      "target": "biologia-komorki",
+      "value": 100
+    },
+    {
+      "source": "genetyka-molekularna",
+      "target": "teoria-ewolucji",
+      "value": 100
+    },
+    {
+      "source": "genetyka-molekularna",
+      "target": "mikrobiologia-bakteriologia",
+      "value": 100
+    },
+    {
+      "source": "wirologia",
+      "target": "biofizyka",
+      "value": 100
+    },
+    {
+      "source": "wirologia",
+      "target": "genetyka-molekularna",
+      "value": 100
+    },
+    {
+      "source": "biofizyka",
+      "target": "chemia-organiczna",
+      "value": 100
+    },
+    {
+      "source": "biofizyka",
+      "target": "chemia-i-fizyka-polimerow",
+      "value": 100
+    },
+    {
+      "source": "biofizyka",
+      "target": "genetyka-molekularna",
+      "value": 100
+    },
+    {
+      "source": "biofizyka",
+      "target": "wirologia",
+      "value": 100
+    },
+    {
+      "source": "biologia-komorki",
+      "target": "genetyka-molekularna",
+      "value": 100
+    },
+    {
+      "source": "biologia-komorki",
+      "target": "chemia-i-fizyka-polimerow",
+      "value": 100
+    },
+    {
+      "source": "biologia-komorki",
+      "target": "biochemia-bioenergetyka",
+      "value": 100
+    },
+    {
+      "source": "biologia-komorki",
+      "target": "termodynamika",
+      "value": 100
+    },
+    {
+      "source": "biologia-komorki",
+      "target": "embriologia",
+      "value": 100
+    },
+    {
+      "source": "chemia-i-fizyka-polimerow",
+      "target": "biofizyka",
+      "value": 100
+    },
+    {
+      "source": "chemia-i-fizyka-polimerow",
+      "target": "fizyka-materialow-materialoznawstwo",
+      "value": 100
+    },
+    {
+      "source": "chemia-i-fizyka-polimerow",
+      "target": "chemia-organiczna",
+      "value": 100
+    },
+    {
+      "source": "chemia-i-fizyka-polimerow",
+      "target": "biochemia-bioenergetyka",
+      "value": 100
+    },
+    {
+      "source": "chemia-i-fizyka-polimerow",
+      "target": "biologia-komorki",
+      "value": 100
+    },
+    {
+      "source": "chemia-i-fizyka-polimerow",
+      "target": "genetyka-molekularna",
+      "value": 100
+    },
+    {
+      "source": "biochemia-bioenergetyka",
+      "target": "biologia-komorki",
+      "value": 100
+    },
+    {
+      "source": "biochemia-bioenergetyka",
+      "target": "chemia-i-fizyka-polimerow",
+      "value": 100
+    },
+    {
+      "source": "biochemia-bioenergetyka",
+      "target": "chemia-organiczna",
+      "value": 100
+    },
+    {
+      "source": "biochemia-bioenergetyka",
+      "target": "chemia-fizyczna-teoria-wiazan",
+      "value": 100
+    },
+    {
+      "source": "biochemia-bioenergetyka",
+      "target": "termodynamika",
+      "value": 100
+    },
+    {
+      "source": "chemia-organiczna",
+      "target": "chemia-i-fizyka-polimerow",
+      "value": 100
+    },
+    {
+      "source": "chemia-organiczna",
+      "target": "biofizyka",
+      "value": 100
+    },
+    {
+      "source": "chemia-organiczna",
+      "target": "chemia-fizyczna-teoria-wiazan",
+      "value": 100
+    },
+    {
+      "source": "chemia-organiczna",
+      "target": "biochemia-bioenergetyka",
+      "value": 100
+    },
+    {
+      "source": "chemia-nieorganiczna",
+      "target": "termodynamika",
+      "value": 100
+    },
+    {
+      "source": "chemia-nieorganiczna",
+      "target": "chemia-fizyczna-teoria-wiazan",
+      "value": 100
+    },
+    {
+      "source": "chemia-fizyczna-teoria-wiazan",
+      "target": "chemia-organiczna",
+      "value": 100
+    },
+    {
+      "source": "chemia-fizyczna-teoria-wiazan",
+      "target": "mineralogia",
+      "value": 100
+    },
+    {
+      "source": "chemia-fizyczna-teoria-wiazan",
+      "target": "fizyka-atomu",
+      "value": 100
+    },
+    {
+      "source": "chemia-fizyczna-teoria-wiazan",
+      "target": "chemia-kwantowa",
+      "value": 100
+    },
+    {
+      "source": "chemia-fizyczna-teoria-wiazan",
+      "target": "termodynamika",
+      "value": 100
+    },
+    {
+      "source": "chemia-fizyczna-teoria-wiazan",
+      "target": "chemia-nieorganiczna",
+      "value": 100
+    },
+    {
+      "source": "chemia-fizyczna-teoria-wiazan",
+      "target": "biochemia-bioenergetyka",
+      "value": 100
+    },
+    {
+      "source": "chemia-fizyczna-teoria-wiazan",
+      "target": "chemia-organiczna",
+      "value": 100
+    },
+    {
+      "source": "chemia-kwantowa",
+      "target": "chemia-fizyczna-teoria-wiazan",
+      "value": 100
+    },
+    {
+      "source": "chemia-kwantowa",
+      "target": "mechanika-kwantowa",
+      "value": 100
+    },
+    {
+      "source": "termodynamika",
+      "target": "biologia-komorki",
+      "value": 100
+    },
+    {
+      "source": "termodynamika",
+      "target": "heliofizyka",
+      "value": 100
+    },
+    {
+      "source": "termodynamika",
+      "target": "biochemia-bioenergetyka",
+      "value": 100
+    },
+    {
+      "source": "termodynamika",
+      "target": "chemia-nieorganiczna",
+      "value": 100
+    },
+    {
+      "source": "termodynamika",
+      "target": "chemia-fizyczna-teoria-wiazan",
+      "value": 100
+    },
+    {
+      "source": "termodynamika",
+      "target": "fizyka-statystyczna",
+      "value": 100
+    }
   ]
 }
