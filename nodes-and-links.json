@@ -221,8 +221,61 @@
       "name": "Chemia i fizyka polimerów",
       "color": "#bc937e",
       "group": 2
+    },
+    {
+      "id": "zoologia",
+      "name": "Zoologia",
+      "color": "#bc937e",
+      "group": 2
+    },
+    {
+      "id": "embriologia",
+      "name": "Embriologia",
+      "color": "#bc937e",
+      "group": 2
+    },
+    {
+      "id": "teoria-ewolucji",
+      "name": "Teoria ewolucji",
+      "color": "#bc937e",
+      "group": 2
+    },
+    {
+      "id": "botanika-mykologia",
+      "name": "Botanika mykologia",
+      "color": "#bc937e",
+      "group": 2
+    },
+    {
+      "id": "systematyka",
+      "name": "Systematyka",
+      "color": "#bc937e",
+      "group": 2
+    },
+    {
+      "id": "genetyka-molekularna",
+      "name": "Genetyka molekularna",
+      "color": "#bc937e",
+      "group": 2
+    },
+    {
+      "id": "biologia-organizmalna-anatomia-fizjologia",
+      "name": "Biologia organizmalna, anatomia i fizjologia",
+      "color": "#bc937e",
+      "group": 2
+    },
+    {
+      "id": "etologia-ekologia-behawioralna",
+      "name": "Etologia, Ekologia behawioralna",
+      "color": "#bc937e",
+      "group": 2
+    },
+    {
+      "id": "ekologia",
+      "name": "Ekologia",
+      "color": "#bc937e",
+      "group": 2
     }
-    
   ],
   "links": [
     {
@@ -749,6 +802,111 @@
       "source": "fizyka-materialow-materialoznawstwo",
       "target": "chemia-i-fizyka-polimerow",
       "value": 100
-    }
+    },
+    {
+      "source": "zoologia",
+      "target": "protozoologia",
+      "value": 100
+    },
+    {
+      "source": "zoologia",
+      "target": "embriologia",
+      "value": 100
+    },
+    {
+      "source": "zoologia",
+      "target": "teoria-ewolucji",
+      "value": 100
+    },
+    {
+      "source": "protozoologia",
+      "target": "zoologia",
+      "value": 100
+    },
+    {
+      "source": "protozoologia",
+      "target": "teoria-ewolucji",
+      "value": 100
+    },
+    {
+      "source": "protozoologia",
+      "target": "gleboznawstwo",
+      "value": 100
+    },
+    {
+      "source": "botanika-mykologia",
+      "target": "teoria-ewolucji",
+      "value": 100
+    },
+    {
+      "source": "botanika-mykologia",
+      "target": "embriologia",
+      "value": 100
+    },
+    {
+      "source": "planetologia",
+      "target": "teoria-ewolucji",
+      "value": 100
+    },
+    {
+      "source": "planetologia",
+      "target": "mechanika-skal-sedymentologia",
+      "value": 100
+    },
+    {
+      "source": "systematyka",
+      "target": "teoria-ewolucji",
+      "value": 100
+    },
+    {
+      "source": "teoria-ewolucji",
+      "target": "zoologia",
+      "value": 100
+    },
+    {
+      "source": "teoria-ewolucji",
+      "target": "protozoologia",
+      "value": 100
+    },
+    {
+      "source": "teoria-ewolucji",
+      "target": "botanika-mykologia",
+      "value": 100
+    },
+    {
+      "source": "teoria-ewolucji",
+      "target": "genetyka-molekularna",
+      "value": 100
+    },
+    {
+      "source": "teoria-ewolucji",
+      "target": "embriologia",
+      "value": 100
+    },
+    {
+      "source": "teoria-ewolucji",
+      "target": "biologia-organizmalna-anatomia-fizjologia",
+      "value": 100
+    },
+    {
+      "source": "teoria-ewolucji",
+      "target": "etologia-ekologia-behawioralna",
+      "value": 100
+    },
+    {
+      "source": "teoria-ewolucji",
+      "target": "ekologia",
+      "value": 100
+    },
+    {
+      "source": "teoria-ewolucji",
+      "target": "systematyka",
+      "value": 100
+    },
+    {
+      "source": "teoria-ewolucji",
+      "target": "paleontologia",
+      "value": 100
+    } 
   ]
 }
