@@ -277,12 +277,6 @@
       "group": 2
     },
     {
-      "id": "biologia-komorki",
-      "name": "Biologia komórki",
-      "color": "#bc937e",
-      "group": 2
-    },
-    {
       "id": "wirologia",
       "name": "Wirologia",
       "color": "#bc937e",
@@ -309,12 +303,6 @@
     {
       "id": "biochemia-bioenergetyka",
       "name": "Biochemia, bioenergetyka",
-      "color": "#bc937e",
-      "group": 2
-    },
-    {
-      "id": "chemia-fizyczna-teoria-wiazan",
-      "name": "Chemia fizyczna / Teoria wiązań",
       "color": "#bc937e",
       "group": 2
     },
