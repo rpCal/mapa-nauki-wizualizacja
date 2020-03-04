@@ -4,25 +4,25 @@
       "id": "kosmologia",
       "name": "Kosmologia",
       "group": 1,
-      "color": "#a3cddf"
+      "color": "#a4cddf"
     },
     {
       "id": "ogolna-teoria-wzglednosci",
       "name": "Ogolna Teoria Względności",
       "group": 1,
-      "color": "#c57fac"
+      "color": "#c781b5"
     },
     {
       "id": "astronomia-obserwacyjna",
       "name": "Astronomia Obserwacyjna",
       "group": 1,
-      "color": "#a3cddf"
+      "color": "#a4cddf"
     },
     {
       "id": "teoria-wielkiego-wybuchu",
       "name": "Teoria Wielkiego Wybuchu",
       "group": 1,
-      "color": "#a3cddf"
+      "color": "#a4cddf"
     },
     {
       "id": "astrofizyka-ukladow-planetarnych",
@@ -40,120 +40,120 @@
       "id": "planetologia",
       "name": "Planetologia",
       "group": 2,
-      "color": "#ce92b8"
+      "color": "#cf91b6"
     },
     {
       "id": "fizyka-atmosfery",
       "name": "Fizyka atmosfery",
-      "color": "#bc937e",
+      "color": "#c18755",
       "group": 2
     },
     {
       "id": "oceanologia",
       "name": "Oceanologia",
-      "color": "#bc937e",
+      "color": "#c18755",
       "group": 2
     },
     {
       "id": "geotektonika-geofizyka",
       "name": "Geotektonika / Geofizyka",
-      "color": "#bc937e",
+      "color": "#c18755",
       "group": 2
     },
     {
       "id": "geomorfologia",
       "name": "Geomorfologia",
-      "color": "#bc937e",
+      "color": "#c18755",
       "group": 2
     },
     {
       "id": "magnetohydrodynamika",
       "name": "Magnetohydrodynamika",
-      "color": "#bc937e",
+      "color": "#d77a72",
       "group": 2
     },
     {
       "id": "astrofizyka-jadrowa-teoria-nukleosyntezy",
       "name": "Astrofizyka jądrowa, Teoria nukleosyntezy",
-      "color": "#bc937e",
+      "color": "#d87973",
       "group": 2
     },
     {
       "id": "termodynamika",
       "name": "Termodynamika",
-      "color": "#bc937e",
+      "color": "#dd7a51",
       "group": 2
     },
     {
       "id": "geologia-zloz-geologia-ekonomiczna",
       "name": "Geologia złóż / Geologia ekonomiczna",
-      "color": "#bc937e",
+      "color": "#c18755",
       "group": 2
     },
     {
       "id": "tektonika",
       "name": "Tektonika",
-      "color": "#bc937e",
+      "color": "#c18755",
       "group": 2
     },
     {
       "id": "petrologia",
       "name": "Petrologia",
-      "color": "#bc937e",
+      "color": "#c18755",
       "group": 2
     },
     {
       "id": "mikrobiologia-bakteriologia",
       "name": "Mikrobiologia / Bakteriologia",
-      "color": "#bc937e",
+      "color": "#6cb377",
       "group": 2
     },
     {
       "id": "sejsmologia",
       "name": "Sejsmologia",
-      "color": "#bc937e",
+      "color": "#c18755",
       "group": 2
     },
     {
       "id": "hydrologia",
       "name": "Hydrologia",
-      "color": "#bc937e",
+      "color": "#c18755",
       "group": 2
     },
     {
       "id": "meteorologia",
       "name": "Meteorologia",
-      "color": "#bc937e",
+      "color": "#c18755",
       "group": 2
     },
     {
       "id": "mechanika-plynow",
       "name": "Mechanika płynów",
-      "color": "#bc937e",
+      "color": "#d77a72",
       "group": 2
     },
     {
       "id": "optyka-falowa-i-kwantowa",
       "name": "Optyka falowa i kwantowa",
-      "color": "#bc937e",
+      "color": "#d77a72",
       "group": 2
     },
     {
       "id": "geologia-strukturalna",
       "name": "Geologia strukturalna",
-      "color": "#bc937e",
+      "color": "#c18755",
       "group": 2
     },
     {
       "id": "mechanika-skal-sedymentologia",
       "name": "Mechanika skał, sedymentologia",
-      "color": "#bc937e",
+      "color": "#c18755",
       "group": 2
     },
     {
       "id": "gleboznawstwo",
       "name": "Gleboznawstwo",
-      "color": "#bc937e",
+      "color": "#c18755",
       "group": 2
     },
     {
@@ -165,13 +165,13 @@
     {
       "id": "mineralogia",
       "name": "Mineralogia",
-      "color": "#bc937e",
+      "color": "#c18755",
       "group": 2
     },
     {
       "id": "protozoologia",
       "name": "Protozoologia",
-      "color": "#bc937e",
+      "color": "#6cb377",
       "group": 2
     },
     {
@@ -183,205 +183,211 @@
     {
       "id": "reologia",
       "name": "Reologia",
-      "color": "#bc937e",
+      "color": "#c18755",
       "group": 2
     },
     {
       "id": "paleontologia",
       "name": "Paleontologia",
-      "color": "#bc937e",
+      "color": "#6cb377",
       "group": 2
     },
     {
       "id": "krystalografia",
       "name": "Krystalografia",
-      "color": "#bc937e",
+      "color": "#d77a72",
       "group": 2
     },
     {
       "id": "chemia-fizyczna-teoria-wiazan",
       "name": "Chemia fizyczna / Teoria wiązań",
-      "color": "#bc937e",
+      "color": "#e9af4e",
       "group": 2
     },
     {
       "id": "fizyka-materialow-materialoznawstwo",
       "name": "Fizyka materiałów / Materiałoznawstwo",
-      "color": "#bc937e",
+      "color": "#c18755",
       "group": 2
     },
     {
       "id": "fizyka-ciala-stalego",
       "name": "Fizyka ciała stałego",
-      "color": "#bc937e",
+      "color": "#d77a72",
       "group": 2
     },
     {
       "id": "chemia-i-fizyka-polimerow",
       "name": "Chemia i fizyka polimerów",
-      "color": "#bc937e",
+      "color": "#f6d355",
       "group": 2
     },
     {
       "id": "zoologia",
       "name": "Zoologia",
-      "color": "#bc937e",
+      "color": "#6cb377",
       "group": 2
     },
     {
       "id": "embriologia",
       "name": "Embriologia",
-      "color": "#bc937e",
+      "color": "#6cb377",
       "group": 2
     },
     {
       "id": "teoria-ewolucji",
       "name": "Teoria ewolucji",
-      "color": "#bc937e",
+      "color": "#6cb377",
       "group": 2
     },
     {
       "id": "botanika-mykologia",
       "name": "Botanika mykologia",
-      "color": "#bc937e",
+      "color": "#6cb377",
       "group": 2
     },
     {
       "id": "systematyka",
       "name": "Systematyka",
-      "color": "#bc937e",
+      "color": "#6cb377",
       "group": 2
     },
     {
       "id": "genetyka-molekularna",
       "name": "Genetyka molekularna",
-      "color": "#bc937e",
+      "color": "#6cb377",
       "group": 2
     },
     {
       "id": "biologia-organizmalna-anatomia-fizjologia",
       "name": "Biologia organizmalna, anatomia i fizjologia",
-      "color": "#bc937e",
+      "color": "#6cb377",
       "group": 2
     },
     {
       "id": "etologia-ekologia-behawioralna",
       "name": "Etologia, Ekologia behawioralna",
-      "color": "#bc937e",
+      "color": "#6cb377",
       "group": 2
     },
     {
       "id": "ekologia",
       "name": "Ekologia",
-      "color": "#bc937e",
+      "color": "#6cb377",
       "group": 2
     },
     {
       "id": "wirologia",
       "name": "Wirologia",
-      "color": "#bc937e",
+      "color": "#6cb377",
       "group": 2
     },
     {
       "id": "biofizyka",
       "name": "Biofizyka",
-      "color": "#bc937e",
+      "color": "#a4c56e",
       "group": 2
     },
     {
       "id": "biologia-komorki",
       "name": "Biologia komórki",
-      "color": "#bc937e",
+      "color": "#6cb377",
       "group": 2
     },
     {
       "id": "chemia-organiczna",
       "name": "Chemia organiczna",
-      "color": "#bc937e",
+      "color": "#f6d355",
       "group": 2
     },
     {
       "id": "biochemia-bioenergetyka",
       "name": "Biochemia, bioenergetyka",
-      "color": "#bc937e",
+      "color": "#cbe047",
       "group": 2
     },
     {
       "id": "chemia-nieorganiczna",
       "name": "Chemia nieorganiczna",
-      "color": "#bc937e",
+      "color": "#f6d355",
       "group": 2
     },
     {
       "id": "fizyka-atomu",
       "name": "Fizyka atomu",
-      "color": "#bc937e",
+      "color": "#d77a72",
       "group": 2
     },
     {
       "id": "chemia-kwantowa",
       "name": "Chemia kwantowa",
-      "color": "#bc937e",
+      "color": "#e77550",
       "group": 2
     },
     {
       "id": "mechanika-kwantowa",
       "name": "Mechanika kwantowa",
-      "color": "#bc937e",
+      "color": "#d57b73",
       "group": 2
     },
     {
       "id": "fizyka-statystyczna",
       "name": "Fizyka statystyczna",
-      "color": "#bc937e",
+      "color": "#da7973",
       "group": 2
     },
     {
       "id": "fizyka-jadrowa",
       "name": "Fizyka jądrowa",
-      "color": "#bc937e",
+      "color": "#d77a72",
       "group": 2
     },
     {
       "id": "kwantowa-teoria-pola",
       "name": "Kwantowa teoria pola",
-      "color": "#bc937e",
+      "color": "#d77a72",
       "group": 2
     },
     {
       "id": "fizyka-czastek-fizyka-wysokich-energii",
       "name": "Fizyka cząstek / Fizyka wysokich energii",
-      "color": "#bc937e",
+      "color": "#d77a72",
       "group": 2
     },
     {
       "id": "teoria-pola",
       "name": "Teoria pola",
-      "color": "#bc937e",
+      "color": "#d77a72",
       "group": 2
     },
     {
       "id": "mechanika-klasyczna",
       "name": "Mechanika klasyczna",
-      "color": "#bc937e",
-      "group": 2
-    },
-    {
-      "id": "fizyka-statyczna",
-      "name": "Fizyka statyczna",
-      "color": "#bc937e",
+      "color": "#d77a72",
       "group": 2
     },
     {
       "id": "fizyka-fal-i-wibracji-akustyka",
       "name": "Fizyka fal i wibracji, akustyka",
-      "color": "#bc937e",
+      "color": "#d77a72",
       "group": 2
     },
     {
       "id": "mechanika-bryly-sztywnej",
       "name": "Mechanika bryły sztywnej",
-      "color": "#bc937e",
+      "color": "#d77a72",
+      "group": 2
+    },
+    {
+      "id": "elektromagnetyzm",
+      "name": "Elektromagnetyz",
+      "color": "#d77a72",
+      "group": 2
+    },
+    {
+      "id": "optyka-geometryczna",
+      "name": "Optyka geometryczna",
+      "color": "#d77a72",
       "group": 2
     }
   ],
@@ -1457,22 +1463,22 @@
       "value": 100
     },
     {
-      "source": "fizyka-statyczna",
+      "source": "fizyka-statystyczna",
       "target": "mechanika-kwantowa",
       "value": 100
     },
     {
-      "source": "fizyka-statyczna",
+      "source": "fizyka-statystyczna",
       "target": "termodynamika",
       "value": 100
     },
     {
-      "source": "fizyka-statyczna",
+      "source": "fizyka-statystyczna",
       "target": "mechanika-plynow",
       "value": 100
     },
     {
-      "source": "fizyka-statyczna",
+      "source": "fizyka-statystyczna",
       "target": "mechanika-klasyczna",
       "value": 100
     },
@@ -1569,6 +1575,126 @@
     {
       "source": "optyka-falowa-i-kwantowa",
       "target": "krystalografia",
+      "value": 100
+    },
+    {
+      "source": "mechanika-bryly-sztywnej",
+      "target": "reologia",
+      "value": 100
+    },
+    {
+      "source": "mechanika-bryly-sztywnej",
+      "target": "fizyka-ciala-stalego",
+      "value": 100
+    },
+    {
+      "source": "mechanika-bryly-sztywnej",
+      "target": "mechanika-klasyczna",
+      "value": 100
+    },
+    {
+      "source": "mechanika-klasyczna",
+      "target": "mechanika-bryly-sztywnej",
+      "value": 100
+    },
+    {
+      "source": "mechanika-klasyczna",
+      "target": "fizyka-fal-i-wibracji-akustyka",
+      "value": 100
+    },
+    {
+      "source": "mechanika-klasyczna",
+      "target": "fizyka-statystyczna",
+      "value": 100
+    },
+    {
+      "source": "fizyka-fal-i-wibracji-akustyka",
+      "target": "optyka-falowa-i-kwantowa",
+      "value": 100
+    },
+    {
+      "source": "fizyka-fal-i-wibracji-akustyka",
+      "target": "teoria-pola",
+      "value": 100
+    },
+    {
+      "source": "fizyka-fal-i-wibracji-akustyka",
+      "target": "mechanika-klasyczna",
+      "value": 100
+    },
+    {
+      "source": "fizyka-fal-i-wibracji-akustyka",
+      "target": "fizyka-ciala-stalego",
+      "value": 100
+    },
+    {
+      "source": "teoria-pola",
+      "target": "fizyka-fal-i-wibracji-akustyka",
+      "value": 100
+    },
+    {
+      "source": "teoria-pola",
+      "target": "elektromagnetyzm",
+      "value": 100
+    },
+    {
+      "source": "teoria-pola",
+      "target": "kwantowa-teoria-pola",
+      "value": 100
+    },
+    {
+      "source": "elektromagnetyzm",
+      "target": "magnetohydrodynamika",
+      "value": 100
+    },
+    {
+      "source": "elektromagnetyzm",
+      "target": "teoria-pola",
+      "value": 100
+    },
+    {
+      "source": "optyka-geometryczna",
+      "target": "krystalografia",
+      "value": 100
+    },
+    {
+      "source": "optyka-geometryczna",
+      "target": "optyka-falowa-i-kwantowa",
+      "value": 100
+    },
+    {
+      "source": "mechanika-plynow",
+      "target": "fizyka-statystyczna",
+      "value": 100
+    },
+    {
+      "source": "mechanika-plynow",
+      "target": "hydrologia",
+      "value": 100
+    },
+    {
+      "source": "mechanika-plynow",
+      "target": "magnetohydrodynamika",
+      "value": 100
+    },
+    {
+      "source": "mechanika-plynow",
+      "target": "fizyka-atmosfery",
+      "value": 100
+    },
+    {
+      "source": "magnetohydrodynamika",
+      "target": "heliofizyka",
+      "value": 100
+    },
+    {
+      "source": "magnetohydrodynamika",
+      "target": "elektromagnetyzm",
+      "value": 100
+    },
+    {
+      "source": "magnetohydrodynamika",
+      "target": "mechanika-plynow",
       "value": 100
     }
   ]
