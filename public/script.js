@@ -1,47 +1,80 @@
-function run() {
-  var width = window.innerWidth,
-    height = window.innerHeight;
+d3.json("nodes-and-links.json", function(error, graph) {
+  if (error) throw error;
+  function run() {
+    var width = window.innerWidth,
+      height = window.innerHeight;
 
-  var svg = d3
-    .select("#canvas")
-    .append("svg")
-    .attr("width", width)
-    .attr("height", height)
-    .call(
-      d3.zoom().on("zoom", function() {
-        svg.attr("transform", d3.event.transform);
-      })
-    )
-    .append("g");
+    var zoom_value_k = 0;
+    // var zoom = d3
+    //   .zoom()
+    //   .scaleExtent([1, 40])
+    //   .translateExtent([
+    //     [-100, -100],
+    //     [width + 90, height + 100]
+    //   ])
+    //   .on("zoom", zoomed);
 
-  var simulation = d3
-    .forceSimulation()
-    .force(
-      "link",
-      d3.forceLink().id(function(d) {
-        return d.id;
-      })
-    )
-    .force("charge", d3.forceManyBody().strength(-200))
-    .force(
-      "charge",
-      d3
-        .forceManyBody()
-        .strength(-200)
-        .theta(0.8)
-        .distanceMax(150)
-    )
-    .force(
-      "collide",
-      d3
-        .forceCollide()
-        .radius(d => 40)
-        .iterations(2)
-    )
-    .force("center", d3.forceCenter(width / 2, height / 2));
+    var svg = d3
+      .select("#canvas")
+      .append("svg")
+      .attr("width", width)
+      .attr("height", height)
+      .call(
+        d3
+          .zoom()
+          .scaleExtent([0.2, 40])
+          .on("zoom", function() {
+            svg.attr("transform", d3.event.transform);
+            zoom_value_k = d3.event.transform.k;
+            ticked();
+            if (d3.event.transform.k > 2) {
+              svg
+                .selectAll(".label-zoom2")
+                .transition()
+                .delay(function(d, i) {
+                  return i * 10;
+                })
+                .duration(350)
+                .style("opacity", 1);
+            } else {
+              svg
+                .selectAll(".label-zoom2")
+                .transition()
+                .delay(function(d, i) {
+                  return i * 10;
+                })
+                .duration(350)
+                .style("opacity", 0);
+            }
+          })
+      )
+      .append("g");
 
-  d3.json("nodes-and-links.json", function(error, graph) {
-    if (error) throw error;
+    var simulation = d3
+      .forceSimulation()
+      .force(
+        "link",
+        d3.forceLink().id(function(d) {
+          return d.id;
+        })
+      )
+      .force("charge", d3.forceManyBody().strength(-200))
+      .force(
+        "charge",
+        d3
+          .forceManyBody()
+          .strength(-200)
+          .theta(0.8)
+          .distanceMax(150)
+      )
+      .force(
+        "collide",
+        d3
+          .forceCollide()
+          .radius(d => 40)
+          .iterations(2)
+      )
+      .force("center", d3.forceCenter(width / 2, height / 2));
 
     var link = svg
       .append("g")
@@ -69,20 +102,28 @@ function run() {
           .on("start", dragstarted)
           .on("drag", dragged)
           .on("end", dragended)
-      )
-      // .append("svg:image")
-      // .attr("xlink:href", function(d) {
-      //   return ".img/icon_" + d.id + ".png";
-      // });
+      );
+    // .append("svg:image")
+    // .attr("xlink:href", function(d) {
+    //   return ".img/icon_" + d.id + ".png";
+    // });
 
     var label = svg
       .append("g")
       .attr("class", "labels")
+
       .selectAll("text")
       .data(graph.nodes)
       .enter()
       .append("text")
-      .attr("class", "label")
+      .attr("class", function(d) {
+        if (d.zoom === 1) {
+          return "label";
+        }
+        if (d.zoom === 2) {
+          return "label-zoom2";
+        }
+      })
       .text(function(d) {
         return d.name;
       })
@@ -108,10 +149,23 @@ function run() {
         .attr("y2", function(d) {
           return d.target.y;
         })
-        .style("fill", "#a4a4a4");
+        .style("stroke", function(d) {
+          if (d.zoom === undefined) {
+            return "#a4a4a4";
+          } else {
+            return "transparent";
+          }
+        });
 
       node
-        .attr("r", 16)
+        .attr("r", function(d) {
+          if (d.zoom === 1) {
+            return 16;
+          }
+          if (d.zoom === 2) {
+            return 0;
+          }
+        })
         .style("fill", function(d) {
           return d.color ? d.color : "#efefef";
         })
@@ -131,35 +185,54 @@ function run() {
         .attr("y", function(d) {
           return d.y;
         })
-        .style("font-size", "10px")
-        .style("fill", "#333");
+        .attr("opacity", function(d) {
+          if (d.zoom === 1) {
+            return 1;
+          }
+          if (d.zoom === 2) {
+            return 0;
+          }
+        })
+        .attr("font-size", function(d) {
+          if (d.zoom === 1) {
+            return "10px";
+          }
+          if (d.zoom === 2) {
+            return "8px";
+          }
+        })
+        .style("fill", function(d) {
+          if (d.zoom === 1) {
+            return "#333";
+          }
+          if (d.zoom === 2) {
+            return "#aaa";
+          }
+        });
     }
-  });
 
-  function dragstarted(d) {
-    if (!d3.event.active) simulation.alphaTarget(0.3).restart();
-    d.fx = d.x;
-    d.fy = d.y;
+    function dragstarted(d) {
+      if (!d3.event.active) simulation.alphaTarget(0.3).restart();
+      d.fx = d.x;
+      d.fy = d.y;
+    }
+
+    function dragged(d) {
+      d.fx = d3.event.x;
+      d.fy = d3.event.y;
+    }
+
+    function dragended(d) {
+      d.fx = d3.event.x;
+      d.fy = d3.event.y;
+      if (!d3.event.active) simulation.alphaTarget(0);
+    }
   }
 
-  function dragged(d) {
-    d.fx = d3.event.x;
-    d.fy = d3.event.y;
-  }
-
-  function dragended(d) {
-    d.fx = d3.event.x;
-    d.fy = d3.event.y;
-    if (!d3.event.active) simulation.alphaTarget(0);
-  }
-}
-
-(function() {
   run();
-})();
-
+});
 // add for later
-// ------ 
+// ------
 // Grouping nodes in a Force-Directed Graph
 // - https://bl.ocks.org/bumbeishvili/f027f1b6664d048e894d19e54feeed42
 
