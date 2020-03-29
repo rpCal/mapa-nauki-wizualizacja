@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {},
   "devDependencies": {
+    "@types/d3": "^5.7.2",
     "gh-pages": "^2.2.0",
     "live-server": "^1.2.1"
   },
