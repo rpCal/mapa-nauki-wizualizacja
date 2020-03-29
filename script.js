@@ -1,5 +1,11 @@
 d3.json("nodes-and-links.json", function(error, graph) {
   if (error) throw error;
+  function checkImage(imageSrc, good, bad) {
+    var img = new Image();
+    img.onload = good;
+    img.onerror = bad;
+    img.src = imageSrc;
+  }
   function run() {
     var width = window.innerWidth,
       height = window.innerHeight;
@@ -48,7 +54,8 @@ d3.json("nodes-and-links.json", function(error, graph) {
             }
           })
       )
-      .append("g");
+      .append("g")
+      .attr("class", "canvas");
 
     var simulation = d3
       .forceSimulation()
@@ -78,6 +85,7 @@ d3.json("nodes-and-links.json", function(error, graph) {
 
     var link = svg
       .append("g")
+      .attr("class", "links")
       .style("stroke", "#aaa")
       .selectAll("line")
       .data(
@@ -94,8 +102,23 @@ d3.json("nodes-and-links.json", function(error, graph) {
       .selectAll("circle")
       .data(graph.nodes)
       .enter()
+      .append("g")
+      .attr("class", "node-item");
+
+    node
       .append("circle")
-      .attr("r", 2)
+      .attr("class", "node-circle")
+      .attr("r", function(d) {
+        if (d.zoom === 1) {
+          return 16;
+        }
+        if (d.zoom === 2) {
+          return 0;
+        }
+      })
+      .style("fill", function(d) {
+        return d.color ? d.color : "#efefef";
+      })
       .call(
         d3
           .drag()
@@ -103,25 +126,25 @@ d3.json("nodes-and-links.json", function(error, graph) {
           .on("drag", dragged)
           .on("end", dragended)
       );
-    // .append("svg:image")
-    // .attr("xlink:href", function(d) {
-    //   return ".img/icon_" + d.id + ".png";
-    // });
+    node
+      .append("svg:image")
+      .attr("href", function(d) {
+        return "./img/icon_" + d.id + ".png";
+      })
+      .attr("transform", "translate(-16,-16)")
+      .attr("width", 32)
+      .on("error", function(d) {
+        this.setAttribute("style", "display:none;");
+      });
 
-    var label = svg
-      .append("g")
-      .attr("class", "labels")
-
-      .selectAll("text")
-      .data(graph.nodes)
-      .enter()
+    node
       .append("text")
       .attr("class", function(d) {
         if (d.zoom === 1) {
-          return "label";
+          return "node-label label";
         }
         if (d.zoom === 2) {
-          return "label-zoom2";
+          return "node-label label-zoom2";
         }
       })
       .text(function(d) {
@@ -129,7 +152,31 @@ d3.json("nodes-and-links.json", function(error, graph) {
       })
       .attr("text-anchor", "middle")
       .attr("fill", "#fff")
+      .attr("transform", "translate(0,25)")
       .attr("alignment-baseline", "central");
+
+    // var label = svg
+    //   .append("g")
+    //   .attr("class", "labels")
+
+    //   .selectAll("text")
+    //   .data(graph.nodes)
+    //   .enter()
+    //   .append("text")
+    //   .attr("class", function(d) {
+    //     if (d.zoom === 1) {
+    //       return "label";
+    //     }
+    //     if (d.zoom === 2) {
+    //       return "label-zoom2";
+    //     }
+    //   })
+    //   .text(function(d) {
+    //     return d.name;
+    //   })
+    //   .attr("text-anchor", "middle")
+    //   .attr("fill", "#fff")
+    //   .attr("alignment-baseline", "central");
 
     simulation.nodes(graph.nodes).on("tick", ticked);
 
@@ -158,33 +205,15 @@ d3.json("nodes-and-links.json", function(error, graph) {
         });
 
       node
-        .attr("r", function(d) {
-          if (d.zoom === 1) {
-            return 16;
-          }
-          if (d.zoom === 2) {
-            return 0;
-          }
+        .attr("transform", function(d) {
+          return "translate(" + d.x + " " + d.y + ")";
         })
         .style("fill", function(d) {
           return d.color ? d.color : "#efefef";
-        })
-        .attr("cx", function(d) {
-          return d.x + 5;
-        })
-        .attr("cy", function(d) {
-          return d.y - 3;
         });
 
-      label
-        .attr("dx", 0)
-        .attr("dy", 19)
-        .attr("x", function(d) {
-          return d.x;
-        })
-        .attr("y", function(d) {
-          return d.y;
-        })
+      node
+        .select("text")
         .attr("opacity", function(d) {
           if (d.zoom === 1) {
             return 1;
@@ -195,10 +224,10 @@ d3.json("nodes-and-links.json", function(error, graph) {
         })
         .attr("font-size", function(d) {
           if (d.zoom === 1) {
-            return "10px";
+            return "9px";
           }
           if (d.zoom === 2) {
-            return "8px";
+            return "7px";
           }
         })
         .style("fill", function(d) {
@@ -209,10 +238,68 @@ d3.json("nodes-and-links.json", function(error, graph) {
             return "#aaa";
           }
         });
+      // .attr("cx", function(d) {
+      //   return d.x + 5;
+      // })
+      // .attr("cy", function(d) {
+      //   return d.y - 3;
+      // });
+      // node
+      //   .attr("r", function(d) {
+      //     if (d.zoom === 1) {
+      //       return 16;
+      //     }
+      //     if (d.zoom === 2) {
+      //       return 0;
+      //     }
+      //   })
+      //   .style("fill", function(d) {
+      //     return d.color ? d.color : "#efefef";
+      //   })
+      //   .attr("cx", function(d) {
+      //     return d.x + 5;
+      //   })
+      //   .attr("cy", function(d) {
+      //     return d.y - 3;
+      //   });
+
+      // label
+      //   .attr("dx", 0)
+      //   .attr("dy", 19)
+      //   .attr("x", function(d) {
+      //     return d.x;
+      //   })
+      //   .attr("y", function(d) {
+      //     return d.y;
+      //   })
+      //   .attr("opacity", function(d) {
+      //     if (d.zoom === 1) {
+      //       return 1;
+      //     }
+      //     if (d.zoom === 2) {
+      //       return 0;
+      //     }
+      //   })
+      //   .attr("font-size", function(d) {
+      //     if (d.zoom === 1) {
+      //       return "10px";
+      //     }
+      //     if (d.zoom === 2) {
+      //       return "8px";
+      //     }
+      //   })
+      //   .style("fill", function(d) {
+      //     if (d.zoom === 1) {
+      //       return "#333";
+      //     }
+      //     if (d.zoom === 2) {
+      //       return "#aaa";
+      //     }
+      //   });
     }
 
     function dragstarted(d) {
-      if (!d3.event.active) simulation.alphaTarget(0.3).restart();
+      if (!d3.event.active) simulation.alphaTarget(0.1).restart();
       d.fx = d.x;
       d.fy = d.y;
     }
