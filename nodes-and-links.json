@@ -183,13 +183,6 @@
       "zoom": 1
     },
     {
-      "id": "pektrologia",
-      "name": "Pektrologia",
-      "color": "#bc937e",
-      "group": 2,
-      "zoom": 1
-    },
-    {
       "id": "mineralogia",
       "name": "Mineralogia",
       "color": "#c18755",
@@ -200,13 +193,6 @@
       "id": "protozoologia",
       "name": "Protozoologia",
       "color": "#6cb377",
-      "group": 2,
-      "zoom": 1
-    },
-    {
-      "id": "pektologia",
-      "name": "Pektologia",
-      "color": "#bc937e",
       "group": 2,
       "zoom": 1
     },
@@ -861,7 +847,7 @@
     },
     {
       "source": "gleboznawstwo",
-      "target": "pektrologia",
+      "target": "petrologia",
       "value": 100
     },
     {
@@ -882,11 +868,6 @@
     {
       "source": "geologia-strukturalna",
       "target": "reologia",
-      "value": 100
-    },
-    {
-      "source": "geologia-strukturalna",
-      "target": "pektologia",
       "value": 100
     },
     {
