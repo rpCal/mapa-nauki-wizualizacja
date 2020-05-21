@@ -129,7 +129,7 @@ d3.json("nodes-and-links.json", function(error, graph) {
     node
       .append("svg:image")
       .attr("href", function(d) {
-        return "./img/icon_" + d.id + ".png";
+        return "./img/icon-" + d.id + ".png";
       })
       .attr("transform", "translate(-16,-16)")
       .attr("width", 32)
