@@ -1,4 +1,4 @@
-d3.json("nodes-and-links.json", function(error, graph) {
+d3.json("nodes-and-links.json", function (error, graph) {
   if (error) throw error;
   function checkImage(imageSrc, good, bad) {
     var img = new Image();
@@ -29,7 +29,7 @@ d3.json("nodes-and-links.json", function(error, graph) {
         d3
           .zoom()
           .scaleExtent([0.2, 40])
-          .on("zoom", function() {
+          .on("zoom", function () {
             svg.attr("transform", d3.event.transform);
             zoom_value_k = d3.event.transform.k;
             ticked();
@@ -37,7 +37,7 @@ d3.json("nodes-and-links.json", function(error, graph) {
               svg
                 .selectAll(".label-zoom2")
                 .transition()
-                .delay(function(d, i) {
+                .delay(function (d, i) {
                   return i * 10;
                 })
                 .duration(350)
@@ -46,7 +46,7 @@ d3.json("nodes-and-links.json", function(error, graph) {
               svg
                 .selectAll(".label-zoom2")
                 .transition()
-                .delay(function(d, i) {
+                .delay(function (d, i) {
                   return i * 10;
                 })
                 .duration(350)
@@ -61,24 +61,20 @@ d3.json("nodes-and-links.json", function(error, graph) {
       .forceSimulation()
       .force(
         "link",
-        d3.forceLink().id(function(d) {
+        d3.forceLink().id(function (d) {
           return d.id;
         })
       )
       .force("charge", d3.forceManyBody().strength(-200))
       .force(
         "charge",
-        d3
-          .forceManyBody()
-          .strength(-200)
-          .theta(0.8)
-          .distanceMax(150)
+        d3.forceManyBody().strength(-200).theta(0.8).distanceMax(150)
       )
       .force(
         "collide",
         d3
           .forceCollide()
-          .radius(d => 40)
+          .radius((d) => 40)
           .iterations(2)
       )
       .force("center", d3.forceCenter(width / 2, height / 2));
@@ -89,7 +85,7 @@ d3.json("nodes-and-links.json", function(error, graph) {
       .style("stroke", "#aaa")
       .selectAll("line")
       .data(
-        graph.links.filter(function(e) {
+        graph.links.filter(function (e) {
           return !(e.excluded !== undefined && e.excluded === true);
         })
       )
@@ -108,7 +104,7 @@ d3.json("nodes-and-links.json", function(error, graph) {
     node
       .append("circle")
       .attr("class", "node-circle")
-      .attr("r", function(d) {
+      .attr("r", function (d) {
         if (d.zoom === 1) {
           return 16;
         }
@@ -116,7 +112,7 @@ d3.json("nodes-and-links.json", function(error, graph) {
           return 0;
         }
       })
-      .style("fill", function(d) {
+      .style("fill", function (d) {
         return d.color ? d.color : "#efefef";
       })
       .call(
@@ -128,18 +124,25 @@ d3.json("nodes-and-links.json", function(error, graph) {
       );
     node
       .append("svg:image")
-      .attr("href", function(d) {
+      .attr("href", function (d) {
         return "./img/icon-" + d.id + ".png";
       })
       .attr("transform", "translate(-16,-16)")
       .attr("width", 32)
-      .on("error", function(d) {
+      .on("error", function (d) {
         this.setAttribute("style", "display:none;");
-      });
+      })
+      .call(
+        d3
+          .drag()
+          .on("start", dragstarted)
+          .on("drag", dragged)
+          .on("end", dragended)
+      );
 
     node
       .append("text")
-      .attr("class", function(d) {
+      .attr("class", function (d) {
         if (d.zoom === 1) {
           return "node-label label";
         }
@@ -147,7 +150,7 @@ d3.json("nodes-and-links.json", function(error, graph) {
           return "node-label label-zoom2";
         }
       })
-      .text(function(d) {
+      .text(function (d) {
         return d.name;
       })
       .attr("text-anchor", "middle")
@@ -184,19 +187,19 @@ d3.json("nodes-and-links.json", function(error, graph) {
 
     function ticked() {
       link
-        .attr("x1", function(d) {
+        .attr("x1", function (d) {
           return d.source.x;
         })
-        .attr("y1", function(d) {
+        .attr("y1", function (d) {
           return d.source.y;
         })
-        .attr("x2", function(d) {
+        .attr("x2", function (d) {
           return d.target.x;
         })
-        .attr("y2", function(d) {
+        .attr("y2", function (d) {
           return d.target.y;
         })
-        .style("stroke", function(d) {
+        .style("stroke", function (d) {
           if (d.zoom === undefined) {
             return "#a4a4a4";
           } else {
@@ -205,16 +208,16 @@ d3.json("nodes-and-links.json", function(error, graph) {
         });
 
       node
-        .attr("transform", function(d) {
+        .attr("transform", function (d) {
           return "translate(" + d.x + " " + d.y + ")";
         })
-        .style("fill", function(d) {
+        .style("fill", function (d) {
           return d.color ? d.color : "#efefef";
         });
 
       node
         .select("text")
-        .attr("opacity", function(d) {
+        .attr("opacity", function (d) {
           if (d.zoom === 1) {
             return 1;
           }
@@ -222,7 +225,7 @@ d3.json("nodes-and-links.json", function(error, graph) {
             return 0;
           }
         })
-        .attr("font-size", function(d) {
+        .attr("font-size", function (d) {
           if (d.zoom === 1) {
             return "9px";
           }
@@ -230,7 +233,7 @@ d3.json("nodes-and-links.json", function(error, graph) {
             return "7px";
           }
         })
-        .style("fill", function(d) {
+        .style("fill", function (d) {
           if (d.zoom === 1) {
             return "#333";
           }
