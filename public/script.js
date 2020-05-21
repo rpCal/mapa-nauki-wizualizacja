@@ -89,7 +89,7 @@ d3.json("nodes-and-links.json", function (error, graph) {
       .append("g")
       .attr("class", "links")
       .style("stroke", "#aaa")
-      .style("opacity", interpolate(0.9, 0.9, 3, 0, 1))
+      .style("opacity", 0)
       .selectAll("line")
       .data(
         graph.links.filter(function (e) {
