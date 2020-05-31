@@ -6,13 +6,17 @@
   "dependencies": {},
   "devDependencies": {
     "@types/d3": "^5.7.2",
+    "csvtojson": "^2.0.10",
     "gh-pages": "^2.2.0",
-    "live-server": "^1.2.1"
+    "live-server": "^1.2.1",
+    "typescript": "^3.9.3"
   },
   "scripts": {
     "start": "npx live-server",
+    "ts:watch": "npx tsc --watch",
     "deploy": "npx gh-pages -d public",
-    "postdeploy": "git add -A . && git commit -m \"gh deploy\" && git push"
+    "postdeploy": "git add -A . && git commit -m \"gh deploy\" && git push",
+    "convert:csvtojson": "npx csvtojson ./input_csv/input.csv > ./public/data/output.json"
   },
   "repository": {
     "type": "git",

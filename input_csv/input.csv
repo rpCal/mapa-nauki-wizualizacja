@@ -1,0 +1,86 @@
+id,category_name,parent,level,action,icon
+0,Root,,,,
+1,Filozofia i okolice,0,1 - Pierwszy,Otwarcie popup z tekstem,
+2,Teologia,1,2 - Drugi,,
+3,Metafizyka,1,2 - Drugi,,
+4,Epistemologia,1,2 - Drugi,,
+5,Etyka,1,2 - Drugi,,
+6,Estetyka,1,2 - Drugi,,
+7,Filozofia umysłu,1,2 - Drugi,,
+8,Matematyka,0,1 - Pierwszy,,
+9,Logika i podstawy matematyki,8,2 - Drugi,,
+10,Teoria liczb,8,2 - Drugi,,
+11,Algebra,8,2 - Drugi,,
+12,Geometria,8,2 - Drugi,,
+13,Topologia,8,2 - Drugi,,
+14,Analiza matematyczna,8,2 - Drugi,,
+15,"Kombinatoryka, teoria grafów",8,2 - Drugi,,
+16,Teoria prawdopodobieństwa,8,2 - Drugi,,
+17,Matematyka obliczeniowa,8,2 - Drugi,,
+18,Fizyka,0,1 - Pierwszy,,img/icon-mechanika-kwantowa.png
+19,Mechanika i kinematyka,18,2 - Drugi,,img/icon-mechanika-klasyczna.png
+20,Optyka,18,2 - Drugi,,img/icon-optyka-geometryczna.png
+21,Termodynamika,18,2 - Drugi,,img/icon-termodynamika.png
+22,Ciepło,21,3 - trzeci,,
+23,Promieniowanie,21,3 - trzeci,,
+24,Pola i oddziaływania,18,2 - Drugi,,img/icon-teoria-pola.png
+25,Elektromagnetyzm,24,3 - trzeci,,
+26,Grawitacja,24,3 - trzeci,,
+27,Cząstki i materia,18,2 - Drugi,,img/icon-mechanika-kwantowa.png
+28,Fizyka cząstek elementarnych,27,3 - trzeci,,img/icon-mechanika-kwantowa.png
+29,Fizyka jądrowa,27,3 - trzeci,,img/icon-fizyka-jadrowa.png
+30,Fizyka atomu,27,3 - trzeci,,img/icon-fizyka-atomu.png
+31,Fizyka ciała stałego,27,3 - trzeci,,img/icon-fizyka-ciala-stalego.png
+32,Fizyka płynów,27,3 - trzeci,,img/icon-mechanika-plynow.png
+33,Fizyka gazu i plazmy,27,3 - trzeci,,img/icon-fizyka-statystyczna.png
+34,Kosmos,18,2 - Drugi,,img/icon-astronomia-obserwacyjna.png
+35,Kosmologia,34,3 - trzeci,,img/icon-teoria-wielkiego-wybuchu.png
+36,Astrofizyka galaktyczna,34,3 - trzeci,,img/icon-astronomia-obserwacyjna.png
+37,Astrofizyka gwiazd,34,3 - trzeci,,img/icon-heliofizyka.png
+38,Astrofizyka układów planetarnych,34,3 - trzeci,,img/icon-astrofizyka-ukladow-planetarnych.png
+39,Astronomia obserwacyjna,34,3 - trzeci,,
+40,Chemia,0,1 - Pierwszy,,
+41,Chemia fizyczna,40,2 - Drugi,,img/icon-chemia-fizyczna-teoria-wiazan.png
+42,Teoria wiązań i reakcji chemicznych,41,3 - trzeci,,img/icon-chemia-fizyczna-teoria-wiazan.png
+43,Termodynamika chemiczna i kinetyka,41,3 - trzeci,,
+44,Elektrochemia,41,3 - trzeci,,
+45,Chemia powierzchniowa i koloidów,41,3 - trzeci,,
+46,Chemia analityczna,40,2 - Drugi,,
+47,Chemia syntetyczna i laboratoryjna,40,2 - Drugi,,
+48,Chemia nieorganiczna i organiczna,40,2 - Drugi,,img/icon-chemia-organiczna.png
+49,Biologia,0,1 - Pierwszy,,
+50,Biologia teoretyczna,49,2 - Drugi,,img/icon-biochemia-bioenergetyka.png
+51,Ekologia i biogeografia,49,2 - Drugi,,img/icon-ekologia.png
+52,Genetyka,49,2 - Drugi,,img/icon-genetyka-molekularna.png
+53,Teoria ewolucji,49,2 - Drugi,,img/icon-teoria-ewolucji.png
+54,Biologia komórki,49,2 - Drugi,,img/icon-biologia-komorki.png
+55,Anatomia i fizjologia,49,2 - Drugi,,img/icon-biologia-organizmalna-anatomia-fizjologia.png
+56,Biologia systematyczna,49,2 - Drugi,,img/icon-zoologia.png
+57,Nauki o Ziemi,0,1 - Pierwszy,,img/icon-geologia-zloz-geologia-ekonomiczna.png
+58,Planetologia,57,2 - Drugi,,img/icon-planetologia.png
+59,Geofizyka,57,2 - Drugi,,img/icon-geotektonika-geofizyka.png
+60,Tektonika,57,2 - Drugi,,img/icon-tektonika.png
+61,Geologia strukturalna,57,2 - Drugi,,img/icon-geologia-strukturalna.png
+62,Oceanologia,57,2 - Drugi,,img/icon-oceanologia.png
+63,Klimatologia i meteorologia,57,2 - Drugi,,img/icon-meteorologia.png
+64,Petrologia,57,2 - Drugi,,img/icon-petrologia.png
+65,Mineralogia,57,2 - Drugi,,img/icon-mineralogia.png
+66,Nauki o człowieku,0,1 - Pierwszy,,
+67,Antropologia,66,2 - Drugi,,
+68,Historia i archeologia,66,2 - Drugi,,
+69,Etnologia i kulturoznawstwo,66,2 - Drugi,,
+70,Socjologia,66,2 - Drugi,,
+71,Ekonomia,66,2 - Drugi,,
+72,Psychologia,66,2 - Drugi,,
+73,Nauki stosowane,0,1 - Pierwszy,,
+74,Medycyna i biotechnologia,73,2 - Drugi,,
+75,Nauki inżynieryjne,73,2 - Drugi,,
+76,Nauki techniczne,73,2 - Drugi,,
+77,"Nauki rolnicze, leśne i okolice",73,2 - Drugi,,
+78,Geologia złóż i ekonomiczna,57,2 - Drugi,,img/icon-geologia-zloz-geologia-ekonomiczna.png
+79,Systematyka/taksonomia,56,3 - trzeci,,img/icon-systematyka.png
+80,Wirologia,56,3 - trzeci,,img/icon-wirologia.png
+81,Mikrobiologia/bakteriologia,56,3 - trzeci,,img/icon-mikrobiologia-bakteriologia.png
+82,Protozoologia,56,3 - trzeci,,img/icon-protozoologia.png
+83,Botanika i mykologia,56,3 - trzeci,,img/icon-botanika-mykologia.png
+84,Zoologia,56,3 - trzeci,,img/icon-zoologia.png
