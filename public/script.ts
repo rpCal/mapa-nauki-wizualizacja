@@ -11,6 +11,9 @@ const onDataLoaded = function (error: any, graph: any[]) {
     category_name: string | undefined;
     parent: string | undefined;
   }
+  enum ClickActionType {
+    OPEN_LINK = "OPEN_LINK",
+  }
   interface DataNode {
     id: string;
     name: string;
@@ -19,6 +22,9 @@ const onDataLoaded = function (error: any, graph: any[]) {
     visibleZoomMin: number;
     visibleZoomMax: number;
     icon: string;
+    iconRadius: number;
+    windowUrl?: string;
+    clickActionType?: ClickActionType;
     action: string;
     parentId: string;
     radius: number;
@@ -55,6 +61,7 @@ const onDataLoaded = function (error: any, graph: any[]) {
     radius = (5 - level) * 10;
 
     let icon = "";
+    let iconRadius = radius;
     if (e.icon !== undefined && e.icon.length > 0) {
       icon = "./" + e.icon;
     }
@@ -73,8 +80,7 @@ const onDataLoaded = function (error: any, graph: any[]) {
     if (e.parent !== undefined && e.parent.length > 0) {
       parentId = e.parent;
     }
-
-    return {
+    let newRow: DataNode = {
       id: e.id,
       name: name,
       color: "#a4cddf",
@@ -82,10 +88,29 @@ const onDataLoaded = function (error: any, graph: any[]) {
       visibleZoomMin: visibleZoomMin,
       visibleZoomMax: visibleZoomMax,
       icon: icon,
+      iconRadius: iconRadius,
       action: action,
       parentId: parentId,
       radius: radius,
     };
+
+    if (e.id === "36") {
+      newRow.icon = "./img/youtube_thumb_parent_id_36.resized.jpg";
+      newRow.clickActionType = ClickActionType.OPEN_LINK;
+      newRow.windowUrl = "https://youtu.be/3Cec-5MOTlw?t=901";
+    }
+    if (e.id === "67") {
+      newRow.icon = "./img/youtube_thumb_parent_id_67.resized.jpg";
+      newRow.clickActionType = ClickActionType.OPEN_LINK;
+      newRow.windowUrl = "https://youtu.be/d36GBndnL38?t=66";
+    }
+    if (e.id === "74") {
+      newRow.icon = "./img/youtube_thumb_parent_id_74.resized.jpg";
+      newRow.clickActionType = ClickActionType.OPEN_LINK;
+      newRow.windowUrl = "https://youtu.be/riZfnPrk7OU?t=1013";
+    }
+
+    return newRow;
   });
 
   console.log("input data: ", dataNodes);
@@ -122,24 +147,24 @@ const onDataLoaded = function (error: any, graph: any[]) {
             svg.attr("transform", d3.event.transform);
             zoom_value_k = d3.event.transform.k;
             ticked(link, node);
-            console.log("zoom level: ", zoom_value_k);
+            console.log("zoom level222: ", zoom_value_k);
 
-            svg
-              .selectAll(".node-item")
-              .transition()
-              .duration(350)
-              .style("opacity", function (d: any) {
-                if (zoom_value_k === 1) {
-                  return 1;
-                }
-                if (
-                  zoom_value_k >= d.visibleZoomMin &&
-                  zoom_value_k <= d.visibleZoomMax
-                ) {
-                  return 1;
-                }
-                return 0;
-              } as any);
+            // svg
+            //   .selectAll(".node-item")
+            //   .transition()
+            //   .duration(350)
+            //   .style("opacity", function (d: any) {
+            //     if (zoom_value_k === 1) {
+            //       return 1;
+            //     }
+            //     if (
+            //       zoom_value_k >= d.visibleZoomMin &&
+            //       zoom_value_k <= d.visibleZoomMax
+            //     ) {
+            //       return 1;
+            //     }
+            //     return 0;
+            //   } as any);
 
             // if (d3.event.transform.k > 2) {
             //   svg
@@ -161,25 +186,25 @@ const onDataLoaded = function (error: any, graph: any[]) {
             //     .style("opacity", 0);
             // }
 
-            svg
-              .selectAll(".node-link")
-              .transition()
-              .duration(350)
-              .style("opacity", function (d: any) {
-                if (zoom_value_k === 1) {
-                  return 1;
-                }
-                if (!d || !d.visibleZoomMin) {
-                  return 0;
-                }
-                if (
-                  zoom_value_k >= d.visibleZoomMin &&
-                  zoom_value_k <= d.visibleZoomMax
-                ) {
-                  return 1;
-                }
-                return 0;
-              } as any);
+            // svg
+            //   .selectAll(".node-link")
+            //   .transition()
+            //   .duration(350)
+            //   .style("opacity", function (d: any) {
+            //     if (zoom_value_k === 1) {
+            //       return 1;
+            //     }
+            //     if (!d || !d.visibleZoomMin) {
+            //       return 0;
+            //     }
+            //     if (
+            //       zoom_value_k >= d.visibleZoomMin &&
+            //       zoom_value_k <= d.visibleZoomMax
+            //     ) {
+            //       return 1;
+            //     }
+            //     return 0;
+            //   } as any);
             // .style("opacity", interpolate(zoom_value_k, 0.9, 3, 0, 1, 0.5));
           }) as any
       )
@@ -228,12 +253,22 @@ const onDataLoaded = function (error: any, graph: any[]) {
     var node = svg
       .append("g")
       .attr("class", "nodes")
+
       .selectAll("circle")
       .data(dataNodes)
       .enter()
       .append("g")
       .attr("class", function (d) {
         return `node-item node-item-level-${d.level} node-item-zoom-min-${d.visibleZoomMin} node-item-zoom-max-${d.visibleZoomMax} `;
+      })
+      .on("click", function (d) {
+        if (d.clickActionType !== undefined) {
+          if (d.clickActionType === ClickActionType.OPEN_LINK) {
+            if (d.windowUrl !== undefined) {
+              window.open(d.windowUrl, "_blank");
+            }
+          }
+        }
       });
 
     node
@@ -242,8 +277,14 @@ const onDataLoaded = function (error: any, graph: any[]) {
       .attr("r", function (d) {
         return d.radius;
       })
-      .style("fill", function (d) {
-        return d.color;
+      .attr("fill", function (d) {
+        if (d.icon === undefined) {
+          return d.color;
+        }
+        if (d.icon.length === 0) {
+          return d.color;
+        }
+        return `url(#image-pattern-${d.id})`;
       })
       .call(
         d3
@@ -253,29 +294,65 @@ const onDataLoaded = function (error: any, graph: any[]) {
           .on("end", dragended) as any
       );
     node
-      .append("svg:image")
-      .attr("href", function (d) {
-        return d.icon !== undefined ? d.icon : "";
+      .append("defs")
+      .append("pattern")
+      .attr("id", function (d) {
+        return `image-pattern-${d.id}`;
       })
-      .attr("class", function (d) {
-        return `node-image`;
+      // .attr("patternUnits", "userSpaceOnUse")
+      .attr("x", "0%")
+      .attr("y", "0%")
+      .attr("height", "100%")
+      .attr("width", "100%")
+      .attr("viewBox", function (d) {
+        return `0 0 ${d.radius} ${d.radius}`;
       })
-      .attr("transform", function (d) {
-        return `translate(${-1 * d.radius},${-1 * d.radius})`;
-      })
+      .append("image")
+      .attr("x", "0%")
+      .attr("y", "0%")
       .attr("width", function (d) {
-        return d.radius * 2;
+        return d.radius;
       })
-      .on("error", function (d) {
-        (this as any).setAttribute("style", "display:none;");
+      .attr("height", function (d) {
+        return d.radius;
       })
-      .call(
-        d3
-          .drag()
-          .on("start", dragstarted)
-          .on("drag", dragged)
-          .on("end", dragended) as any
-      );
+      .attr("xlink:href", function (d) {
+        return d.icon !== undefined ? d.icon : "";
+      });
+    // node
+    //   .append("svg:image")
+    //   .attr("href", function (d) {
+    //     console.log("?", d.id);
+    //     if (d.id === "36") {
+    //       return "img/youtube_thumb_parent_id_36.jpg";
+    //     }
+    //     if (d.id === "67") {
+    //       return "img/youtube_thumb_parent_id_36.jpg";
+    //     }
+    //     if (d.id === "74") {
+    //       return "img/youtube_thumb_parent_id_36.jpg";
+    //     }
+    //     return d.icon !== undefined ? d.icon : "";
+    //   })
+    //   .attr("class", function (d) {
+    //     return `node-image`;
+    //   })
+    //   .attr("transform", function (d) {
+    //     return `translate(${-1 * d.radius},${-1 * d.radius})`;
+    //   })
+    //   .attr("width", function (d) {
+    //     return d.radius * 2;
+    //   })
+    //   .on("error", function (d) {
+    //     (this as any).setAttribute("style", "display:none;");
+    //   })
+    //   .call(
+    //     d3
+    //       .drag()
+    //       .on("start", dragstarted)
+    //       .on("drag", dragged)
+    //       .on("end", dragended) as any
+    //   );
 
     node
       .append("text")
