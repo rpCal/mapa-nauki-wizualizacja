@@ -1,84 +1,16 @@
 "use strict";
+var ClickActionType;
+(function (ClickActionType) {
+    ClickActionType["OPEN_LINK"] = "OPEN_LINK";
+    ClickActionType["OPEN_MODAL"] = "OPEN_MODAL";
+})(ClickActionType || (ClickActionType = {}));
 var onDataLoaded = function (error, graph) {
     if (error) {
         throw error;
     }
-    var ClickActionType;
-    (function (ClickActionType) {
-        ClickActionType["OPEN_LINK"] = "OPEN_LINK";
-    })(ClickActionType || (ClickActionType = {}));
-    var dataNodes = graph.map(function (e) {
-        var level = 0;
-        var radius = 10;
-        var visibleZoomMin = 0;
-        var visibleZoomMax = 2;
-        if (e.level === "1 - Pierwszy") {
-            level = 1;
-            visibleZoomMin = 0;
-            visibleZoomMax = 2;
-        }
-        else if (e.level === "2 - Drugi") {
-            level = 2;
-            visibleZoomMin = 2;
-            visibleZoomMax = 3;
-        }
-        else if (e.level === "3 - trzeci") {
-            level = 3;
-            visibleZoomMin = 4;
-            visibleZoomMax = 10;
-        }
-        radius = (5 - level) * 10;
-        var icon = "";
-        var iconRadius = radius;
-        if (e.icon !== undefined && e.icon.length > 0) {
-            icon = "./" + e.icon;
-        }
-        var action = "";
-        if (e.action !== undefined && e.action.length > 0) {
-            action = e.action;
-        }
-        var name = "";
-        if (e.category_name !== undefined && e.category_name.length > 0) {
-            name = e.category_name;
-        }
-        var parentId = "0";
-        if (e.parent !== undefined && e.parent.length > 0) {
-            parentId = e.parent;
-        }
-        var newRow = {
-            id: e.id,
-            name: name,
-            color: "#a4cddf",
-            level: level,
-            visibleZoomMin: visibleZoomMin,
-            visibleZoomMax: visibleZoomMax,
-            icon: icon,
-            iconRadius: iconRadius,
-            action: action,
-            parentId: parentId,
-            radius: radius,
-        };
-        if (e.id === "36") {
-            newRow.icon = "./img/youtube_thumb_parent_id_36.resized.jpg";
-            newRow.clickActionType = ClickActionType.OPEN_LINK;
-            newRow.windowUrl = "https://youtu.be/3Cec-5MOTlw?t=901";
-        }
-        if (e.id === "67") {
-            newRow.icon = "./img/youtube_thumb_parent_id_67.resized.jpg";
-            newRow.clickActionType = ClickActionType.OPEN_LINK;
-            newRow.windowUrl = "https://youtu.be/d36GBndnL38?t=66";
-        }
-        if (e.id === "74") {
-            newRow.icon = "./img/youtube_thumb_parent_id_74.resized.jpg";
-            newRow.clickActionType = ClickActionType.OPEN_LINK;
-            newRow.windowUrl = "https://youtu.be/riZfnPrk7OU?t=1013";
-        }
-        return newRow;
-    });
+    var dataNodes = prepareDataNodes(graph);
     console.log("input data: ", dataNodes);
-    var dataLinks = dataNodes
-        // .filter((e) => e.level === 1)
-        .map(function (e) {
+    var dataLinks = dataNodes.map(function (e) {
         return {
             id: e.id,
             source: e.id,
@@ -106,82 +38,69 @@ var onDataLoaded = function (error, graph) {
             svg.attr("transform", d3.event.transform);
             zoom_value_k = d3.event.transform.k;
             ticked(link, node);
-            console.log("zoom level222: ", zoom_value_k);
-            // svg
-            //   .selectAll(".node-item")
-            //   .transition()
-            //   .duration(350)
-            //   .style("opacity", function (d: any) {
-            //     if (zoom_value_k === 1) {
-            //       return 1;
-            //     }
-            //     if (
-            //       zoom_value_k >= d.visibleZoomMin &&
-            //       zoom_value_k <= d.visibleZoomMax
-            //     ) {
-            //       return 1;
-            //     }
-            //     return 0;
-            //   } as any);
-            // if (d3.event.transform.k > 2) {
-            //   svg
-            //     .selectAll(".label-zoom2")
-            //     .transition()
-            //     .delay(function (d, i) {
-            //       return i * 10;
-            //     })
-            //     .duration(350)
-            //     .style("opacity", 1);
-            // } else {
-            //   svg
-            //     .selectAll(".label-zoom2")
-            //     .transition()
-            //     .delay(function (d, i) {
-            //       return i * 10;
-            //     })
-            //     .duration(350)
-            //     .style("opacity", 0);
-            // }
-            // svg
-            //   .selectAll(".node-link")
-            //   .transition()
-            //   .duration(350)
-            //   .style("opacity", function (d: any) {
-            //     if (zoom_value_k === 1) {
-            //       return 1;
-            //     }
-            //     if (!d || !d.visibleZoomMin) {
-            //       return 0;
-            //     }
-            //     if (
-            //       zoom_value_k >= d.visibleZoomMin &&
-            //       zoom_value_k <= d.visibleZoomMax
-            //     ) {
-            //       return 1;
-            //     }
-            //     return 0;
-            //   } as any);
-            // .style("opacity", interpolate(zoom_value_k, 0.9, 3, 0, 1, 0.5));
+            var labelZoom = document.querySelector(".label-zoom");
+            if (labelZoom !== null) {
+                labelZoom.innerHTML = "zoom: " + zoom_value_k.toFixed(2);
+            }
+            svg
+                .selectAll(".node-item")
+                .transition()
+                .duration(50)
+                .style("opacity", function (d) {
+                if (d.id === "0") {
+                    return 0;
+                }
+                // return 1;
+                if (d.level === 1 && zoom_value_k <= 1.4 && zoom_value_k > 0) {
+                    return 1;
+                }
+                if (zoom_value_k <= d.visibleZoomMax) {
+                    var op = interpolate(zoom_value_k, d.visibleZoomMin, d.visibleZoomMax, 0.01, 0.99, 0.5);
+                    return op;
+                }
+                else {
+                    var op = interpolate(zoom_value_k, d.visibleZoomMax, d.visibleZoomMax + d.visibleZoomMax * 1.1, 0.99, 0.01, 0.5);
+                    return op;
+                }
+            });
         }))
             .append("g")
             .attr("class", "canvas");
+        var simulation_strength = -200;
+        var simulation_theta = 0.8;
+        var simulation_distanceMax = 50;
         var simulation = d3
-            .forceSimulation(dataNodes.filter(function (e) { return e.level === 1; }))
+            .forceSimulation(dataNodes)
             .force("link", d3.forceLink().id(function (d) {
             return d.id;
         }))
-            .force("charge", d3.forceManyBody().strength(-200))
-            .force("charge", d3.forceManyBody().strength(-200).theta(0.8).distanceMax(150))
+            .force("charge", d3.forceManyBody().strength(simulation_strength))
+            .force("charge", d3
+            .forceManyBody()
+            .strength(simulation_strength)
+            .theta(simulation_theta)
+            .distanceMax(simulation_distanceMax))
             .force("collide", d3
             .forceCollide()
             .radius(function (d) { return 40; })
-            .iterations(2))
+            .iterations(1.5))
             .force("center", d3.forceCenter(width / 2, height / 2));
+        var canvas = document.querySelector("#canvas");
+        if (canvas !== null) {
+            var labels = document.createElement("div");
+            labels.setAttribute("class", "labels");
+            var labelZoom = document.createElement("div");
+            labelZoom.setAttribute("class", "label-zoom");
+            labelZoom.innerHTML = "zoom: 1";
+            labels.appendChild(labelZoom);
+            labels.setAttribute("style", " \n        position: absolute;\n        top: 0;\n        left: 0;\n        background: rgba(0,0,0,0.2);\n        padding: 20px;\n      ");
+            canvas.appendChild(labels);
+        }
         var link = svg
             .append("g")
             .attr("class", "links")
             .style("stroke", "#aaa")
-            .style("opacity", 1)
+            .style("opacity", 0.1)
             .selectAll("line")
             .data(dataLinks.filter(function (e) {
             return !(e.excluded !== undefined && e.excluded === true);
@@ -198,6 +117,9 @@ var onDataLoaded = function (error, graph) {
             .data(dataNodes)
             .enter()
             .append("g")
+            .attr("opacity", function (d) {
+            return d.level === 1 ? 1 : 0;
+        })
             .attr("class", function (d) {
             return "node-item node-item-level-" + d.level + " node-item-zoom-min-" + d.visibleZoomMin + " node-item-zoom-max-" + d.visibleZoomMax + " ";
         })
@@ -206,6 +128,11 @@ var onDataLoaded = function (error, graph) {
                 if (d.clickActionType === ClickActionType.OPEN_LINK) {
                     if (d.windowUrl !== undefined) {
                         window.open(d.windowUrl, "_blank");
+                    }
+                }
+                if (d.clickActionType === ClickActionType.OPEN_MODAL) {
+                    if (d.modalBody !== undefined && d.modalTitle !== undefined) {
+                        showStandardModal(d.modalTitle, d.modalBody);
                     }
                 }
             }
@@ -236,7 +163,6 @@ var onDataLoaded = function (error, graph) {
             .attr("id", function (d) {
             return "image-pattern-" + d.id;
         })
-            // .attr("patternUnits", "userSpaceOnUse")
             .attr("x", "0%")
             .attr("y", "0%")
             .attr("height", "100%")
@@ -256,40 +182,6 @@ var onDataLoaded = function (error, graph) {
             .attr("xlink:href", function (d) {
             return d.icon !== undefined ? d.icon : "";
         });
-        // node
-        //   .append("svg:image")
-        //   .attr("href", function (d) {
-        //     console.log("?", d.id);
-        //     if (d.id === "36") {
-        //       return "img/youtube_thumb_parent_id_36.jpg";
-        //     }
-        //     if (d.id === "67") {
-        //       return "img/youtube_thumb_parent_id_36.jpg";
-        //     }
-        //     if (d.id === "74") {
-        //       return "img/youtube_thumb_parent_id_36.jpg";
-        //     }
-        //     return d.icon !== undefined ? d.icon : "";
-        //   })
-        //   .attr("class", function (d) {
-        //     return `node-image`;
-        //   })
-        //   .attr("transform", function (d) {
-        //     return `translate(${-1 * d.radius},${-1 * d.radius})`;
-        //   })
-        //   .attr("width", function (d) {
-        //     return d.radius * 2;
-        //   })
-        //   .on("error", function (d) {
-        //     (this as any).setAttribute("style", "display:none;");
-        //   })
-        //   .call(
-        //     d3
-        //       .drag()
-        //       .on("start", dragstarted)
-        //       .on("drag", dragged)
-        //       .on("end", dragended) as any
-        //   );
         node
             .append("text")
             .attr("class", function (d) {
@@ -298,31 +190,15 @@ var onDataLoaded = function (error, graph) {
             .text(function (d) {
             return d.name;
         })
+            .attr("font-size", function (d) {
+            return (5 - d.level) * 4;
+        })
             .attr("text-anchor", "middle")
-            .attr("fill", "#000")
-            .attr("transform", "translate(0,25)")
+            .attr("fill", "rgba(0,0,0,0.7)")
+            .attr("transform", function (d) {
+            return "translate(0, " + (d.radius + 10) + ")";
+        })
             .attr("alignment-baseline", "central");
-        // var label = svg
-        //   .append("g")
-        //   .attr("class", "labels")
-        //   .selectAll("text")
-        //   .data(graph.nodes)
-        //   .enter()
-        //   .append("text")
-        //   .attr("class", function(d) {
-        //     if (d.zoom === 1) {
-        //       return "label";
-        //     }
-        //     if (d.zoom === 2) {
-        //       return "label-zoom2";
-        //     }
-        //   })
-        //   .text(function(d) {
-        //     return d.name;
-        //   })
-        //   .attr("text-anchor", "middle")
-        //   .attr("fill", "#fff")
-        //   .attr("alignment-baseline", "central");
         if (simulation) {
             simulation.nodes(dataNodes).on("tick", function () { return ticked(link, node); });
             simulation.force("link").links(dataLinks);
@@ -347,114 +223,239 @@ var onDataLoaded = function (error, graph) {
     startGraph();
 };
 var ticked = function (link, node) {
-    link
-        .attr("x1", function (d) {
-        return d.source.x;
-    })
-        .attr("y1", function (d) {
-        return d.source.y;
-    })
-        .attr("x2", function (d) {
-        return d.target.x;
-    })
-        .attr("y2", function (d) {
-        return d.target.y;
-    })
-        .style("stroke", function (d) {
-        return "#a4a4a4";
-    });
+    // refresh links
+    // link
+    //   .attr("x1", function (d: any) {
+    //     return d.source.x;
+    //   })
+    //   .attr("y1", function (d: any) {
+    //     return d.source.y;
+    //   })
+    //   .attr("x2", function (d: any) {
+    //     return d.target.x;
+    //   })
+    //   .attr("y2", function (d: any) {
+    //     return d.target.y;
+    //   })
+    //   .style("stroke", function (d: any) {
+    //     return "#a4a4a4";
+    //   });
+    // refresh nodes position
     node.attr("transform", function (d) {
         return "translate(" + d.x + " " + d.y + ")";
     });
-    // .style("fill", function (d: any) {
-    //   return d.color;
-    // });
-    // node
-    // .select("text")
-    // .attr("opacity", function (d: any) {
-    //   if (d.zoom === 1) {
-    //     return 1;
-    //   }
-    //   if (d.zoom === 2) {
-    //     return 0;
-    //   }
-    //   return 0;
-    // })
-    // .attr("font-size", function (d: any) {
-    //   if (d.zoom === 1) {
-    //     return "9px";
-    //   }
-    //   if (d.zoom === 2) {
-    //     return "7px";
-    //   }
-    //   return "7px";
-    // })
-    // .style("fill", function (d: any) {
-    //   if (d.zoom === 1) {
-    //     return "#333";
-    //   }
-    //   if (d.zoom === 2) {
-    //     return "#aaa";
-    //   }
-    //   return "#aaa";
-    // });
-    // .attr("cx", function(d) {
-    //   return d.x + 5;
-    // })
-    // .attr("cy", function(d) {
-    //   return d.y - 3;
-    // });
-    // node
-    //   .attr("r", function(d) {
-    //     if (d.zoom === 1) {
-    //       return 16;
-    //     }
-    //     if (d.zoom === 2) {
-    //       return 0;
-    //     }
-    //   })
-    //   .style("fill", function(d) {
-    //     return d.color ? d.color : "#efefef";
-    //   })
-    //   .attr("cx", function(d) {
-    //     return d.x + 5;
-    //   })
-    //   .attr("cy", function(d) {
-    //     return d.y - 3;
-    //   });
-    // label
-    //   .attr("dx", 0)
-    //   .attr("dy", 19)
-    //   .attr("x", function(d) {
-    //     return d.x;
-    //   })
-    //   .attr("y", function(d) {
-    //     return d.y;
-    //   })
-    //   .attr("opacity", function(d) {
-    //     if (d.zoom === 1) {
-    //       return 1;
-    //     }
-    //     if (d.zoom === 2) {
-    //       return 0;
-    //     }
-    //   })
-    //   .attr("font-size", function(d) {
-    //     if (d.zoom === 1) {
-    //       return "10px";
-    //     }
-    //     if (d.zoom === 2) {
-    //       return "8px";
-    //     }
-    //   })
-    //   .style("fill", function(d) {
-    //     if (d.zoom === 1) {
-    //       return "#333";
-    //     }
-    //     if (d.zoom === 2) {
-    //       return "#aaa";
-    //     }
-    //   });
+};
+var prepareDataNodes = function (input) {
+    var results = [];
+    var getRadius = function (lvl) { return (5 - lvl) * 10; };
+    var zoomMap = {
+        0: {
+            visibleZoomMin: 0,
+            visibleZoomMax: 1,
+        },
+        1: {
+            visibleZoomMin: 0,
+            visibleZoomMax: 1.8,
+        },
+        2: {
+            visibleZoomMin: 1.3,
+            visibleZoomMax: 3,
+        },
+        3: {
+            visibleZoomMin: 1.9,
+            visibleZoomMax: 5,
+        },
+        4: {
+            visibleZoomMin: 2.0,
+            visibleZoomMax: 6,
+        },
+    };
+    input.forEach(function (e) {
+        var level = 0;
+        if (e.level === "1 - Pierwszy") {
+            level = 1;
+        }
+        else if (e.level === "2 - Drugi") {
+            level = 2;
+        }
+        else if (e.level === "3 - trzeci") {
+            level = 3;
+        }
+        var radius = getRadius(level);
+        var visibleZoomMin = zoomMap[level].visibleZoomMin;
+        var visibleZoomMax = zoomMap[level].visibleZoomMax;
+        var icon = "";
+        var iconRadius = getRadius(level);
+        if (e.icon !== undefined && e.icon.length > 0) {
+            icon = "./" + e.icon;
+        }
+        var action = "";
+        if (e.action !== undefined && e.action.length > 0) {
+            action = e.action;
+        }
+        var name = "";
+        if (e.category_name !== undefined && e.category_name.length > 0) {
+            name = e.category_name;
+        }
+        var parentId = "0";
+        if (e.parent !== undefined && e.parent.length > 0) {
+            parentId = e.parent;
+        }
+        var newRow = {
+            id: e.id,
+            name: name,
+            color: "red",
+            level: level,
+            visibleZoomMin: visibleZoomMin,
+            visibleZoomMax: visibleZoomMax,
+            icon: icon,
+            iconRadius: iconRadius,
+            action: action,
+            parentId: parentId,
+            radius: radius,
+            parentIds: [],
+        };
+        if (e.id === "37" || e.id === "1") {
+            newRow.clickActionType = ClickActionType.OPEN_MODAL;
+            newRow.modalTitle = "Piece w jądrach gwiazd";
+            newRow.modalBody = "<p>W S\u0142o\u0144cu jest <i>gor\u0105co</i>.</p>";
+        }
+        results.push(newRow);
+    });
+    var youtube1nextRow = {
+        id: "36_1",
+        name: "Bardzo kulturalne szympansy",
+        color: "red",
+        level: 4,
+        visibleZoomMin: zoomMap[4].visibleZoomMin,
+        visibleZoomMax: zoomMap[4].visibleZoomMax,
+        icon: "./img/youtube_thumb_parent_id_36.resized.jpg",
+        iconRadius: getRadius(4),
+        action: "",
+        parentId: "36",
+        radius: getRadius(4),
+        clickActionType: ClickActionType.OPEN_LINK,
+        windowUrl: "https://youtu.be/3Cec-5MOTlw?t=901",
+        parentIds: [],
+    };
+    var youtube2nextRow = {
+        id: "67_1",
+        name: "Bardzo kulturalne szympansy",
+        color: "red",
+        level: 4,
+        visibleZoomMin: zoomMap[4].visibleZoomMin,
+        visibleZoomMax: zoomMap[4].visibleZoomMax,
+        icon: "./img/youtube_thumb_parent_id_67.resized.jpg",
+        iconRadius: getRadius(4),
+        action: "",
+        parentId: "67",
+        radius: getRadius(4),
+        clickActionType: ClickActionType.OPEN_LINK,
+        windowUrl: "https://youtu.be/d36GBndnL38?t=66",
+        parentIds: [],
+    };
+    var youtube3nextRow = {
+        id: "74_1",
+        name: "Narodziny dysków galaktycznych",
+        color: "red",
+        level: 4,
+        visibleZoomMin: zoomMap[4].visibleZoomMin,
+        visibleZoomMax: zoomMap[4].visibleZoomMax,
+        icon: "./img/youtube_thumb_parent_id_74.resized.jpg",
+        iconRadius: getRadius(4),
+        action: "",
+        parentId: "74",
+        radius: getRadius(4),
+        clickActionType: ClickActionType.OPEN_LINK,
+        windowUrl: "https://youtu.be/riZfnPrk7OU?t=1013",
+        parentIds: [],
+    };
+    results.push(youtube1nextRow);
+    results.push(youtube2nextRow);
+    results.push(youtube3nextRow);
+    var ROOT_ID = "0";
+    var levelsMap = {
+        "1": "#A4CDDF",
+        "8": "#F7C6DE",
+        "18": "#D67A74",
+        "40": "#F6D355",
+        "49": "#6AB575",
+        "57": "#BB937F",
+        "66": "#ECF0BB",
+        "73": "#A88EBB",
+    };
+    results.forEach(function (node) {
+        if (node.id !== ROOT_ID) {
+            node.parentIds = [ROOT_ID, node.id];
+            if (node.parentId !== ROOT_ID) {
+                node.parentIds.push(node.parentId);
+                results.forEach(function (n1) {
+                    if (n1.id === node.parentId) {
+                        if (n1.parentId !== ROOT_ID) {
+                            if (node.parentIds.indexOf(n1.parentId) !== -1) {
+                                node.parentIds.push(n1.parentId);
+                            }
+                        }
+                        if (n1.parentId !== ROOT_ID) {
+                            results.forEach(function (n2) {
+                                if (n2.id === n1.parentId) {
+                                    node.parentIds.push(n2.id);
+                                    if (n2.parentId !== ROOT_ID) {
+                                        results.forEach(function (n3) {
+                                            if (n3.id === n2.parentId) {
+                                                if (n3.parentId !== ROOT_ID) {
+                                                    if (node.parentIds.indexOf(n3.parentId) !== -1) {
+                                                        node.parentIds.push(n3.parentId);
+                                                    }
+                                                }
+                                            }
+                                        });
+                                    }
+                                }
+                            });
+                        }
+                    }
+                });
+            }
+        }
+        Object.keys(levelsMap).forEach(function (nodeId) {
+            if (node.parentIds.indexOf(nodeId) !== -1) {
+                node.color = levelsMap[nodeId];
+            }
+        });
+    });
+    return results;
+};
+var showStandardModal = function (title, body) {
+    var modalHTML = document.createElement("div");
+    modalHTML.setAttribute("class", "modal-with-text");
+    modalHTML.setAttribute("style", " \n      position: fixed; \n      z-index: 1; \n      left: 0;\n      top: 0;\n      width: 100%; \n      height: 100%; \n      overflow: auto; \n      background-color: rgb(0,0,0);\n      background-color: rgba(0,0,0,0.4);\n      ");
+    var modalContent = document.createElement("div");
+    modalContent.setAttribute("class", "modal-content");
+    modalContent.setAttribute("style", " \n    background-color: #fefefe;\n    margin: 15% auto; \n    padding: 20px;\n    border: 1px solid #888;\n    width: 80%;\n    max-width: 650px;\n    text-align: center;\n    position: relative;\n    ");
+    var modalBtnClose = document.createElement("div");
+    modalBtnClose.setAttribute("class", "btn-close");
+    modalBtnClose.innerHTML = "&#10006;";
+    modalBtnClose.setAttribute("style", "\n  color: #000;\n  position: absolute;\n  top: 20px; \n  right: 20px;\n  font-size: 22px;\n  font-weight: normal;\n  cursor: pointer;\n  ");
+    var modalTitle = document.createElement("h2");
+    modalTitle.setAttribute("class", "title");
+    modalTitle.innerHTML = title;
+    var modalBody = document.createElement("div");
+    modalBody.setAttribute("class", "body");
+    modalBody.innerHTML = body;
+    modalContent.appendChild(modalBtnClose);
+    modalContent.appendChild(modalTitle);
+    modalContent.appendChild(modalBody);
+    modalHTML.appendChild(modalContent);
+    modalBtnClose.onclick = function () {
+        modalHTML.remove();
+    };
+    window.onclick = function (event) {
+        if (event.target == modalHTML) {
+            modalHTML.remove();
+        }
+    };
+    document.body.appendChild(modalHTML);
 };
 /**
  * Returns a bezier interpolated value, using the given ranges
