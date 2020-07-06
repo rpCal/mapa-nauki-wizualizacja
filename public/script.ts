@@ -1,134 +1,65 @@
+interface InputData {
+  level: string | undefined;
+  icon: string | undefined;
+  id: string;
+  action: string | undefined;
+  category_name: string | undefined;
+  parent: string | undefined;
+}
+enum ClickActionType {
+  OPEN_LINK = "OPEN_LINK",
+  OPEN_MODAL = "OPEN_MODAL",
+}
+interface DataNode {
+  id: string;
+  name: string;
+  color: string;
+  level: number;
+  visibleZoomMin: number;
+  visibleZoomMax: number;
+  icon: string;
+  iconRadius: number;
+  windowUrl?: string;
+  modalTitle?: string;
+  modalBody?: string;
+  clickActionType?: ClickActionType;
+  action: string;
+  parentId: string;
+  radius: number;
+  parentIds: string[];
+}
+interface DataLink {
+  id: string;
+  excluded: boolean;
+  source: string;
+  target: string;
+  value: number;
+  level: number;
+  visibleZoomMin: number;
+  visibleZoomMax: number;
+}
+
 const onDataLoaded = function (error: any, graph: any[]) {
   if (error) {
     throw error;
   }
 
-  interface InputData {
-    level: string | undefined;
-    icon: string | undefined;
-    id: string;
-    action: string | undefined;
-    category_name: string | undefined;
-    parent: string | undefined;
-  }
-  enum ClickActionType {
-    OPEN_LINK = "OPEN_LINK",
-  }
-  interface DataNode {
-    id: string;
-    name: string;
-    color: string;
-    level: number;
-    visibleZoomMin: number;
-    visibleZoomMax: number;
-    icon: string;
-    iconRadius: number;
-    windowUrl?: string;
-    clickActionType?: ClickActionType;
-    action: string;
-    parentId: string;
-    radius: number;
-  }
-  interface DataLink {
-    id: string;
-    excluded: boolean;
-    source: string;
-    target: string;
-    value: number;
-    level: number;
-    visibleZoomMin: number;
-    visibleZoomMax: number;
-  }
-
-  const dataNodes: DataNode[] = graph.map((e: InputData) => {
-    let level = 0;
-    let radius = 10;
-    let visibleZoomMin = 0;
-    let visibleZoomMax = 2;
-    if (e.level === "1 - Pierwszy") {
-      level = 1;
-      visibleZoomMin = 0;
-      visibleZoomMax = 2;
-    } else if (e.level === "2 - Drugi") {
-      level = 2;
-      visibleZoomMin = 2;
-      visibleZoomMax = 3;
-    } else if (e.level === "3 - trzeci") {
-      level = 3;
-      visibleZoomMin = 4;
-      visibleZoomMax = 10;
-    }
-    radius = (5 - level) * 10;
-
-    let icon = "";
-    let iconRadius = radius;
-    if (e.icon !== undefined && e.icon.length > 0) {
-      icon = "./" + e.icon;
-    }
-
-    let action = "";
-    if (e.action !== undefined && e.action.length > 0) {
-      action = e.action;
-    }
-
-    let name = "";
-    if (e.category_name !== undefined && e.category_name.length > 0) {
-      name = e.category_name;
-    }
-
-    let parentId = "0";
-    if (e.parent !== undefined && e.parent.length > 0) {
-      parentId = e.parent;
-    }
-    let newRow: DataNode = {
-      id: e.id,
-      name: name,
-      color: "#a4cddf",
-      level: level,
-      visibleZoomMin: visibleZoomMin,
-      visibleZoomMax: visibleZoomMax,
-      icon: icon,
-      iconRadius: iconRadius,
-      action: action,
-      parentId: parentId,
-      radius: radius,
-    };
-
-    if (e.id === "36") {
-      newRow.icon = "./img/youtube_thumb_parent_id_36.resized.jpg";
-      newRow.clickActionType = ClickActionType.OPEN_LINK;
-      newRow.windowUrl = "https://youtu.be/3Cec-5MOTlw?t=901";
-    }
-    if (e.id === "67") {
-      newRow.icon = "./img/youtube_thumb_parent_id_67.resized.jpg";
-      newRow.clickActionType = ClickActionType.OPEN_LINK;
-      newRow.windowUrl = "https://youtu.be/d36GBndnL38?t=66";
-    }
-    if (e.id === "74") {
-      newRow.icon = "./img/youtube_thumb_parent_id_74.resized.jpg";
-      newRow.clickActionType = ClickActionType.OPEN_LINK;
-      newRow.windowUrl = "https://youtu.be/riZfnPrk7OU?t=1013";
-    }
-
-    return newRow;
-  });
+  const dataNodes: DataNode[] = prepareDataNodes(graph);
 
   console.log("input data: ", dataNodes);
 
-  const dataLinks: DataLink[] = dataNodes
-    // .filter((e) => e.level === 1)
-    .map((e) => {
-      return {
-        id: e.id,
-        source: e.id,
-        target: e.parentId,
-        level: e.level,
-        visibleZoomMin: e.visibleZoomMin,
-        visibleZoomMax: e.visibleZoomMax,
-        value: 1,
-        excluded: false,
-      };
-    });
+  const dataLinks: DataLink[] = dataNodes.map((e) => {
+    return {
+      id: e.id,
+      source: e.id,
+      target: e.parentId,
+      level: e.level,
+      visibleZoomMin: e.visibleZoomMin,
+      visibleZoomMax: e.visibleZoomMax,
+      value: 1,
+      excluded: false,
+    };
+  });
 
   function startGraph() {
     var width = window.innerWidth;
@@ -147,97 +78,108 @@ const onDataLoaded = function (error: any, graph: any[]) {
             svg.attr("transform", d3.event.transform);
             zoom_value_k = d3.event.transform.k;
             ticked(link, node);
-            console.log("zoom level222: ", zoom_value_k);
 
-            // svg
-            //   .selectAll(".node-item")
-            //   .transition()
-            //   .duration(350)
-            //   .style("opacity", function (d: any) {
-            //     if (zoom_value_k === 1) {
-            //       return 1;
-            //     }
-            //     if (
-            //       zoom_value_k >= d.visibleZoomMin &&
-            //       zoom_value_k <= d.visibleZoomMax
-            //     ) {
-            //       return 1;
-            //     }
-            //     return 0;
-            //   } as any);
+            const labelZoom = document.querySelector(".label-zoom");
 
-            // if (d3.event.transform.k > 2) {
-            //   svg
-            //     .selectAll(".label-zoom2")
-            //     .transition()
-            //     .delay(function (d, i) {
-            //       return i * 10;
-            //     })
-            //     .duration(350)
-            //     .style("opacity", 1);
-            // } else {
-            //   svg
-            //     .selectAll(".label-zoom2")
-            //     .transition()
-            //     .delay(function (d, i) {
-            //       return i * 10;
-            //     })
-            //     .duration(350)
-            //     .style("opacity", 0);
-            // }
+            if (labelZoom !== null) {
+              labelZoom.innerHTML = `zoom: ${zoom_value_k.toFixed(2)}`;
+            }
 
-            // svg
-            //   .selectAll(".node-link")
-            //   .transition()
-            //   .duration(350)
-            //   .style("opacity", function (d: any) {
-            //     if (zoom_value_k === 1) {
-            //       return 1;
-            //     }
-            //     if (!d || !d.visibleZoomMin) {
-            //       return 0;
-            //     }
-            //     if (
-            //       zoom_value_k >= d.visibleZoomMin &&
-            //       zoom_value_k <= d.visibleZoomMax
-            //     ) {
-            //       return 1;
-            //     }
-            //     return 0;
-            //   } as any);
-            // .style("opacity", interpolate(zoom_value_k, 0.9, 3, 0, 1, 0.5));
+            svg
+              .selectAll(".node-item")
+              .transition()
+              .duration(50)
+              .style("opacity", function (d: any) {
+                if (d.id === "0") {
+                  return 0;
+                }
+                // return 1;
+                if (d.level === 1 && zoom_value_k <= 1.4 && zoom_value_k > 0) {
+                  return 1;
+                }
+                if (zoom_value_k <= d.visibleZoomMax) {
+                  const op = interpolate(
+                    zoom_value_k,
+                    d.visibleZoomMin,
+                    d.visibleZoomMax,
+                    0.01,
+                    0.99,
+                    0.5
+                  );
+                  return op;
+                } else {
+                  const op = interpolate(
+                    zoom_value_k,
+                    d.visibleZoomMax,
+                    d.visibleZoomMax + d.visibleZoomMax * 1.1,
+                    0.99,
+                    0.01,
+                    0.5
+                  );
+                  return op;
+                }
+              } as any);
           }) as any
       )
       .append("g")
       .attr("class", "canvas");
 
+    const simulation_strength = -200;
+    const simulation_theta = 0.8;
+    const simulation_distanceMax = 50;
+
     var simulation = d3
-      .forceSimulation(dataNodes.filter((e) => e.level === 1) as any)
+      .forceSimulation(dataNodes as any)
       .force(
         "link",
         d3.forceLink().id(function (d: any) {
           return d.id;
         })
       )
-      .force("charge", d3.forceManyBody().strength(-200))
+      .force("charge", d3.forceManyBody().strength(simulation_strength))
       .force(
         "charge",
-        d3.forceManyBody().strength(-200).theta(0.8).distanceMax(150)
+        d3
+          .forceManyBody()
+          .strength(simulation_strength)
+          .theta(simulation_theta)
+          .distanceMax(simulation_distanceMax)
       )
       .force(
         "collide",
         d3
           .forceCollide()
           .radius((d) => 40)
-          .iterations(2)
+          .iterations(1.5)
       )
       .force("center", d3.forceCenter(width / 2, height / 2));
+
+    const canvas = document.querySelector("#canvas");
+    if (canvas !== null) {
+      const labels = document.createElement("div");
+      labels.setAttribute("class", "labels");
+      const labelZoom = document.createElement("div");
+      labelZoom.setAttribute("class", "label-zoom");
+      labelZoom.innerHTML = "zoom: 1";
+      labels.appendChild(labelZoom);
+      labels.setAttribute(
+        "style",
+        ` 
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: rgba(0,0,0,0.2);
+        padding: 20px;
+      `
+      );
+      canvas.appendChild(labels);
+    }
 
     var link = svg
       .append("g")
       .attr("class", "links")
       .style("stroke", "#aaa")
-      .style("opacity", 1)
+      .style("opacity", 0.1)
       .selectAll("line")
       .data(
         dataLinks.filter(function (e) {
@@ -253,11 +195,13 @@ const onDataLoaded = function (error: any, graph: any[]) {
     var node = svg
       .append("g")
       .attr("class", "nodes")
-
       .selectAll("circle")
       .data(dataNodes)
       .enter()
       .append("g")
+      .attr("opacity", function (d) {
+        return d.level === 1 ? 1 : 0;
+      })
       .attr("class", function (d) {
         return `node-item node-item-level-${d.level} node-item-zoom-min-${d.visibleZoomMin} node-item-zoom-max-${d.visibleZoomMax} `;
       })
@@ -266,6 +210,11 @@ const onDataLoaded = function (error: any, graph: any[]) {
           if (d.clickActionType === ClickActionType.OPEN_LINK) {
             if (d.windowUrl !== undefined) {
               window.open(d.windowUrl, "_blank");
+            }
+          }
+          if (d.clickActionType === ClickActionType.OPEN_MODAL) {
+            if (d.modalBody !== undefined && d.modalTitle !== undefined) {
+              showStandardModal(d.modalTitle, d.modalBody);
             }
           }
         }
@@ -293,13 +242,13 @@ const onDataLoaded = function (error: any, graph: any[]) {
           .on("drag", dragged)
           .on("end", dragended) as any
       );
+
     node
       .append("defs")
       .append("pattern")
       .attr("id", function (d) {
         return `image-pattern-${d.id}`;
       })
-      // .attr("patternUnits", "userSpaceOnUse")
       .attr("x", "0%")
       .attr("y", "0%")
       .attr("height", "100%")
@@ -319,40 +268,6 @@ const onDataLoaded = function (error: any, graph: any[]) {
       .attr("xlink:href", function (d) {
         return d.icon !== undefined ? d.icon : "";
       });
-    // node
-    //   .append("svg:image")
-    //   .attr("href", function (d) {
-    //     console.log("?", d.id);
-    //     if (d.id === "36") {
-    //       return "img/youtube_thumb_parent_id_36.jpg";
-    //     }
-    //     if (d.id === "67") {
-    //       return "img/youtube_thumb_parent_id_36.jpg";
-    //     }
-    //     if (d.id === "74") {
-    //       return "img/youtube_thumb_parent_id_36.jpg";
-    //     }
-    //     return d.icon !== undefined ? d.icon : "";
-    //   })
-    //   .attr("class", function (d) {
-    //     return `node-image`;
-    //   })
-    //   .attr("transform", function (d) {
-    //     return `translate(${-1 * d.radius},${-1 * d.radius})`;
-    //   })
-    //   .attr("width", function (d) {
-    //     return d.radius * 2;
-    //   })
-    //   .on("error", function (d) {
-    //     (this as any).setAttribute("style", "display:none;");
-    //   })
-    //   .call(
-    //     d3
-    //       .drag()
-    //       .on("start", dragstarted)
-    //       .on("drag", dragged)
-    //       .on("end", dragended) as any
-    //   );
 
     node
       .append("text")
@@ -362,37 +277,18 @@ const onDataLoaded = function (error: any, graph: any[]) {
       .text(function (d) {
         return d.name;
       })
+      .attr("font-size", function (d) {
+        return (5 - d.level) * 4;
+      })
       .attr("text-anchor", "middle")
-      .attr("fill", "#000")
-      .attr("transform", "translate(0,25)")
+      .attr("fill", "rgba(0,0,0,0.7)")
+      .attr("transform", function (d) {
+        return `translate(0, ${d.radius + 10})`;
+      })
       .attr("alignment-baseline", "central");
-
-    // var label = svg
-    //   .append("g")
-    //   .attr("class", "labels")
-
-    //   .selectAll("text")
-    //   .data(graph.nodes)
-    //   .enter()
-    //   .append("text")
-    //   .attr("class", function(d) {
-    //     if (d.zoom === 1) {
-    //       return "label";
-    //     }
-    //     if (d.zoom === 2) {
-    //       return "label-zoom2";
-    //     }
-    //   })
-    //   .text(function(d) {
-    //     return d.name;
-    //   })
-    //   .attr("text-anchor", "middle")
-    //   .attr("fill", "#fff")
-    //   .attr("alignment-baseline", "central");
 
     if (simulation) {
       simulation.nodes(dataNodes as any).on("tick", () => ticked(link, node));
-
       (simulation.force("link") as any).links(dataLinks as any);
     }
 
@@ -418,117 +314,304 @@ const onDataLoaded = function (error: any, graph: any[]) {
 };
 
 var ticked = function (link: any, node: any) {
-  link
-    .attr("x1", function (d: any) {
-      return d.source.x;
-    })
-    .attr("y1", function (d: any) {
-      return d.source.y;
-    })
-    .attr("x2", function (d: any) {
-      return d.target.x;
-    })
-    .attr("y2", function (d: any) {
-      return d.target.y;
-    })
-    .style("stroke", function (d: any) {
-      return "#a4a4a4";
-    });
+  // refresh links
+  // link
+  //   .attr("x1", function (d: any) {
+  //     return d.source.x;
+  //   })
+  //   .attr("y1", function (d: any) {
+  //     return d.source.y;
+  //   })
+  //   .attr("x2", function (d: any) {
+  //     return d.target.x;
+  //   })
+  //   .attr("y2", function (d: any) {
+  //     return d.target.y;
+  //   })
+  //   .style("stroke", function (d: any) {
+  //     return "#a4a4a4";
+  //   });
 
+  // refresh nodes position
   node.attr("transform", function (d: any) {
     return "translate(" + d.x + " " + d.y + ")";
   });
-  // .style("fill", function (d: any) {
-  //   return d.color;
-  // });
+};
 
-  // node
-  // .select("text")
-  // .attr("opacity", function (d: any) {
-  //   if (d.zoom === 1) {
-  //     return 1;
-  //   }
-  //   if (d.zoom === 2) {
-  //     return 0;
-  //   }
-  //   return 0;
-  // })
-  // .attr("font-size", function (d: any) {
-  //   if (d.zoom === 1) {
-  //     return "9px";
-  //   }
-  //   if (d.zoom === 2) {
-  //     return "7px";
-  //   }
-  //   return "7px";
-  // })
-  // .style("fill", function (d: any) {
-  //   if (d.zoom === 1) {
-  //     return "#333";
-  //   }
-  //   if (d.zoom === 2) {
-  //     return "#aaa";
-  //   }
-  //   return "#aaa";
-  // });
-  // .attr("cx", function(d) {
-  //   return d.x + 5;
-  // })
-  // .attr("cy", function(d) {
-  //   return d.y - 3;
-  // });
-  // node
-  //   .attr("r", function(d) {
-  //     if (d.zoom === 1) {
-  //       return 16;
-  //     }
-  //     if (d.zoom === 2) {
-  //       return 0;
-  //     }
-  //   })
-  //   .style("fill", function(d) {
-  //     return d.color ? d.color : "#efefef";
-  //   })
-  //   .attr("cx", function(d) {
-  //     return d.x + 5;
-  //   })
-  //   .attr("cy", function(d) {
-  //     return d.y - 3;
-  //   });
+const prepareDataNodes = (input: any) => {
+  const results: DataNode[] = [];
 
-  // label
-  //   .attr("dx", 0)
-  //   .attr("dy", 19)
-  //   .attr("x", function(d) {
-  //     return d.x;
-  //   })
-  //   .attr("y", function(d) {
-  //     return d.y;
-  //   })
-  //   .attr("opacity", function(d) {
-  //     if (d.zoom === 1) {
-  //       return 1;
-  //     }
-  //     if (d.zoom === 2) {
-  //       return 0;
-  //     }
-  //   })
-  //   .attr("font-size", function(d) {
-  //     if (d.zoom === 1) {
-  //       return "10px";
-  //     }
-  //     if (d.zoom === 2) {
-  //       return "8px";
-  //     }
-  //   })
-  //   .style("fill", function(d) {
-  //     if (d.zoom === 1) {
-  //       return "#333";
-  //     }
-  //     if (d.zoom === 2) {
-  //       return "#aaa";
-  //     }
-  //   });
+  const getRadius = (lvl: number) => (5 - lvl) * 10;
+  const zoomMap = {
+    0: {
+      visibleZoomMin: 0,
+      visibleZoomMax: 1,
+    },
+    1: {
+      visibleZoomMin: 0,
+      visibleZoomMax: 1.8,
+    },
+    2: {
+      visibleZoomMin: 1.3,
+      visibleZoomMax: 3,
+    },
+    3: {
+      visibleZoomMin: 1.9,
+      visibleZoomMax: 5,
+    },
+    4: {
+      visibleZoomMin: 2.0,
+      visibleZoomMax: 6,
+    },
+  };
+
+  input.forEach((e: InputData) => {
+    let level = 0;
+    if (e.level === "1 - Pierwszy") {
+      level = 1;
+    } else if (e.level === "2 - Drugi") {
+      level = 2;
+    } else if (e.level === "3 - trzeci") {
+      level = 3;
+    }
+
+    let radius = getRadius(level);
+    let visibleZoomMin = (zoomMap as any)[level].visibleZoomMin;
+    let visibleZoomMax = (zoomMap as any)[level].visibleZoomMax;
+
+    let icon = "";
+    let iconRadius = getRadius(level);
+    if (e.icon !== undefined && e.icon.length > 0) {
+      icon = "./" + e.icon;
+    }
+
+    let action = "";
+    if (e.action !== undefined && e.action.length > 0) {
+      action = e.action;
+    }
+
+    let name = "";
+    if (e.category_name !== undefined && e.category_name.length > 0) {
+      name = e.category_name;
+    }
+
+    let parentId = "0";
+    if (e.parent !== undefined && e.parent.length > 0) {
+      parentId = e.parent;
+    }
+
+    let newRow: DataNode = {
+      id: e.id,
+      name: name,
+      color: "red",
+      level: level,
+      visibleZoomMin: visibleZoomMin,
+      visibleZoomMax: visibleZoomMax,
+      icon: icon,
+      iconRadius: iconRadius,
+      action: action,
+      parentId: parentId,
+      radius: radius,
+      parentIds: [],
+    };
+
+    if (e.id === "37" || e.id === "1") {
+      newRow.clickActionType = ClickActionType.OPEN_MODAL;
+      newRow.modalTitle = "Piece w jądrach gwiazd";
+      newRow.modalBody = `<p>W Słońcu jest <i>gorąco</i>.</p>`;
+    }
+
+    results.push(newRow);
+  });
+
+  let youtube1nextRow: DataNode = {
+    id: "36_1",
+    name: "Bardzo kulturalne szympansy",
+    color: "red",
+    level: 4,
+    visibleZoomMin: (zoomMap as any)[4].visibleZoomMin,
+    visibleZoomMax: (zoomMap as any)[4].visibleZoomMax,
+    icon: "./img/youtube_thumb_parent_id_36.resized.jpg",
+    iconRadius: getRadius(4),
+    action: "",
+    parentId: "36",
+    radius: getRadius(4),
+    clickActionType: ClickActionType.OPEN_LINK,
+    windowUrl: "https://youtu.be/3Cec-5MOTlw?t=901",
+    parentIds: [],
+  };
+  let youtube2nextRow: DataNode = {
+    id: "67_1",
+    name: "Bardzo kulturalne szympansy",
+    color: "red",
+    level: 4,
+    visibleZoomMin: (zoomMap as any)[4].visibleZoomMin,
+    visibleZoomMax: (zoomMap as any)[4].visibleZoomMax,
+    icon: "./img/youtube_thumb_parent_id_67.resized.jpg",
+    iconRadius: getRadius(4),
+    action: "",
+    parentId: "67",
+    radius: getRadius(4),
+    clickActionType: ClickActionType.OPEN_LINK,
+    windowUrl: "https://youtu.be/d36GBndnL38?t=66",
+    parentIds: [],
+  };
+  let youtube3nextRow: DataNode = {
+    id: "74_1",
+    name: "Narodziny dysków galaktycznych",
+    color: "red",
+    level: 4,
+    visibleZoomMin: (zoomMap as any)[4].visibleZoomMin,
+    visibleZoomMax: (zoomMap as any)[4].visibleZoomMax,
+    icon: "./img/youtube_thumb_parent_id_74.resized.jpg",
+    iconRadius: getRadius(4),
+    action: "",
+    parentId: "74",
+    radius: getRadius(4),
+    clickActionType: ClickActionType.OPEN_LINK,
+    windowUrl: "https://youtu.be/riZfnPrk7OU?t=1013",
+    parentIds: [],
+  };
+  results.push(youtube1nextRow);
+  results.push(youtube2nextRow);
+  results.push(youtube3nextRow);
+
+  const ROOT_ID = "0";
+  const levelsMap = {
+    "1": "#A4CDDF",
+    "8": "#F7C6DE",
+    "18": "#D67A74",
+    "40": "#F6D355",
+    "49": "#6AB575",
+    "57": "#BB937F",
+    "66": "#ECF0BB",
+    "73": "#A88EBB",
+  };
+
+  results.forEach((node) => {
+    if (node.id !== ROOT_ID) {
+      node.parentIds = [ROOT_ID, node.id];
+
+      if (node.parentId !== ROOT_ID) {
+        node.parentIds.push(node.parentId);
+
+        results.forEach((n1) => {
+          if (n1.id === node.parentId) {
+            if (n1.parentId !== ROOT_ID) {
+              if (node.parentIds.indexOf(n1.parentId) !== -1) {
+                node.parentIds.push(n1.parentId);
+              }
+            }
+
+            if (n1.parentId !== ROOT_ID) {
+              results.forEach((n2) => {
+                if (n2.id === n1.parentId) {
+                  node.parentIds.push(n2.id);
+
+                  if (n2.parentId !== ROOT_ID) {
+                    results.forEach((n3) => {
+                      if (n3.id === n2.parentId) {
+                        if (n3.parentId !== ROOT_ID) {
+                          if (node.parentIds.indexOf(n3.parentId) !== -1) {
+                            node.parentIds.push(n3.parentId);
+                          }
+                        }
+                      }
+                    });
+                  }
+                }
+              });
+            }
+          }
+        });
+      }
+    }
+
+    Object.keys(levelsMap).forEach((nodeId) => {
+      if (node.parentIds.indexOf(nodeId) !== -1) {
+        node.color = (levelsMap as any)[nodeId as any];
+      }
+    });
+  });
+
+  return results;
+};
+
+const showStandardModal = (title: string, body: string) => {
+  const modalHTML = document.createElement("div");
+  modalHTML.setAttribute("class", "modal-with-text");
+  modalHTML.setAttribute(
+    "style",
+    ` 
+      position: fixed; 
+      z-index: 1; 
+      left: 0;
+      top: 0;
+      width: 100%; 
+      height: 100%; 
+      overflow: auto; 
+      background-color: rgb(0,0,0);
+      background-color: rgba(0,0,0,0.4);
+      `
+  );
+
+  const modalContent = document.createElement("div");
+  modalContent.setAttribute("class", "modal-content");
+  modalContent.setAttribute(
+    "style",
+    ` 
+    background-color: #fefefe;
+    margin: 15% auto; 
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 650px;
+    text-align: center;
+    position: relative;
+    `
+  );
+
+  const modalBtnClose = document.createElement("div");
+  modalBtnClose.setAttribute("class", "btn-close");
+  modalBtnClose.innerHTML = "&#10006;";
+  modalBtnClose.setAttribute(
+    "style",
+    `
+  color: #000;
+  position: absolute;
+  top: 20px; 
+  right: 20px;
+  font-size: 22px;
+  font-weight: normal;
+  cursor: pointer;
+  `
+  );
+
+  const modalTitle = document.createElement("h2");
+  modalTitle.setAttribute("class", "title");
+  modalTitle.innerHTML = title;
+
+  const modalBody = document.createElement("div");
+  modalBody.setAttribute("class", "body");
+  modalBody.innerHTML = body;
+
+  modalContent.appendChild(modalBtnClose);
+  modalContent.appendChild(modalTitle);
+  modalContent.appendChild(modalBody);
+
+  modalHTML.appendChild(modalContent);
+
+  modalBtnClose.onclick = function () {
+    modalHTML.remove();
+  };
+
+  window.onclick = (event: any) => {
+    if (event.target == modalHTML) {
+      modalHTML.remove();
+    }
+  };
+
+  document.body.appendChild(modalHTML);
 };
 
 /**
