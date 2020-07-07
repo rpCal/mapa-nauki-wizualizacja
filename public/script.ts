@@ -238,13 +238,13 @@ const onDataLoaded = function (error: any, graph: any[]) {
         }
         return `url(#image-pattern-${d.id})`;
       })
-      .call(
+     /* .call(
         d3
           .drag()
           .on("start", dragstarted)
           .on("drag", dragged)
           .on("end", dragended) as any
-      );
+      ); */
 
     node
       .append("defs")

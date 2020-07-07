@@ -152,12 +152,14 @@ var onDataLoaded = function (error, graph) {
                 return d.color;
             }
             return "url(#image-pattern-" + d.id + ")";
-        })
-            .call(d3
-            .drag()
-            .on("start", dragstarted)
-            .on("drag", dragged)
-            .on("end", dragended));
+        });
+        /* .call(
+           d3
+             .drag()
+             .on("start", dragstarted)
+             .on("drag", dragged)
+             .on("end", dragended) as any
+         ); */
         node
             .append("defs")
             .append("pattern")
