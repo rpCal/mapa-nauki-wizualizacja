@@ -182,7 +182,7 @@ const onDataLoaded = function (error: any, graph: any[]) {
       .append("g")
       .attr("class", "links")
       .style("stroke", "#aaa")
-      .style("opacity", 0.1)
+      .style("opacity", 0.9)
       .selectAll("line")
       .data(
         dataLinks.filter(function (e) {
@@ -318,22 +318,22 @@ const onDataLoaded = function (error: any, graph: any[]) {
 
 var ticked = function (link: any, node: any) {
   // refresh links
-  // link
-  //   .attr("x1", function (d: any) {
-  //     return d.source.x;
-  //   })
-  //   .attr("y1", function (d: any) {
-  //     return d.source.y;
-  //   })
-  //   .attr("x2", function (d: any) {
-  //     return d.target.x;
-  //   })
-  //   .attr("y2", function (d: any) {
-  //     return d.target.y;
-  //   })
-  //   .style("stroke", function (d: any) {
-  //     return "#a4a4a4";
-  //   });
+   link
+     .attr("x1", function (d: any) {
+       return d.source.x;
+     })
+     .attr("y1", function (d: any) {
+       return d.source.y;
+     })
+     .attr("x2", function (d: any) {
+       return d.target.x;
+     })
+     .attr("y2", function (d: any) {
+       return d.target.y;
+     })
+     .style("stroke", function (d: any) {
+       return "#a4a4a4";
+     });
 
   // refresh nodes position
   node.attr("transform", function (d: any) {
