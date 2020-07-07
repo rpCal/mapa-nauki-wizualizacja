@@ -1,4 +1,5 @@
 "use strict";
+console.log('Halo 2!');
 var ClickActionType;
 (function (ClickActionType) {
     ClickActionType["OPEN_LINK"] = "OPEN_LINK";

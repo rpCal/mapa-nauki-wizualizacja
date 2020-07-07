@@ -6,6 +6,9 @@ interface InputData {
   category_name: string | undefined;
   parent: string | undefined;
 }
+
+console.log ('Halo 2!');
+
 enum ClickActionType {
   OPEN_LINK = "OPEN_LINK",
   OPEN_MODAL = "OPEN_MODAL",
