@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="1000px" height="1000px" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 1000 1000"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .str0 {stroke:#1F1A17;stroke-width:0.900001}
+    .str1 {stroke:#1F1A17;stroke-width:16.6665}
+    .str2 {stroke:#1F1A17;stroke-width:25.0004}
+    .str3 {stroke:#1F1A17;stroke-width:8.33386;stroke-dasharray:16.668 8.334}
+    .fil0 {fill:none}
+    .fil1 {fill:white}
+   ]]>
+  </style>
+ </defs>
+ <g id="Warstwa_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <rect class="fil0 str0" x="-5324.47" y="7886.71" width="1002.45" height="1002.45"/>
+  <g id="_282337192">
+   <rect id="_282335704" class="fil1 str1" x="154.078" y="145.984" width="316.24" height="316.24"/>
+   <rect id="_282336184" class="fil1 str1" x="532.871" y="146.159" width="316.24" height="316.24"/>
+   <rect id="_282335968" class="fil1 str1" x="154.142" y="526.047" width="316.24" height="316.24"/>
+   <rect id="_282335992" class="fil1 str1" x="533.703" y="525.965" width="316.24" height="316.24"/>
+   <rect id="_282336088" class="fil0 str2" x="222.984" y="216.229" width="172.814" height="179.121"/>
+   <rect id="_282336016" class="fil0 str2" x="226.487" y="596.691" width="172.814" height="179.121"/>
+   <rect id="_195893440" class="fil0 str2" x="571.41" y="184.042" width="164.615" height="170.623"/>
+   <rect id="_195890128" class="fil0 str2" x="572.965" y="565.936" width="164.615" height="170.623"/>
+   <rect id="_282337096" class="fil0 str2" x="647.04" y="254.736" width="164.615" height="170.623"/>
+   <rect id="_282336880" class="fil0 str2" x="648.596" y="636.63" width="164.615" height="170.623"/>
+   <line id="_282336688" class="fil0 str3" x1="153.64" y1="528.537" x2="470.08" y2= "843.653" />
+   <polygon id="_282336952" class="fil1" points="534.427,527.974 849.923,840.825 849.923,528.636 "/>
+   <line id="_282337120" class="fil0 str3" x1="535.812" y1="530.33" x2="852.252" y2= "845.446" />
+   <rect id="_282336664" class="fil0 str1" x="533.626" y="525.874" width="316.24" height="316.24"/>
+  </g>
+ </g>
+</svg>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="1000px" height="1000px" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 1000 1000"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .str0 {stroke:#1F1A17;stroke-width:0.900001}
+    .str3 {stroke:#1F1A17;stroke-width:16.6665}
+    .str2 {stroke:#1F1A17;stroke-width:23.6221}
+    .str1 {stroke:#1F1A17;stroke-width:29.5276}
+    .fil0 {fill:none}
+    .fil2 {fill:#1F1A17}
+    .fil1 {fill:white}
+   ]]>
+  </style>
+ </defs>
+ <g id="Warstwa_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <rect class="fil0 str0" x="-5324.47" y="7886.71" width="1002.45" height="1002.45"/>
+  <g id="_195893416">
+   <polygon id="_282334864" class="fil0 str1" points="107.358,630.093 497.873,60.867 885.079,630.093 "/>
+   <path id="_282334240" class="fil1 str2" d="M701.678 446.862c-128.617,-155.346 -263.002,-150.282 -402.638,0.826772 105.118,140.792 277.948,144.996 402.638,-0.826772z"/>
+   <path id="_282334696" class="fil0 str3" d="M302.347 453.476c133.138,-88.9808 267.325,-91.806 402.669,0"/>
+   <circle id="_282334528" class="fil2 str0" cx="500.98" cy="429.088" r="42.9922"/>
+   <path id="_282334216" class="fil0 str3" d="M433.259 393.936c-5.46496,10.6677 -8.55001,22.7575 -8.55001,35.5642 0,43.1422 34.9878,78.13 78.13,78.13 43.1422,0 78.13,-34.9878 78.13,-78.13 0,-12.8067 -3.08504,-24.8965 -8.55001,-35.5642"/>
+   <polygon id="_282334624" class="fil2 str0" points="329.631,202.551 250.674,124.421 350.713,171.134 "/>
+   <polygon id="_282334768" class="fil2 str0" points="675.733,191.878 754.69,113.749 654.65,160.461 "/>
+   <polygon id="_282333424" class="fil2 str0" points="619.596,692.337 640.264,801.475 657.432,692.41 "/>
+   <polygon id="_282333976" class="fil2 str0" points="310.615,229.008 152.288,141.37 289.119,260.012 "/>
+   <polygon id="_282333832" class="fil2 str0" points="694.749,218.335 853.075,130.697 716.245,249.339 "/>
+   <polygon id="_282333520" class="fil2 str0" points="587.03,693.321 571.229,873.594 549.306,693.821 "/>
+   <polygon id="_282334024" class="fil2 str0" points="270.103,286.882 56.3823,161.212 249.02,317.886 "/>
+   <polygon id="_282333952" class="fil2 str0" points="735.26,276.209 948.981,150.54 756.343,307.213 "/>
+   <polygon id="_282333928" class="fil2 str0" points="516.396,694.575 501.179,942.037 478.903,694.732 "/>
+   <polygon id="_282333784" class="fil2 str0" points="227.524,347.236 71.6776,260.425 207.682,379.067 "/>
+   <polygon id="_282333712" class="fil2 str0" points="777.839,336.564 933.686,249.753 797.682,368.394 "/>
+   <polygon id="_282333640" class="fil2 str0" points="442.551,696.158 427.451,873.91 405.066,694.824 "/>
+   <polygon id="_195894856" class="fil2 str0" points="188.253,405.11 167.17,436.941 88.6264,358.811 "/>
+   <polygon id="_195889696" class="fil2 str0" points="817.111,394.438 838.194,426.268 916.737,348.138 "/>
+   <polygon id="_195889576" class="fil2 str0" points="372.611,696.383 334.433,696.079 355.333,804.875 "/>
+  </g>
+ </g>
+</svg>
