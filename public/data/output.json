@@ -1,23 +1,23 @@
 [
 {"id":"0","category_name":"Root","parent":"","level":"","action":"","icon":""},
 {"id":"1","category_name":"Filozofia i okolice","parent":"0","level":"1 - Pierwszy","action":"Otwarcie popup z tekstem","icon":"img/1_filozofia.svg"},
-{"id":"2","category_name":"Teologia","parent":"1","level":"2 - Drugi","action":"","icon":""},
-{"id":"3","category_name":"Metafizyka","parent":"1","level":"2 - Drugi","action":"","icon":""},
-{"id":"4","category_name":"Epistemologia","parent":"1","level":"2 - Drugi","action":"","icon":""},
-{"id":"5","category_name":"Etyka","parent":"1","level":"2 - Drugi","action":"","icon":""},
-{"id":"6","category_name":"Estetyka","parent":"1","level":"2 - Drugi","action":"","icon":""},
-{"id":"7","category_name":"Filozofia umysłu","parent":"1","level":"2 - Drugi","action":"","icon":""}
+{"id":"2","category_name":"Teologia","parent":"1","level":"2 - Drugi","action":"","icon":"img/1_teologia.svg"},
+{"id":"3","category_name":"Metafizyka","parent":"1","level":"2 - Drugi","action":"","icon":"img/3_metafizyka.svg"},
+{"id":"4","category_name":"Epistemologia","parent":"1","level":"2 - Drugi","action":"","icon":"img/4_epistemologia.svg"},
+{"id":"5","category_name":"Etyka","parent":"1","level":"2 - Drugi","action":"","icon":"img/5_etyka.svg"},
+{"id":"6","category_name":"Estetyka","parent":"1","level":"2 - Drugi","action":"","icon":"img/6_estetyka.svg"},
+{"id":"7","category_name":"Filozofia umysłu","parent":"1","level":"2 - Drugi","action":"","icon":"img/7_filozofia_umyslu.svg"}
 ,
-{"id":"8","category_name":"Matematyka","parent":"0","level":"1 - Pierwszy","action":"","icon":""},
-{"id":"9","category_name":"Logika i podstawy matematyki","parent":"8","level":"2 - Drugi","action":"","icon":""},
-{"id":"10","category_name":"Teoria liczb","parent":"8","level":"2 - Drugi","action":"","icon":""},
-{"id":"11","category_name":"Algebra","parent":"8","level":"2 - Drugi","action":"","icon":""},
-{"id":"12","category_name":"Geometria","parent":"8","level":"2 - Drugi","action":"","icon":""},
-{"id":"13","category_name":"Topologia","parent":"8","level":"2 - Drugi","action":"","icon":""},
-{"id":"14","category_name":"Analiza matematyczna","parent":"8","level":"2 - Drugi","action":"","icon":""},
-{"id":"15","category_name":"Kombinatoryka, teoria grafów","parent":"8","level":"2 - Drugi","action":"","icon":""}
+{"id":"8","category_name":"Matematyka","parent":"0","level":"1 - Pierwszy","action":"","icon":"img/8_matematyka.svg"},
+{"id":"9","category_name":"Logika i podstawy matematyki","parent":"8","level":"2 - Drugi","action":"","icon":"img/9_logika.svg"},
+{"id":"10","category_name":"Teoria liczb","parent":"8","level":"2 - Drugi","action":"","icon":"img/10_teoria_liczb.svg"},
+{"id":"11","category_name":"Algebra","parent":"8","level":"2 - Drugi","action":"","icon":"img/11_algebra.svg"},
+{"id":"12","category_name":"Geometria","parent":"8","level":"2 - Drugi","action":"","icon":"img/12_geometria.svg"},
+{"id":"13","category_name":"Topologia","parent":"8","level":"2 - Drugi","action":"","icon":"img/13_topologia.svg"},
+{"id":"14","category_name":"Analiza matematyczna","parent":"8","level":"2 - Drugi","action":"","icon":"img/14_analiza.svg"},
+{"id":"15","category_name":"Kombinatoryka, teoria grafów","parent":"8","level":"2 - Drugi","action":"","icon":"img/15_teoria_grafow.svg"}
 ,
-{"id":"16","category_name":"Teoria prawdopodobieństwa","parent":"8","level":"2 - Drugi","action":"","icon":""}
+{"id":"16","category_name":"Teoria prawdopodobieństwa","parent":"8","level":"2 - Drugi","action":"","icon":"img/16_prawdopodobienstwo.svg"}
 ,
 {"id":"17","category_name":"Matematyka obliczeniowa","parent":"8","level":"2 - Drugi","action":"","icon":""},
 {"id":"18","category_name":"Fizyka","parent":"0","level":"1 - Pierwszy","action":"","icon":"img/icon-mechanika-kwantowa.png"},
