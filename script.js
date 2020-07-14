@@ -1,4 +1,5 @@
 "use strict";
+console.log('Halo 2!');
 var ClickActionType;
 (function (ClickActionType) {
     ClickActionType["OPEN_LINK"] = "OPEN_LINK";
@@ -100,7 +101,7 @@ var onDataLoaded = function (error, graph) {
             .append("g")
             .attr("class", "links")
             .style("stroke", "#aaa")
-            .style("opacity", 0.1)
+            .style("opacity", 0.9)
             .selectAll("line")
             .data(dataLinks.filter(function (e) {
             return !(e.excluded !== undefined && e.excluded === true);
@@ -151,12 +152,14 @@ var onDataLoaded = function (error, graph) {
                 return d.color;
             }
             return "url(#image-pattern-" + d.id + ")";
-        })
-            .call(d3
-            .drag()
-            .on("start", dragstarted)
-            .on("drag", dragged)
-            .on("end", dragended));
+        });
+        /* .call(
+           d3
+             .drag()
+             .on("start", dragstarted)
+             .on("drag", dragged)
+             .on("end", dragended) as any
+         ); */
         node
             .append("defs")
             .append("pattern")
@@ -224,22 +227,22 @@ var onDataLoaded = function (error, graph) {
 };
 var ticked = function (link, node) {
     // refresh links
-    // link
-    //   .attr("x1", function (d: any) {
-    //     return d.source.x;
-    //   })
-    //   .attr("y1", function (d: any) {
-    //     return d.source.y;
-    //   })
-    //   .attr("x2", function (d: any) {
-    //     return d.target.x;
-    //   })
-    //   .attr("y2", function (d: any) {
-    //     return d.target.y;
-    //   })
-    //   .style("stroke", function (d: any) {
-    //     return "#a4a4a4";
-    //   });
+    link
+        .attr("x1", function (d) {
+        return d.source.x;
+    })
+        .attr("y1", function (d) {
+        return d.source.y;
+    })
+        .attr("x2", function (d) {
+        return d.target.x;
+    })
+        .attr("y2", function (d) {
+        return d.target.y;
+    })
+        .style("stroke", function (d) {
+        return "#a4a4a4";
+    });
     // refresh nodes position
     node.attr("transform", function (d) {
         return "translate(" + d.x + " " + d.y + ")";
