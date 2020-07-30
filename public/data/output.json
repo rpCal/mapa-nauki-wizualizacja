@@ -1,7 +1,7 @@
 [
 {"id":"0","category_name":"Root","parent":"","level":"","action":"","icon":""},
 {"id":"1","category_name":"Filozofia i okolice","parent":"0","level":"1 - Pierwszy","action":"Otwarcie popup z tekstem","icon":"img/1_filozofia.svg"},
-{"id":"2","category_name":"Teologia","parent":"1","level":"2 - Drugi","action":"","icon":"img/1_teologia.svg"},
+{"id":"2","category_name":"Teologia","parent":"1","level":"2 - Drugi","action":"","icon":"img/2_teologia.svg"},
 {"id":"3","category_name":"Metafizyka","parent":"1","level":"2 - Drugi","action":"","icon":"img/3_metafizyka.svg"},
 {"id":"4","category_name":"Epistemologia","parent":"1","level":"2 - Drugi","action":"","icon":"img/4_epistemologia.svg"},
 {"id":"5","category_name":"Etyka","parent":"1","level":"2 - Drugi","action":"","icon":"img/5_etyka.svg"},
@@ -19,7 +19,6 @@
 ,
 {"id":"16","category_name":"Teoria prawdopodobieństwa","parent":"8","level":"2 - Drugi","action":"","icon":"img/16_prawdopodobienstwo.svg"}
 ,
-{"id":"17","category_name":"Matematyka obliczeniowa","parent":"8","level":"2 - Drugi","action":"","icon":""},
 {"id":"18","category_name":"Fizyka","parent":"0","level":"1 - Pierwszy","action":"","icon":"img/icon-mechanika-kwantowa.png"},
 {"id":"19","category_name":"Mechanika i kinematyka","parent":"18","level":"2 - Drugi","action":"","icon":"img/icon-mechanika-klasyczna.png"},
 {"id":"20","category_name":"Optyka","parent":"18","level":"2 - Drugi","action":"","icon":"img/icon-optyka-geometryczna.png"},
