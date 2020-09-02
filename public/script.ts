@@ -365,8 +365,8 @@ const prepareDataNodes = (input: any) => {
       visibleZoomMax: 5,
     },
     4: {
-      visibleZoomMin: 5.0,
-      visibleZoomMax: 6,
+      visibleZoomMin: 2.3,
+      visibleZoomMax: 5,
     },
   };
 
@@ -442,16 +442,16 @@ const prepareDataNodes = (input: any) => {
   });
 
   let youtube1nextRow: DataNode = {
-    id: "36_1",
-    name: "Bardzo kulturalne szympansy",
+    id: "34_1",
+    name: "Narodziny galaktyk",
     color: "red",
     level: 4,
     visibleZoomMin: (zoomMap as any)[4].visibleZoomMin,
     visibleZoomMax: (zoomMap as any)[4].visibleZoomMax,
-    icon: "./img/youtube_thumb_parent_id_36.resized.jpg",
+    icon: "./img/czn-logo.svg",
     iconRadius: getRadius(4),
     action: "",
-    parentId: "36",
+    parentId: "34",
     radius: getRadius(4),
     clickActionType: ClickActionType.OPEN_LINK,
     windowUrl: "https://youtu.be/3Cec-5MOTlw?t=901",
@@ -464,7 +464,7 @@ const prepareDataNodes = (input: any) => {
     level: 4,
     visibleZoomMin: (zoomMap as any)[4].visibleZoomMin,
     visibleZoomMax: (zoomMap as any)[4].visibleZoomMax,
-    icon: "./img/youtube_thumb_parent_id_67.resized.jpg",
+    icon: "./img/czn-logo.svg",
     iconRadius: getRadius(4),
     action: "",
     parentId: "67",
@@ -475,12 +475,12 @@ const prepareDataNodes = (input: any) => {
   };
   let youtube3nextRow: DataNode = {
     id: "74_1",
-    name: "Narodziny dysków galaktycznych",
+    name: "Nanotechnologia na ślepotę",
     color: "red",
     level: 4,
     visibleZoomMin: (zoomMap as any)[4].visibleZoomMin,
     visibleZoomMax: (zoomMap as any)[4].visibleZoomMax,
-    icon: "./img/youtube_thumb_parent_id_74.resized.jpg",
+    icon: "./img/czn-logo.svg",
     iconRadius: getRadius(4),
     action: "",
     parentId: "74",

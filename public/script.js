@@ -271,8 +271,8 @@ var prepareDataNodes = function (input) {
             visibleZoomMax: 5,
         },
         4: {
-            visibleZoomMin: 5.0,
-            visibleZoomMax: 6,
+            visibleZoomMin: 2.3,
+            visibleZoomMax: 5,
         },
     };
     input.forEach(function (e) {
@@ -341,16 +341,16 @@ var prepareDataNodes = function (input) {
         results.push(newRow);
     });
     var youtube1nextRow = {
-        id: "36_1",
-        name: "Bardzo kulturalne szympansy",
+        id: "34_1",
+        name: "Narodziny galaktyk",
         color: "red",
         level: 4,
         visibleZoomMin: zoomMap[4].visibleZoomMin,
         visibleZoomMax: zoomMap[4].visibleZoomMax,
-        icon: "./img/youtube_thumb_parent_id_36.resized.jpg",
+        icon: "./img/czn-logo.svg",
         iconRadius: getRadius(4),
         action: "",
-        parentId: "36",
+        parentId: "34",
         radius: getRadius(4),
         clickActionType: ClickActionType.OPEN_LINK,
         windowUrl: "https://youtu.be/3Cec-5MOTlw?t=901",
@@ -363,7 +363,7 @@ var prepareDataNodes = function (input) {
         level: 4,
         visibleZoomMin: zoomMap[4].visibleZoomMin,
         visibleZoomMax: zoomMap[4].visibleZoomMax,
-        icon: "./img/youtube_thumb_parent_id_67.resized.jpg",
+        icon: "./img/czn-logo.svg",
         iconRadius: getRadius(4),
         action: "",
         parentId: "67",
@@ -374,12 +374,12 @@ var prepareDataNodes = function (input) {
     };
     var youtube3nextRow = {
         id: "74_1",
-        name: "Narodziny dysków galaktycznych",
+        name: "Nanotechnologia na ślepotę",
         color: "red",
         level: 4,
         visibleZoomMin: zoomMap[4].visibleZoomMin,
         visibleZoomMax: zoomMap[4].visibleZoomMax,
-        icon: "./img/youtube_thumb_parent_id_74.resized.jpg",
+        icon: "./img/czn-logo.svg",
         iconRadius: getRadius(4),
         action: "",
         parentId: "74",
