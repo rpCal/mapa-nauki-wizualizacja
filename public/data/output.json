@@ -23,10 +23,9 @@
 {"id":"24","category_name":"Pola i oddziaływania","parent":"18","level":"2 - Drugi","action":"","icon":"img/24_pola.svg"},
 {"id":"27","category_name":"Cząstki i materia","parent":"18","level":"2 - Drugi","action":"","icon":"img/27_cza.svg"},
 {"id":"34","category_name":"Kosmos","parent":"18","level":"2 - Drugi","action":"","icon":"img/34_kos.svg"},
-{"id":"40","category_name":"Chemia","parent":"0","level":"1 - Pierwszy","action":"","icon":""},
+{"id":"40","category_name":"Chemia","parent":"0","level":"1 - Pierwszy","action":"","icon":"img/40_che.svg"},
 {"id":"41","category_name":"Chemia fizyczna","parent":"40","level":"2 - Drugi","action":"","icon":"img/icon-chemia-fizyczna-teoria-wiazan.png"},
-{"id":"46","category_name":"Chemia analityczna","parent":"40","level":"2 - Drugi","action":"","icon":""},
-{"id":"47","category_name":"Chemia syntetyczna i laboratoryjna","parent":"40","level":"2 - Drugi","action":"","icon":""},
+{"id":"46","category_name":"Chemia analityczna i syntetyczna","parent":"40","level":"2 - Drugi","action":"","icon":""},\	
 {"id":"48","category_name":"Chemia nieorganiczna i organiczna","parent":"40","level":"2 - Drugi","action":"","icon":"img/icon-chemia-organiczna.png"},
 {"id":"49","category_name":"Biologia","parent":"0","level":"1 - Pierwszy","action":"","icon":""},
 {"id":"50","category_name":"Biologia teoretyczna","parent":"49","level":"2 - Drugi","action":"","icon":"img/icon-biochemia-bioenergetyka.png"},
