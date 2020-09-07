@@ -7,7 +7,7 @@ interface InputData {
   parent: string | undefined;
 }
 
-console.log ('Halo 2!');
+console.log("Halo 3!");
 
 enum ClickActionType {
   OPEN_LINK = "OPEN_LINK",
@@ -236,15 +236,32 @@ const onDataLoaded = function (error: any, graph: any[]) {
         if (d.icon.length === 0) {
           return d.color;
         }
+        // return `#${d.color}`
         return `url(#image-pattern-${d.id})`;
-      })
-     /* .call(
+      });
+    /* .call(
         d3
           .drag()
           .on("start", dragstarted)
           .on("drag", dragged)
           .on("end", dragended) as any
       ); */
+
+    node
+      .append("circle")
+      .attr("class", "node-circle")
+      .attr("r", function (d) {
+        return d.radius;
+      })
+      .attr("fill", function (d) {
+        if (d.icon === undefined) {
+          return d.color;
+        }
+        if (d.icon.length === 0) {
+          return d.color;
+        }
+        return `url(#image-pattern-${d.id})`;
+      });
 
     node
       .append("defs")
@@ -318,22 +335,22 @@ const onDataLoaded = function (error: any, graph: any[]) {
 
 var ticked = function (link: any, node: any) {
   // refresh links
-   link
-     .attr("x1", function (d: any) {
-       return d.source.x;
-     })
-     .attr("y1", function (d: any) {
-       return d.source.y;
-     })
-     .attr("x2", function (d: any) {
-       return d.target.x;
-     })
-     .attr("y2", function (d: any) {
-       return d.target.y;
-     })
-     .style("stroke", function (d: any) {
-       return "#a4a4a4";
-     });
+  link
+    .attr("x1", function (d: any) {
+      return d.source.x;
+    })
+    .attr("y1", function (d: any) {
+      return d.source.y;
+    })
+    .attr("x2", function (d: any) {
+      return d.target.x;
+    })
+    .attr("y2", function (d: any) {
+      return d.target.y;
+    })
+    .style("stroke", function (d: any) {
+      return "#a4a4a4";
+    });
 
   // refresh nodes position
   node.attr("transform", function (d: any) {
@@ -684,3 +701,20 @@ function checkImage(imageSrc: string, good: any, bad: any) {
 var json_data_file_name = "./data/output.json";
 
 d3.json(json_data_file_name, onDataLoaded as any);
+
+(() => {
+  const spreadsheetId = "1fBDVRtbeD96DwjWutWVtKwnPOeYnK4SwdIWnx1KRePs";
+  const APIKey = "999158420743-0ku1i8qos66biv3jtdi30mgpacg2p2p1.apps.googleusercontent.com";
+  console.log("request...");
+  const url = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/dane-v2!A1:K?key=${APIKey}`
+  fetch(
+    url,
+    {}
+  )
+    .then((res) => {
+      console.log("read with succes::", res);
+    })
+    .catch((err) => {
+      console.error("err", err);
+    });
+})();

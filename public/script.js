@@ -1,5 +1,5 @@
 "use strict";
-console.log('Halo 2!');
+console.log("Halo 3!");
 var ClickActionType;
 (function (ClickActionType) {
     ClickActionType["OPEN_LINK"] = "OPEN_LINK";
@@ -151,15 +151,31 @@ var onDataLoaded = function (error, graph) {
             if (d.icon.length === 0) {
                 return d.color;
             }
+            // return `#${d.color}`
             return "url(#image-pattern-" + d.id + ")";
         });
         /* .call(
-           d3
-             .drag()
-             .on("start", dragstarted)
-             .on("drag", dragged)
-             .on("end", dragended) as any
-         ); */
+            d3
+              .drag()
+              .on("start", dragstarted)
+              .on("drag", dragged)
+              .on("end", dragended) as any
+          ); */
+        node
+            .append("circle")
+            .attr("class", "node-circle")
+            .attr("r", function (d) {
+            return d.radius;
+        })
+            .attr("fill", function (d) {
+            if (d.icon === undefined) {
+                return d.color;
+            }
+            if (d.icon.length === 0) {
+                return d.color;
+            }
+            return "url(#image-pattern-" + d.id + ")";
+        });
         node
             .append("defs")
             .append("pattern")
@@ -510,3 +526,16 @@ function checkImage(imageSrc, good, bad) {
 }
 var json_data_file_name = "./data/output.json";
 d3.json(json_data_file_name, onDataLoaded);
+(function () {
+    var spreadsheetId = "1fBDVRtbeD96DwjWutWVtKwnPOeYnK4SwdIWnx1KRePs";
+    var APIKey = "999158420743-0ku1i8qos66biv3jtdi30mgpacg2p2p1.apps.googleusercontent.com";
+    console.log("request...");
+    var url = "https://sheets.googleapis.com/v4/spreadsheets/" + spreadsheetId + "/values/dane-v2!A1:K?key=" + APIKey;
+    fetch(url, {})
+        .then(function (res) {
+        console.log("read with succes::", res);
+    })
+        .catch(function (err) {
+        console.error("err", err);
+    });
+})();
