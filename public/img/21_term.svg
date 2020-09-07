@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="1000px" height="1000px" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 1000 1000"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .str0 {stroke:#1F1A17;stroke-width:0.900001}
+    .str4 {stroke:#1F1A17;stroke-width:4.16693}
+    .str2 {stroke:#1F1A17;stroke-width:8.33386}
+    .str3 {stroke:#1F1A17;stroke-width:12.4996}
+    .str1 {stroke:#1F1A17;stroke-width:16.6665}
+    .fil0 {fill:none}
+    .fil2 {fill:#1F1A17}
+    .fil1 {fill:white}
+   ]]>
+  </style>
+ </defs>
+ <g id="Warstwa_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <rect class="fil0 str0" x="-5324.47" y="7886.71" width="1002.45" height="1002.45"/>
+  <g id="_301997688">
+   <path id="_301998144" class="fil1 str1" d="M680.533 212.59l38.3103 -94.2095 -79.7528 -43.6111 -15.9024 2.89134 -66.0189 142.639 -16.2142 8.59016 0 32.002 -58.3311 -1.99961 -0.249213 -32.7532 -12.4642 -1.34528 -64.6524 -145.709 -9.64725 -5.78623 -83.9516 32.8087 -1.93228 10.1291 39.5634 96.0131 -8.68465 9.64961 -43.4339 0 0 69.4772 50.2252 0 0 344.492c-74.6634,51.1796 -52.4327,235.458 0,279.853 107.96,17.6469 217.954,17.6469 329.986,0 54.4063,-44.4496 56.5229,-252.051 0,-279.855l0 -344.491 49.2166 0 0 -70.6146 -38.3587 0 -7.70788 -8.17087z"/>
+   <circle id="_301997328" class="fil1 str2" cx="505.252" cy="776.564" r="51.9237"/>
+   <path id="_301998768" class="fil1 str3" d="M608.082 413.098l-197.514 0 0 147.64 72.2859 0 17.3079 154.739 -19.3441 14.2536 29.0162 119.628 23.9256 -6.10867c35.1508,18.5173 62.5548,11.2193 81.4489,-24.4347l21.3803 -7.63583 -29.0162 -107.92 -20.8713 -2.03622 -40.2154 -142.026 60.1028 0 1.49291 -146.099z"/>
+   <path id="_301998576" class="fil0 str4" d="M298.576 275.653l84.5174 0c17.1319,9.49371 29.5583,21.3473 35.1107,36.652l-10.6902 16.7988 0 277.949 -62.1048 30.0296"/>
+   <path id="_301994208" class="fil0 str4" d="M296.495 227.384l80.2442 0 17.7756 17.7756c38.191,-1.2626 61.7008,14.5276 74.1497,43.1693l79.2284 0.507874c12.3154,-23.9504 30.4607,-43.1327 72.626,-42.6615l22.8543 -18.2835 81.7678 0"/>
+   <path id="_301997040" class="fil0 str4" d="M725.141 276.14l-87.3556 0c-20.25,7.70079 -32.0575,20.2288 -38.0894,36.0591l8.12599 9.64961"/>
+   <polyline id="_301996728" class="fil0 str4" points="603.759,317.023 603.759,607.328 676.893,636.73 "/>
+   <circle id="_301997088" class="fil2 str4" cx="461.292" cy="336.472" r="7.90158"/>
+   <circle id="_301996800" class="fil2 str4" cx="366.144" cy="240.401" r="7.90158"/>
+   <circle id="_301996848" class="fil2 str4" cx="329.469" cy="259.166" r="7.90158"/>
+   <circle id="_301996896" class="fil2 str4" cx="440.419" cy="382.102" r="7.90158"/>
+   <circle id="_301996944" class="fil2 str4" cx="493.295" cy="380.324" r="7.90158"/>
+   <circle id="_301997184" class="fil2 str4" cx="526.153" cy="379.072" r="7.90158"/>
+   <circle id="_301997256" class="fil2 str4" cx="447.863" cy="301.964" r="7.90158"/>
+   <circle id="_301997520" class="fil2 str4" cx="534.978" cy="341.801" r="7.90158"/>
+   <circle id="_301997616" class="fil2 str4" cx="504.624" cy="319.478" r="7.90158"/>
+   <circle id="_301997496" class="fil2 str4" cx="577.517" cy="281.879" r="7.90158"/>
+   <circle id="_301997640" class="fil2 str4" cx="614.589" cy="272.198" r="7.90158"/>
+   <circle id="_301997568" class="fil2 str4" cx="650.608" cy="249.875" r="7.90158"/>
+   <circle id="_301997904" class="fil2 str4" cx="688.734" cy="250.731" r="7.90158"/>
+   <circle id="_301997448" class="fil2 str4" cx="422.386" cy="275.29" r="7.90158"/>
+   <circle id="_301997808" class="fil2 str4" cx="577.845" cy="317.371" r="7.90158"/>
+   <circle id="_301997832" class="fil2 str4" cx="566.715" cy="371.17" r="7.90158"/>
+  </g>
+ </g>
+</svg>
