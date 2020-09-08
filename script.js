@@ -1,5 +1,5 @@
 "use strict";
-console.log('Halo 2!');
+console.log("Halo 3!");
 var ClickActionType;
 (function (ClickActionType) {
     ClickActionType["OPEN_LINK"] = "OPEN_LINK";
@@ -67,9 +67,9 @@ var onDataLoaded = function (error, graph) {
         }))
             .append("g")
             .attr("class", "canvas");
-        var simulation_strength = -200;
-        var simulation_theta = 0.8;
-        var simulation_distanceMax = 50;
+        var simulation_strength = -500;
+        var simulation_theta = 1.0;
+        var simulation_distanceMax = 100;
         var simulation = d3
             .forceSimulation(dataNodes)
             .force("link", d3.forceLink().id(function (d) {
@@ -83,7 +83,7 @@ var onDataLoaded = function (error, graph) {
             .distanceMax(simulation_distanceMax))
             .force("collide", d3
             .forceCollide()
-            .radius(function (d) { return 40; })
+            .radius(function (d) { return 37; })
             .iterations(1.5))
             .force("center", d3.forceCenter(width / 2, height / 2));
         var canvas = document.querySelector("#canvas");
@@ -151,15 +151,31 @@ var onDataLoaded = function (error, graph) {
             if (d.icon.length === 0) {
                 return d.color;
             }
+            // return `#${d.color}`
             return "url(#image-pattern-" + d.id + ")";
         });
         /* .call(
-           d3
-             .drag()
-             .on("start", dragstarted)
-             .on("drag", dragged)
-             .on("end", dragended) as any
-         ); */
+            d3
+              .drag()
+              .on("start", dragstarted)
+              .on("drag", dragged)
+              .on("end", dragended) as any
+          ); */
+        node
+            .append("circle")
+            .attr("class", "node-circle")
+            .attr("r", function (d) {
+            return d.radius;
+        })
+            .attr("fill", function (d) {
+            if (d.icon === undefined) {
+                return d.color;
+            }
+            if (d.icon.length === 0) {
+                return d.color;
+            }
+            return "url(#image-pattern-" + d.id + ")";
+        });
         node
             .append("defs")
             .append("pattern")
@@ -185,6 +201,7 @@ var onDataLoaded = function (error, graph) {
             .attr("xlink:href", function (d) {
             return d.icon !== undefined ? d.icon : "";
         });
+        var fontSize = [30, 20, 9, 5, 2];
         node
             .append("text")
             .attr("class", function (d) {
@@ -194,12 +211,12 @@ var onDataLoaded = function (error, graph) {
             return d.name;
         })
             .attr("font-size", function (d) {
-            return (5 - d.level) * 4;
+            return fontSize[d.level];
         })
             .attr("text-anchor", "middle")
             .attr("fill", "rgba(0,0,0,0.7)")
             .attr("transform", function (d) {
-            return "translate(0, " + (d.radius + 10) + ")";
+            return "translate(0, " + (d.radius + 5) + ")";
         })
             .attr("alignment-baseline", "central");
         if (simulation) {
@@ -241,7 +258,7 @@ var ticked = function (link, node) {
         return d.target.y;
     })
         .style("stroke", function (d) {
-        return "#a4a4a4";
+        return "#ffffff";
     });
     // refresh nodes position
     node.attr("transform", function (d) {
@@ -250,7 +267,8 @@ var ticked = function (link, node) {
 };
 var prepareDataNodes = function (input) {
     var results = [];
-    var getRadius = function (lvl) { return (5 - lvl) * 10; };
+    var lvlSize = [50, 40, 20, 10, 5];
+    var getRadius = function (lvl) { return lvlSize[lvl]; };
     var zoomMap = {
         0: {
             visibleZoomMin: 0,
@@ -258,19 +276,19 @@ var prepareDataNodes = function (input) {
         },
         1: {
             visibleZoomMin: 0,
-            visibleZoomMax: 1.8,
+            visibleZoomMax: 0.8,
         },
         2: {
-            visibleZoomMin: 1.3,
-            visibleZoomMax: 3,
+            visibleZoomMin: 1.1,
+            visibleZoomMax: 2.1,
         },
         3: {
-            visibleZoomMin: 1.9,
+            visibleZoomMin: 2.3,
             visibleZoomMax: 5,
         },
         4: {
-            visibleZoomMin: 2.0,
-            visibleZoomMax: 6,
+            visibleZoomMin: 2.3,
+            visibleZoomMax: 5,
         },
     };
     input.forEach(function (e) {
@@ -318,24 +336,37 @@ var prepareDataNodes = function (input) {
             radius: radius,
             parentIds: [],
         };
-        if (e.id === "37" || e.id === "1") {
+        if (e.id === "1") {
             newRow.clickActionType = ClickActionType.OPEN_MODAL;
-            newRow.modalTitle = "Piece w jądrach gwiazd";
-            newRow.modalBody = "<p>W S\u0142o\u0144cu jest <i>gor\u0105co</i>.</p>";
+            newRow.modalTitle = "FILOZOFIA";
+            newRow.modalBody = "<p>Na dnie każdej dyscypliny, jeżeli pogmerać odpowiednio głęboko, w pewnym momencie zaczyna się filozofia. W praktyce wygląda to tak, że ludzie faktycznie pracujący w jakiejś dziedzinie – fizycy, muzycy, meblarze, lekkoatleci;  ludzie faktycznie wykonujący jakąś konkretną pracę, czy to umysłową czy fizyczną – oczywiście drążą w jej podstawach, ale tylko tak długo, aż przynosi to jakąś korzyść. Od pewnego momentu zadawanie dalszych pytań przestaje jednak mieć sens praktyczny: są zbyt ogólne, zbyt abstrakcyjne, zbyt trudno jest wyciągnąć z odpowiedzi coś pożytecznego. To właśnie tutaj zaczyna się filozofia.</p><p>Nie zrozumcie mnie źle – nie mam na myśli niczego zdrożnego. Ale tak to po prostu wygląda w praktyce. Muzycy lubią gmerać w podstawach muzyki, dekonstruować ją, testować jej granice; ale trudno będzie znaleźć takiego, któremu zaświecą się oczy z ciekawością, kiedy zagaicie: „No dobra, ale <i>czym</i> właściwie jest muzyka?” Fizycy też lubią – przynajmniej niektórzy – dłubać w podstawach swojej dyscypliny, ale gwarantuję wam, że pytanie „Ale czy czas istnieje tak naprawdę, czy to jest tylko kategoria pojęciowa?” zadane na konferencji fizyków wywoła tylko pełną zażenowania ciszę.</p><p>Stąd odwieczne marzenie filozofów: żeby zejść w te głębie, w które ”praktycy” nie schodzą (dumnie określając gadanie o <i>tych sprawach</i> jako „pitolenie”), żeby zanurzyć się w odmętach abstrakcji i wrócić z perłą, dumnie potrząsając nią przed oczami „praktyków”, którzy następnie chciwie się na nią rzucą. Do dzisiaj trwają dyskusje, czy kiedykolwiek to naprawdę nastąpiło: czy istniał jakiś filozof, który odkrył w odmętach abstrakcji nowy gatunek muzyczny – ale taki, który naprawdę dobrze brzmiał – albo taki, który zaproponował fizykom nie „ciekawą myśl”, tylko użyteczne narzędzie, rozwiązujące konkretny problem.</p><p>W najgorszym razie filozofia to po prostu sztuka dla sztuki. Parafrazując Feynmana: filozofia jest jak seks. Jasne, płyną z niej czasem praktyczne korzyści, ale nie dlatego ją uprawiamy. Mnie osobiście przynosi sporą radość myśl, że tak naprawdę każda szanowana dyscyplina ludzkiej aktywności to tylko maleńka pływająca wyspa, oświetlona kilkoma latarenkami, unosząca się na gigantycznym smolistym oceanie niewiedzy. Tak, to zdecydowanie miła myśl...</p>";
         }
+        ;
+        if (e.id === "8") {
+            newRow.clickActionType = ClickActionType.OPEN_MODAL;
+            newRow.modalTitle = "MATEMATYKA";
+            newRow.modalBody = "<p>Matematyka to dziwna bestia, a ludzie, którzy ją kochają i rozumieją, to jeszcze dziwniejsze bestie. Matematyka to to, co pozostaje ze świata, jeżeli się z niego wyciśnie całą treść. Kiedy wziąć na warsztat dowolne pojęcie matematyczne: zbiór, przestrzeń, prawdopodobieństwo – na początku wszystko jest OK. Wyobrażamy sobie, kolejno, worek z kulkami, świat wokół siebie albo odległości między miastami, rzuty kostką... proste. Potem jednak pytamy matematyka, czym jest <i>tak naprawdę</i> przestrzeń. Albo zbiór. I już po kilku chwilach między palcami nie pozostaje nam nic, co potrafilibyśmy nazwać, zrozumieć albo określić.<\p><p>Matematyka to potężna, bujna, piękna struktura zbudowana na kompletnie niczym. Jej podstawowe pojęcia są całkowicie pozbawione treści, a zadaniem matematyka jest żonglować nimi w pewien szczególny, uporządkowany sposób. Matematyka to dziedzina czystych *relacji*, czystych *struktur*. Kompletne wariactwo. Kolejne piętra definicji, twierdzeń, lematów, teorii, które w pewnym momencie rozumiemy tak naprawdę tylko za pośrednictwem znaczków na papierze – które mogłyby być zupełnie inne.</p><p>I teraz puenta: z tego gąszczu czystej formy czasem wyłania się... coś. Jakaś zupełnie namacalna, konkretna rzecz, o własnym charakterze. Jak pi. Albo, lepiej, zbiór Mandelbrota. I w tym momencie mózg wywija mi się na drugą stronę – bo jakim właściwie sposobem gdzieś w tym świecie widm wyrodziła się taka samodzielna, tętniąca od życia osobowość, równie doprecyzowana, konkretna i swoista, co ja sam albo planeta Wenus. I to jest prawdziwa zagadka matematyki.</p>";
+        }
+        ;
+        if (e.id === "40") {
+            newRow.clickActionType = ClickActionType.OPEN_MODAL;
+            newRow.modalTitle = "CHEMIA";
+            newRow.modalBody = "<p>Chemia ma fatalną reklamę. Nie ma chyba przedmiotu szkolnego, który byłby tak bezosobowy, smętny i najzwyczajniej w świecie nudny, co chemia. Kiedy jednak poczyta się trochę na temat świata – na temat tego, jak działają planety, i życie, i ciało ludzkie, i ropa naftowa, i lekarstwa, i komputery: nagle się okazuje, że chemia i jej okolice to jedyne nauki, od których można oczekiwać jakichkolwiek realnych odpowiedzi.</p><p>Wystarczy pomyśleć o LEGO. Albo o literach. Cząstki elementarne to klocki lego. Albo litery. I fizycy z dumą będą godzinami opowiadać o tym, że klocki dzielą się na jedno- i dwu-wypustkowe, i że litery dzielą się na takie z brzuszkiem i takie z kropką, i że jedne są symetryczne, a drugie nie. Tylko potem pojawia się pytanie, jak zbudować w pełni funkcjonalną replikę Millenium Falcona z wysuwającym się działkiem laserowym, albo jak skomponować naprawdę wzruszający sonet. I od tego właśnie są chemicy.</p><p>Jeśli wiesz, o czym ja mówię.</p>";
+        }
+        ;
         results.push(newRow);
     });
     var youtube1nextRow = {
-        id: "36_1",
-        name: "Bardzo kulturalne szympansy",
+        id: "34_1",
+        name: "Narodziny galaktyk",
         color: "red",
         level: 4,
         visibleZoomMin: zoomMap[4].visibleZoomMin,
         visibleZoomMax: zoomMap[4].visibleZoomMax,
-        icon: "./img/youtube_thumb_parent_id_36.resized.jpg",
+        icon: "./img/czn-logo.svg",
         iconRadius: getRadius(4),
         action: "",
-        parentId: "36",
+        parentId: "34",
         radius: getRadius(4),
         clickActionType: ClickActionType.OPEN_LINK,
         windowUrl: "https://youtu.be/3Cec-5MOTlw?t=901",
@@ -348,7 +379,7 @@ var prepareDataNodes = function (input) {
         level: 4,
         visibleZoomMin: zoomMap[4].visibleZoomMin,
         visibleZoomMax: zoomMap[4].visibleZoomMax,
-        icon: "./img/youtube_thumb_parent_id_67.resized.jpg",
+        icon: "./img/czn-logo.svg",
         iconRadius: getRadius(4),
         action: "",
         parentId: "67",
@@ -359,12 +390,12 @@ var prepareDataNodes = function (input) {
     };
     var youtube3nextRow = {
         id: "74_1",
-        name: "Narodziny dysków galaktycznych",
+        name: "Nanotechnologia na ślepotę",
         color: "red",
         level: 4,
         visibleZoomMin: zoomMap[4].visibleZoomMin,
         visibleZoomMax: zoomMap[4].visibleZoomMax,
-        icon: "./img/youtube_thumb_parent_id_74.resized.jpg",
+        icon: "./img/czn-logo.svg",
         iconRadius: getRadius(4),
         action: "",
         parentId: "74",
@@ -510,3 +541,16 @@ function checkImage(imageSrc, good, bad) {
 }
 var json_data_file_name = "./data/output.json";
 d3.json(json_data_file_name, onDataLoaded);
+(function () {
+    var spreadsheetId = "1fBDVRtbeD96DwjWutWVtKwnPOeYnK4SwdIWnx1KRePs";
+    var APIKey = "999158420743-0ku1i8qos66biv3jtdi30mgpacg2p2p1.apps.googleusercontent.com";
+    console.log("request...");
+    var url = "https://sheets.googleapis.com/v4/spreadsheets/" + spreadsheetId + "/values/dane-v2!A1:K?key=" + APIKey;
+    fetch(url, {})
+        .then(function (res) {
+        console.log("read with succes::", res);
+    })
+        .catch(function (err) {
+        console.error("err", err);
+    });
+})();
