@@ -1,0 +1,15 @@
+[
+  {
+    "id": "34",
+    "category_name": "Kosmologia i astrofizyka",
+    "parent": "18",
+    "level": "2 - Drugi",
+    "action": "Otwarcie popup z tekstem",
+    "icon": "img/icon-astronomia-obserwacyjna.png",
+    "title": "Kosmologia i astrofizyka",
+    "innerhtml": "To są dopiero fajne nauki...",
+    "timestamp_miniaturki": "--",
+    "link_do_filmu": "https://youtu.be/d36GBndnL38?t=383",
+    "opis_filmu": "Czerwiec 2020 - artykuł o setkach subtelnych spososób, na jakie szympansy łowią termity, i o różnicach kulturowych pomiędzy szympansami z różnych naturalnych społeczności"
+  }
+]
