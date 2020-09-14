@@ -547,6 +547,7 @@ const prepareDataNodes = (input: any) => {
   results.push(youtube1nextRow);
   results.push(youtube2nextRow);
   results.push(youtube3nextRow);
+  results.push(youtube4nextRow);
 
   const ROOT_ID = "0";
   const levelsMap = {

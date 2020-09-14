@@ -438,6 +438,7 @@ var prepareDataNodes = function (input) {
     results.push(youtube1nextRow);
     results.push(youtube2nextRow);
     results.push(youtube3nextRow);
+    results.push(youtube4nextRow);
     var ROOT_ID = "0";
     var levelsMap = {
         "1": "#A4CDDF",
