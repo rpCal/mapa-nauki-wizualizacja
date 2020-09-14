@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="1000px" height="1000px" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 1000 1000"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .str1 {stroke:#1F1A17;stroke-width:8.33386}
+    .str0 {stroke:#1F1A17;stroke-width:16.6665}
+    .fil1 {fill:none}
+    .fil3 {fill:#1F1A17}
+    .fil2 {fill:white}
+    .fil0 {fill:#5FB250}
+   ]]>
+  </style>
+ </defs>
+ <g id="Warstwa_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <circle class="fil0" cx="498.146" cy="498.146" r="485.835"/>
+  <g id="_197930160">
+   <polyline id="_197929752" class="fil1 str0" points="464.478,896.618 464.478,732.593 166.253,656.546 182.655,279.292 "/>
+   <polyline id="_197929200" class="fil1 str0" points="465.969,729.611 525.615,711.717 534.56,628.215 464.478,584.972 430.181,197.28 "/>
+   <polyline id="_197929392" class="fil1 str0" points="539.034,625.232 677.709,595.411 695.603,474.629 632.975,450.772 600.171,219.646 "/>
+   <polyline id="_197929560" class="fil1 str0" points="698.585,471.646 758.229,440.333 780.596,213.683 "/>
+   <polygon id="_197929608" class="fil2 str1" points="309.394,931.539 433.911,931.539 371.275,791.372 "/>
+   <polygon id="_197929704" class="fil2 str1" points="568.543,810.318 693.061,810.318 651.199,671.225 611.816,671.269 "/>
+   <polygon id="_197929680" class="fil2 str1" points="862.742,540.396 738.225,540.396 780.086,679.49 819.47,679.445 "/>
+   <polygon id="_197929128" class="fil2 str1" points="671.572,148.537 547.054,148.537 588.915,287.631 628.299,287.586 "/>
+   <polygon id="_197929824" class="fil2 str1" points="842.744,163.754 718.227,163.754 760.088,235.184 799.471,235.16 "/>
+   <polygon id="_197929248" class="fil2 str1" points="121.88,289.609 246.398,289.609 183.762,149.444 "/>
+   <circle id="_197929296" class="fil2 str1" cx="183.392" cy="149.942" r="34.9843"/>
+   <circle id="_197930472" class="fil3 str0" cx="464.478" cy="814.606" r="21.614"/>
+   <circle id="_197930592" class="fil3 str0" cx="532.018" cy="708.297" r="21.614"/>
+   <circle id="_197930304" class="fil3 str0" cx="686.788" cy="589.313" r="21.614"/>
+   <polygon id="_197930424" class="fil2 str1" points="368.425,290.222 492.943,290.222 451.082,151.128 411.698,151.173 "/>
+   <line id="_197930208" class="fil1 str0" x1="818.709" y1="539.113" x2="831.363" y2= "491.103" />
+   <line id="_197930016" class="fil1 str0" x1="629.141" y1="147.289" x2="650.216" y2= "67.3264" />
+   <line id="_197930040" class="fil1 str0" x1="798.712" y1="162.473" x2="811.365" y2= "114.462" />
+   <line id="_197930448" class="fil1 str0" x1="782.981" y1="540.975" x2="771.07" y2= "491.848" />
+   <line id="_197929872" class="fil1 str0" x1="592.187" y1="141.895" x2="572.352" y2= "60.0721" />
+   <line id="_197929920" class="fil1 str0" x1="762.982" y1="164.333" x2="751.073" y2= "115.206" />
+  </g>
+ </g>
+</svg>
