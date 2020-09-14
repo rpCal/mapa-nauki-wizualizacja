@@ -525,6 +525,25 @@ const prepareDataNodes = (input: any) => {
     windowUrl: "https://youtu.be/riZfnPrk7OU?t=1013",
     parentIds: [],
   };
+  
+  let youtube4nextRow: DataNode = {
+    id: "46_1",
+    name: "Automatyczny reaktor chemiczny",
+    color: "red",
+    level: 4,
+    visibleZoomMin: (zoomMap as any)[4].visibleZoomMin,
+    visibleZoomMax: (zoomMap as any)[4].visibleZoomMax,
+    icon: "./img/czn-logo.svg",
+    iconRadius: getRadius(4),
+    action: "",
+    parentId: "46",
+    radius: getRadius(4),
+    clickActionType: ClickActionType.OPEN_LINK,
+    windowUrl: "https://youtu.be/6vjV26Aq1BU?t=76",
+    parentIds: [],
+  };
+  
+  
   results.push(youtube1nextRow);
   results.push(youtube2nextRow);
   results.push(youtube3nextRow);
