@@ -8,11 +8,16 @@
   <div id="canvas"></div>
 
   <article>
-    <p>
+    <!-- <p>
       <strong>Zoomuj!</strong>
-    </p>
-
+    </p> -->
+    <!-- <p>site last update: 2020-09-07</p> -->
   </article>
+
+  <!--Add buttons to initiate auth sequence and sign out-->
+  <button id="authorize_button" style="display: none">Authorize</button>
+  <button id="signout_button" style="display: none">Sign Out</button>
+
   <script src="https://d3js.org/d3.v4.min.js"></script>
   <script src="https://d3js.org/d3-color.v1.min.js"></script>
   <script src="https://d3js.org/d3-dispatch.v1.min.js"></script>
@@ -39,4 +44,10 @@
 
     gtag("config", "UA-159945589-1");
   </script>
+  <style>
+    body{
+      margin: 0;
+      padding: 0;
+    }
+  </style>
 </body>

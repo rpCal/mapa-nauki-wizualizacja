@@ -7,7 +7,7 @@ interface InputData {
   parent: string | undefined;
 }
 
-console.log ('Halo 2!');
+console.log("Halo!" + new Date());
 
 enum ClickActionType {
   OPEN_LINK = "OPEN_LINK",
@@ -65,9 +65,10 @@ const onDataLoaded = function (error: any, graph: any[]) {
   });
 
   function startGraph() {
-    var width = window.innerWidth;
-    var height = window.innerHeight;
+    var width = window.innerWidth - 50;
+    var height = window.innerHeight - 50;
     var zoom_value_k = 0;
+
     var svg = d3
       .select("#canvas")
       .append("svg")
@@ -76,7 +77,7 @@ const onDataLoaded = function (error: any, graph: any[]) {
       .call(
         d3
           .zoom()
-          .scaleExtent([0.2, 40])
+          .scaleExtent([0.2, 7.2])
           .on("zoom", function () {
             svg.attr("transform", d3.event.transform);
             zoom_value_k = d3.event.transform.k;
@@ -96,7 +97,6 @@ const onDataLoaded = function (error: any, graph: any[]) {
                 if (d.id === "0") {
                   return 0;
                 }
-                // return 1;
                 if (d.level === 1 && zoom_value_k <= 1.4 && zoom_value_k > 0) {
                   return 1;
                 }
@@ -107,8 +107,10 @@ const onDataLoaded = function (error: any, graph: any[]) {
                     d.visibleZoomMax,
                     0.01,
                     0.99,
-                    0.5
+                    0.7
                   );
+
+
                   return op;
                 } else {
                   const op = interpolate(
@@ -117,7 +119,7 @@ const onDataLoaded = function (error: any, graph: any[]) {
                     d.visibleZoomMax + d.visibleZoomMax * 1.1,
                     0.99,
                     0.01,
-                    0.5
+                    0.7
                   );
                   return op;
                 }
@@ -127,9 +129,7 @@ const onDataLoaded = function (error: any, graph: any[]) {
       .append("g")
       .attr("class", "canvas");
 
-    const simulation_strength = -500;
-    const simulation_theta = 1.0;
-    const simulation_distanceMax = 100;
+
     var simulation = d3
       .forceSimulation(dataNodes as any)
       .force(
@@ -138,21 +138,39 @@ const onDataLoaded = function (error: any, graph: any[]) {
           return d.id;
         })
       )
-      .force("charge", d3.forceManyBody().strength(simulation_strength))
-      .force(
-        "charge",
-        d3
-          .forceManyBody()
-          .strength(simulation_strength)
-          .theta(simulation_theta)
-          .distanceMax(simulation_distanceMax)
-      )
+      // .force("charge", function (d) {
+      //   console.log("??", (d as any).level);
+      //   return d3.forceManyBody().strength(function (d1) {
+      //     console.log("??", (d1 as any).level);
+      //     return 100;
+      //   });
+      // })
+      // .force(
+      //   "charge",
+      //   d3.forceManyBody().strength(-500).theta(1.0).distanceMax(100)
+      // )
       .force(
         "collide",
         d3
           .forceCollide()
-          .radius((d) => 37)
-          .iterations(1.5)
+          .radius(function (d){
+            if(d && (d as any).level !== undefined){
+              if((d as any).level === 1){
+                return 30
+              }
+              if((d as any).level === 2){
+                return 30
+              }
+              if((d as any).level === 3){
+                return 10
+              }
+              if((d as any).level === 4){
+                return 10
+              }
+            }
+            return 30;
+          })
+          .iterations(3)
       )
       .force("center", d3.forceCenter(width / 2, height / 2));
 
@@ -197,7 +215,7 @@ const onDataLoaded = function (error: any, graph: any[]) {
     var node = svg
       .append("g")
       .attr("class", "nodes")
-      .selectAll("circle")
+      .selectAll("rect")
       .data(dataNodes)
       .enter()
       .append("g")
@@ -223,9 +241,12 @@ const onDataLoaded = function (error: any, graph: any[]) {
       });
 
     node
-      .append("circle")
+      .append("rect")
       .attr("class", "node-circle")
-      .attr("r", function (d) {
+      .attr("width", function (d) {
+        return d.radius;
+      })
+      .attr("height", function (d) {
         return d.radius;
       })
       .attr("fill", function (d) {
@@ -236,14 +257,26 @@ const onDataLoaded = function (error: any, graph: any[]) {
           return d.color;
         }
         return `url(#image-pattern-${d.id})`;
+      });
+
+    node
+      .append("rect")
+      .attr("class", "node-circle")
+      .attr("width", function (d) {
+        return d.radius;
       })
-     /* .call(
-        d3
-          .drag()
-          .on("start", dragstarted)
-          .on("drag", dragged)
-          .on("end", dragended) as any
-      ); */
+      .attr("height", function (d) {
+        return d.radius;
+      })
+      .attr("fill", function (d) {
+        if (d.icon === undefined) {
+          return d.color;
+        }
+        if (d.icon.length === 0) {
+          return d.color;
+        }
+        return `url(#image-pattern-${d.id})`;
+      });
 
     node
       .append("defs")
@@ -271,8 +304,8 @@ const onDataLoaded = function (error: any, graph: any[]) {
         return d.icon !== undefined ? d.icon : "";
       });
 
-	const fontSize = [30,20,9,5,2];
-	 
+    const fontSize = [30, 20, 9, 5, 2];
+
     node
       .append("text")
       .attr("class", function (d) {
@@ -282,7 +315,7 @@ const onDataLoaded = function (error: any, graph: any[]) {
         return d.name;
       })
       .attr("font-size", function (d) {
-		return fontSize[d.level];
+        return fontSize[d.level];
       })
       .attr("text-anchor", "middle")
       .attr("fill", "rgba(0,0,0,0.7)")
@@ -293,7 +326,7 @@ const onDataLoaded = function (error: any, graph: any[]) {
 
     if (simulation) {
       simulation.nodes(dataNodes as any).on("tick", () => ticked(link, node));
-      (simulation.force("link") as any).links(dataLinks as any);
+      (simulation.force("link") as any).links(dataLinks);
     }
 
     function dragstarted(d: any) {
@@ -319,22 +352,22 @@ const onDataLoaded = function (error: any, graph: any[]) {
 
 var ticked = function (link: any, node: any) {
   // refresh links
-   link
-     .attr("x1", function (d: any) {
-       return d.source.x;
-     })
-     .attr("y1", function (d: any) {
-       return d.source.y;
-     })
-     .attr("x2", function (d: any) {
-       return d.target.x;
-     })
-     .attr("y2", function (d: any) {
-       return d.target.y;
-     })
-     .style("stroke", function (d: any) {
-       return "#ffffff";
-     });
+  link
+    .attr("x1", function (d: any) {
+      return d.source.x;
+    })
+    .attr("y1", function (d: any) {
+      return d.source.y;
+    })
+    .attr("x2", function (d: any) {
+      return d.target.x;
+    })
+    .attr("y2", function (d: any) {
+      return d.target.y;
+    })
+    .style("stroke", function (d: any) {
+      return "#ffffff";
+    });
 
   // refresh nodes position
   node.attr("transform", function (d: any) {
@@ -344,8 +377,8 @@ var ticked = function (link: any, node: any) {
 
 const prepareDataNodes = (input: any) => {
   const results: DataNode[] = [];
-  
-  const lvlSize = [50,40,20,10,5];
+
+  const lvlSize = [50, 40, 20, 10, 5];
   const getRadius = (lvl: number) => lvlSize[lvl];
   const zoomMap = {
     0: {
@@ -354,19 +387,19 @@ const prepareDataNodes = (input: any) => {
     },
     1: {
       visibleZoomMin: 0,
-      visibleZoomMax: 0.8,
+      visibleZoomMax: 1.3,
     },
     2: {
       visibleZoomMin: 1.1,
-      visibleZoomMax: 2.1,
+      visibleZoomMax: 4.1,
     },
     3: {
-      visibleZoomMin: 2.3,
-      visibleZoomMax: 5,
+      visibleZoomMin: 1.7,
+      visibleZoomMax: 7,
     },
     4: {
-      visibleZoomMin: 2.3,
-      visibleZoomMax: 5,
+      visibleZoomMin: 1.5,
+      visibleZoomMax: 7,
     },
   };
 
@@ -423,20 +456,23 @@ const prepareDataNodes = (input: any) => {
     if (e.id === "1") {
       newRow.clickActionType = ClickActionType.OPEN_MODAL;
       newRow.modalTitle = "FILOZOFIA";
-      newRow.modalBody = "<p>Na dnie każdej dyscypliny, jeżeli pogmerać odpowiednio głęboko, w pewnym momencie zaczyna się filozofia. W praktyce wygląda to tak, że ludzie faktycznie pracujący w jakiejś dziedzinie – fizycy, muzycy, meblarze, lekkoatleci;  ludzie faktycznie wykonujący jakąś konkretną pracę, czy to umysłową czy fizyczną – oczywiście drążą w jej podstawach, ale tylko tak długo, aż przynosi to jakąś korzyść. Od pewnego momentu zadawanie dalszych pytań przestaje jednak mieć sens praktyczny: są zbyt ogólne, zbyt abstrakcyjne, zbyt trudno jest wyciągnąć z odpowiedzi coś pożytecznego. To właśnie tutaj zaczyna się filozofia.</p><p>Nie zrozumcie mnie źle – nie mam na myśli niczego zdrożnego. Ale tak to po prostu wygląda w praktyce. Muzycy lubią gmerać w podstawach muzyki, dekonstruować ją, testować jej granice; ale trudno będzie znaleźć takiego, któremu zaświecą się oczy z ciekawością, kiedy zagaicie: „No dobra, ale <i>czym</i> właściwie jest muzyka?” Fizycy też lubią – przynajmniej niektórzy – dłubać w podstawach swojej dyscypliny, ale gwarantuję wam, że pytanie „Ale czy czas istnieje tak naprawdę, czy to jest tylko kategoria pojęciowa?” zadane na konferencji fizyków wywoła tylko pełną zażenowania ciszę.</p><p>Stąd odwieczne marzenie filozofów: żeby zejść w te głębie, w które ”praktycy” nie schodzą (dumnie określając gadanie o <i>tych sprawach</i> jako „pitolenie”), żeby zanurzyć się w odmętach abstrakcji i wrócić z perłą, dumnie potrząsając nią przed oczami „praktyków”, którzy następnie chciwie się na nią rzucą. Do dzisiaj trwają dyskusje, czy kiedykolwiek to naprawdę nastąpiło: czy istniał jakiś filozof, który odkrył w odmętach abstrakcji nowy gatunek muzyczny – ale taki, który naprawdę dobrze brzmiał – albo taki, który zaproponował fizykom nie „ciekawą myśl”, tylko użyteczne narzędzie, rozwiązujące konkretny problem.</p><p>W najgorszym razie filozofia to po prostu sztuka dla sztuki. Parafrazując Feynmana: filozofia jest jak seks. Jasne, płyną z niej czasem praktyczne korzyści, ale nie dlatego ją uprawiamy. Mnie osobiście przynosi sporą radość myśl, że tak naprawdę każda szanowana dyscyplina ludzkiej aktywności to tylko maleńka pływająca wyspa, oświetlona kilkoma latarenkami, unosząca się na gigantycznym smolistym oceanie niewiedzy. Tak, to zdecydowanie miła myśl...</p>";
-    };
-	
-	if (e.id === "8") {
+      newRow.modalBody =
+        "<p>Na dnie każdej dyscypliny, jeżeli pogmerać odpowiednio głęboko, w pewnym momencie zaczyna się filozofia. W praktyce wygląda to tak, że ludzie faktycznie pracujący w jakiejś dziedzinie – fizycy, muzycy, meblarze, lekkoatleci;  ludzie faktycznie wykonujący jakąś konkretną pracę, czy to umysłową czy fizyczną – oczywiście drążą w jej podstawach, ale tylko tak długo, aż przynosi to jakąś korzyść. Od pewnego momentu zadawanie dalszych pytań przestaje jednak mieć sens praktyczny: są zbyt ogólne, zbyt abstrakcyjne, zbyt trudno jest wyciągnąć z odpowiedzi coś pożytecznego. To właśnie tutaj zaczyna się filozofia.</p><p>Nie zrozumcie mnie źle – nie mam na myśli niczego zdrożnego. Ale tak to po prostu wygląda w praktyce. Muzycy lubią gmerać w podstawach muzyki, dekonstruować ją, testować jej granice; ale trudno będzie znaleźć takiego, któremu zaświecą się oczy z ciekawością, kiedy zagaicie: „No dobra, ale <i>czym</i> właściwie jest muzyka?” Fizycy też lubią – przynajmniej niektórzy – dłubać w podstawach swojej dyscypliny, ale gwarantuję wam, że pytanie „Ale czy czas istnieje tak naprawdę, czy to jest tylko kategoria pojęciowa?” zadane na konferencji fizyków wywoła tylko pełną zażenowania ciszę.</p><p>Stąd odwieczne marzenie filozofów: żeby zejść w te głębie, w które ”praktycy” nie schodzą (dumnie określając gadanie o <i>tych sprawach</i> jako „pitolenie”), żeby zanurzyć się w odmętach abstrakcji i wrócić z perłą, dumnie potrząsając nią przed oczami „praktyków”, którzy następnie chciwie się na nią rzucą. Do dzisiaj trwają dyskusje, czy kiedykolwiek to naprawdę nastąpiło: czy istniał jakiś filozof, który odkrył w odmętach abstrakcji nowy gatunek muzyczny – ale taki, który naprawdę dobrze brzmiał – albo taki, który zaproponował fizykom nie „ciekawą myśl”, tylko użyteczne narzędzie, rozwiązujące konkretny problem.</p><p>W najgorszym razie filozofia to po prostu sztuka dla sztuki. Parafrazując Feynmana: filozofia jest jak seks. Jasne, płyną z niej czasem praktyczne korzyści, ale nie dlatego ją uprawiamy. Mnie osobiście przynosi sporą radość myśl, że tak naprawdę każda szanowana dyscyplina ludzkiej aktywności to tylko maleńka pływająca wyspa, oświetlona kilkoma latarenkami, unosząca się na gigantycznym smolistym oceanie niewiedzy. Tak, to zdecydowanie miła myśl...</p>";
+    }
+
+    if (e.id === "8") {
       newRow.clickActionType = ClickActionType.OPEN_MODAL;
       newRow.modalTitle = "MATEMATYKA";
-      newRow.modalBody = "<p>Matematyka to dziwna bestia, a ludzie, którzy ją kochają i rozumieją, to jeszcze dziwniejsze bestie. Matematyka to to, co pozostaje ze świata, jeżeli się z niego wyciśnie całą treść. Kiedy wziąć na warsztat dowolne pojęcie matematyczne: zbiór, przestrzeń, prawdopodobieństwo – na początku wszystko jest OK. Wyobrażamy sobie, kolejno, worek z kulkami, świat wokół siebie albo odległości między miastami, rzuty kostką... proste. Potem jednak pytamy matematyka, czym jest <i>tak naprawdę</i> przestrzeń. Albo zbiór. I już po kilku chwilach między palcami nie pozostaje nam nic, co potrafilibyśmy nazwać, zrozumieć albo określić.<\p><p>Matematyka to potężna, bujna, piękna struktura zbudowana na kompletnie niczym. Jej podstawowe pojęcia są całkowicie pozbawione treści, a zadaniem matematyka jest żonglować nimi w pewien szczególny, uporządkowany sposób. Matematyka to dziedzina czystych *relacji*, czystych *struktur*. Kompletne wariactwo. Kolejne piętra definicji, twierdzeń, lematów, teorii, które w pewnym momencie rozumiemy tak naprawdę tylko za pośrednictwem znaczków na papierze – które mogłyby być zupełnie inne.</p><p>I teraz puenta: z tego gąszczu czystej formy czasem wyłania się... coś. Jakaś zupełnie namacalna, konkretna rzecz, o własnym charakterze. Jak pi. Albo, lepiej, zbiór Mandelbrota. I w tym momencie mózg wywija mi się na drugą stronę – bo jakim właściwie sposobem gdzieś w tym świecie widm wyrodziła się taka samodzielna, tętniąca od życia osobowość, równie doprecyzowana, konkretna i swoista, co ja sam albo planeta Wenus. I to jest prawdziwa zagadka matematyki.</p>";
-    };
-	
-	if (e.id === "40") {
+      newRow.modalBody =
+        "<p>Matematyka to dziwna bestia, a ludzie, którzy ją kochają i rozumieją, to jeszcze dziwniejsze bestie. Matematyka to to, co pozostaje ze świata, jeżeli się z niego wyciśnie całą treść. Kiedy wziąć na warsztat dowolne pojęcie matematyczne: zbiór, przestrzeń, prawdopodobieństwo – na początku wszystko jest OK. Wyobrażamy sobie, kolejno, worek z kulkami, świat wokół siebie albo odległości między miastami, rzuty kostką... proste. Potem jednak pytamy matematyka, czym jest <i>tak naprawdę</i> przestrzeń. Albo zbiór. I już po kilku chwilach między palcami nie pozostaje nam nic, co potrafilibyśmy nazwać, zrozumieć albo określić.<p><p>Matematyka to potężna, bujna, piękna struktura zbudowana na kompletnie niczym. Jej podstawowe pojęcia są całkowicie pozbawione treści, a zadaniem matematyka jest żonglować nimi w pewien szczególny, uporządkowany sposób. Matematyka to dziedzina czystych *relacji*, czystych *struktur*. Kompletne wariactwo. Kolejne piętra definicji, twierdzeń, lematów, teorii, które w pewnym momencie rozumiemy tak naprawdę tylko za pośrednictwem znaczków na papierze – które mogłyby być zupełnie inne.</p><p>I teraz puenta: z tego gąszczu czystej formy czasem wyłania się... coś. Jakaś zupełnie namacalna, konkretna rzecz, o własnym charakterze. Jak pi. Albo, lepiej, zbiór Mandelbrota. I w tym momencie mózg wywija mi się na drugą stronę – bo jakim właściwie sposobem gdzieś w tym świecie widm wyrodziła się taka samodzielna, tętniąca od życia osobowość, równie doprecyzowana, konkretna i swoista, co ja sam albo planeta Wenus. I to jest prawdziwa zagadka matematyki.</p>";
+    }
+
+    if (e.id === "40") {
       newRow.clickActionType = ClickActionType.OPEN_MODAL;
       newRow.modalTitle = "CHEMIA";
-      newRow.modalBody = "<p>Chemia ma fatalną reklamę. Nie ma chyba przedmiotu szkolnego, który byłby tak bezosobowy, smętny i najzwyczajniej w świecie nudny, co chemia. Kiedy jednak poczyta się trochę na temat świata – na temat tego, jak działają planety, i życie, i ciało ludzkie, i ropa naftowa, i lekarstwa, i komputery: nagle się okazuje, że chemia i jej okolice to jedyne nauki, od których można oczekiwać jakichkolwiek realnych odpowiedzi.</p><p>Wystarczy pomyśleć o LEGO. Albo o literach. Cząstki elementarne to klocki lego. Albo litery. I fizycy z dumą będą godzinami opowiadać o tym, że klocki dzielą się na jedno- i dwu-wypustkowe, i że litery dzielą się na takie z brzuszkiem i takie z kropką, i że jedne są symetryczne, a drugie nie. Tylko potem pojawia się pytanie, jak zbudować w pełni funkcjonalną replikę Millenium Falcona z wysuwającym się działkiem laserowym, albo jak skomponować naprawdę wzruszający sonet. I od tego właśnie są chemicy.</p><p>Jeśli wiesz, o czym ja mówię.</p>";
-    };
+      newRow.modalBody =
+        "<p>Chemia ma fatalną reklamę. Nie ma chyba przedmiotu szkolnego, który byłby tak bezosobowy, smętny i najzwyczajniej w świecie nudny, co chemia. Kiedy jednak poczyta się trochę na temat świata – na temat tego, jak działają planety, i życie, i ciało ludzkie, i ropa naftowa, i lekarstwa, i komputery: nagle się okazuje, że chemia i jej okolice to jedyne nauki, od których można oczekiwać jakichkolwiek realnych odpowiedzi.</p><p>Wystarczy pomyśleć o LEGO. Albo o literach. Cząstki elementarne to klocki lego. Albo litery. I fizycy z dumą będą godzinami opowiadać o tym, że klocki dzielą się na jedno- i dwu-wypustkowe, i że litery dzielą się na takie z brzuszkiem i takie z kropką, i że jedne są symetryczne, a drugie nie. Tylko potem pojawia się pytanie, jak zbudować w pełni funkcjonalną replikę Millenium Falcona z wysuwającym się działkiem laserowym, albo jak skomponować naprawdę wzruszający sonet. I od tego właśnie są chemicy.</p><p>Jeśli wiesz, o czym ja mówię.</p>";
+    }
 
     results.push(newRow);
   });
