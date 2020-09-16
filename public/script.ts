@@ -5,6 +5,11 @@ interface InputData {
   action: string | undefined;
   category_name: string | undefined;
   parent: string | undefined;
+  title: "";
+  innerhtml: "";
+  timestamp_miniaturki: "";
+  link_do_filmu: "";
+  opis_filmu: "";
 }
 
 console.log("Halo!" + new Date());
@@ -110,7 +115,6 @@ const onDataLoaded = function (error: any, graph: any[]) {
                     0.7
                   );
 
-
                   return op;
                 } else {
                   const op = interpolate(
@@ -128,7 +132,6 @@ const onDataLoaded = function (error: any, graph: any[]) {
       )
       .append("g")
       .attr("class", "canvas");
-
 
     var simulation = d3
       .forceSimulation(dataNodes as any)
@@ -153,19 +156,19 @@ const onDataLoaded = function (error: any, graph: any[]) {
         "collide",
         d3
           .forceCollide()
-          .radius(function (d){
-            if(d && (d as any).level !== undefined){
-              if((d as any).level === 1){
-                return 30
+          .radius(function (d) {
+            if (d && (d as any).level !== undefined) {
+              if ((d as any).level === 1) {
+                return 30;
               }
-              if((d as any).level === 2){
-                return 30
+              if ((d as any).level === 2) {
+                return 30;
               }
-              if((d as any).level === 3){
-                return 10
+              if ((d as any).level === 3) {
+                return 2;
               }
-              if((d as any).level === 4){
-                return 10
+              if ((d as any).level === 4) {
+                return 2;
               }
             }
             return 30;
@@ -225,7 +228,8 @@ const onDataLoaded = function (error: any, graph: any[]) {
       .attr("class", function (d) {
         return `node-item node-item-level-${d.level} node-item-zoom-min-${d.visibleZoomMin} node-item-zoom-max-${d.visibleZoomMax} `;
       })
-      .on("click", function (d) {
+      .on("mousedown", function (d) {
+        console.log('jak jesy?', d, d.clickActionType)
         if (d.clickActionType !== undefined) {
           if (d.clickActionType === ClickActionType.OPEN_LINK) {
             if (d.windowUrl !== undefined) {
@@ -411,6 +415,8 @@ const prepareDataNodes = (input: any) => {
       level = 2;
     } else if (e.level === "3 - trzeci") {
       level = 3;
+    } else {
+      level = Number(e.level);
     }
 
     let radius = getRadius(level);
@@ -424,8 +430,14 @@ const prepareDataNodes = (input: any) => {
     }
 
     let action = "";
+    let clickActionType = undefined;
     if (e.action !== undefined && e.action.length > 0) {
       action = e.action;
+      if (e.action === "OPEN_LINK") {
+        clickActionType = ClickActionType.OPEN_LINK;
+      } else if (e.action === "OPEN_MODAL") {
+        clickActionType = ClickActionType.OPEN_MODAL;
+      }
     }
 
     let name = "";
@@ -451,103 +463,82 @@ const prepareDataNodes = (input: any) => {
       parentId: parentId,
       radius: radius,
       parentIds: [],
+      clickActionType: clickActionType
     };
-
-    if (e.id === "1") {
-      newRow.clickActionType = ClickActionType.OPEN_MODAL;
-      newRow.modalTitle = "FILOZOFIA";
-      newRow.modalBody =
-        "<p>Na dnie każdej dyscypliny, jeżeli pogmerać odpowiednio głęboko, w pewnym momencie zaczyna się filozofia. W praktyce wygląda to tak, że ludzie faktycznie pracujący w jakiejś dziedzinie – fizycy, muzycy, meblarze, lekkoatleci;  ludzie faktycznie wykonujący jakąś konkretną pracę, czy to umysłową czy fizyczną – oczywiście drążą w jej podstawach, ale tylko tak długo, aż przynosi to jakąś korzyść. Od pewnego momentu zadawanie dalszych pytań przestaje jednak mieć sens praktyczny: są zbyt ogólne, zbyt abstrakcyjne, zbyt trudno jest wyciągnąć z odpowiedzi coś pożytecznego. To właśnie tutaj zaczyna się filozofia.</p><p>Nie zrozumcie mnie źle – nie mam na myśli niczego zdrożnego. Ale tak to po prostu wygląda w praktyce. Muzycy lubią gmerać w podstawach muzyki, dekonstruować ją, testować jej granice; ale trudno będzie znaleźć takiego, któremu zaświecą się oczy z ciekawością, kiedy zagaicie: „No dobra, ale <i>czym</i> właściwie jest muzyka?” Fizycy też lubią – przynajmniej niektórzy – dłubać w podstawach swojej dyscypliny, ale gwarantuję wam, że pytanie „Ale czy czas istnieje tak naprawdę, czy to jest tylko kategoria pojęciowa?” zadane na konferencji fizyków wywoła tylko pełną zażenowania ciszę.</p><p>Stąd odwieczne marzenie filozofów: żeby zejść w te głębie, w które ”praktycy” nie schodzą (dumnie określając gadanie o <i>tych sprawach</i> jako „pitolenie”), żeby zanurzyć się w odmętach abstrakcji i wrócić z perłą, dumnie potrząsając nią przed oczami „praktyków”, którzy następnie chciwie się na nią rzucą. Do dzisiaj trwają dyskusje, czy kiedykolwiek to naprawdę nastąpiło: czy istniał jakiś filozof, który odkrył w odmętach abstrakcji nowy gatunek muzyczny – ale taki, który naprawdę dobrze brzmiał – albo taki, który zaproponował fizykom nie „ciekawą myśl”, tylko użyteczne narzędzie, rozwiązujące konkretny problem.</p><p>W najgorszym razie filozofia to po prostu sztuka dla sztuki. Parafrazując Feynmana: filozofia jest jak seks. Jasne, płyną z niej czasem praktyczne korzyści, ale nie dlatego ją uprawiamy. Mnie osobiście przynosi sporą radość myśl, że tak naprawdę każda szanowana dyscyplina ludzkiej aktywności to tylko maleńka pływająca wyspa, oświetlona kilkoma latarenkami, unosząca się na gigantycznym smolistym oceanie niewiedzy. Tak, to zdecydowanie miła myśl...</p>";
-    }
-
-    if (e.id === "8") {
-      newRow.clickActionType = ClickActionType.OPEN_MODAL;
-      newRow.modalTitle = "MATEMATYKA";
-      newRow.modalBody =
-        "<p>Matematyka to dziwna bestia, a ludzie, którzy ją kochają i rozumieją, to jeszcze dziwniejsze bestie. Matematyka to to, co pozostaje ze świata, jeżeli się z niego wyciśnie całą treść. Kiedy wziąć na warsztat dowolne pojęcie matematyczne: zbiór, przestrzeń, prawdopodobieństwo – na początku wszystko jest OK. Wyobrażamy sobie, kolejno, worek z kulkami, świat wokół siebie albo odległości między miastami, rzuty kostką... proste. Potem jednak pytamy matematyka, czym jest <i>tak naprawdę</i> przestrzeń. Albo zbiór. I już po kilku chwilach między palcami nie pozostaje nam nic, co potrafilibyśmy nazwać, zrozumieć albo określić.<p><p>Matematyka to potężna, bujna, piękna struktura zbudowana na kompletnie niczym. Jej podstawowe pojęcia są całkowicie pozbawione treści, a zadaniem matematyka jest żonglować nimi w pewien szczególny, uporządkowany sposób. Matematyka to dziedzina czystych *relacji*, czystych *struktur*. Kompletne wariactwo. Kolejne piętra definicji, twierdzeń, lematów, teorii, które w pewnym momencie rozumiemy tak naprawdę tylko za pośrednictwem znaczków na papierze – które mogłyby być zupełnie inne.</p><p>I teraz puenta: z tego gąszczu czystej formy czasem wyłania się... coś. Jakaś zupełnie namacalna, konkretna rzecz, o własnym charakterze. Jak pi. Albo, lepiej, zbiór Mandelbrota. I w tym momencie mózg wywija mi się na drugą stronę – bo jakim właściwie sposobem gdzieś w tym świecie widm wyrodziła się taka samodzielna, tętniąca od życia osobowość, równie doprecyzowana, konkretna i swoista, co ja sam albo planeta Wenus. I to jest prawdziwa zagadka matematyki.</p>";
-    }
-
-    if (e.id === "40") {
-      newRow.clickActionType = ClickActionType.OPEN_MODAL;
-      newRow.modalTitle = "CHEMIA";
-      newRow.modalBody =
-        "<p>Chemia ma fatalną reklamę. Nie ma chyba przedmiotu szkolnego, który byłby tak bezosobowy, smętny i najzwyczajniej w świecie nudny, co chemia. Kiedy jednak poczyta się trochę na temat świata – na temat tego, jak działają planety, i życie, i ciało ludzkie, i ropa naftowa, i lekarstwa, i komputery: nagle się okazuje, że chemia i jej okolice to jedyne nauki, od których można oczekiwać jakichkolwiek realnych odpowiedzi.</p><p>Wystarczy pomyśleć o LEGO. Albo o literach. Cząstki elementarne to klocki lego. Albo litery. I fizycy z dumą będą godzinami opowiadać o tym, że klocki dzielą się na jedno- i dwu-wypustkowe, i że litery dzielą się na takie z brzuszkiem i takie z kropką, i że jedne są symetryczne, a drugie nie. Tylko potem pojawia się pytanie, jak zbudować w pełni funkcjonalną replikę Millenium Falcona z wysuwającym się działkiem laserowym, albo jak skomponować naprawdę wzruszający sonet. I od tego właśnie są chemicy.</p><p>Jeśli wiesz, o czym ja mówię.</p>";
-    }
 
     results.push(newRow);
   });
 
-  let youtube1nextRow: DataNode = {
-    id: "34_1",
-    name: "Narodziny galaktyk",
-    color: "red",
-    level: 4,
-    visibleZoomMin: (zoomMap as any)[4].visibleZoomMin,
-    visibleZoomMax: (zoomMap as any)[4].visibleZoomMax,
-    icon: "./img/czn-logo.svg",
-    iconRadius: getRadius(4),
-    action: "",
-    parentId: "34",
-    radius: getRadius(4),
-    clickActionType: ClickActionType.OPEN_LINK,
-    windowUrl: "https://youtu.be/3Cec-5MOTlw?t=901",
-    parentIds: [],
-  };
-  let youtube2nextRow: DataNode = {
-    id: "67_1",
-    name: "Bardzo kulturalne szympansy",
-    color: "red",
-    level: 4,
-    visibleZoomMin: (zoomMap as any)[4].visibleZoomMin,
-    visibleZoomMax: (zoomMap as any)[4].visibleZoomMax,
-    icon: "./img/czn-logo.svg",
-    iconRadius: getRadius(4),
-    action: "",
-    parentId: "67",
-    radius: getRadius(4),
-    clickActionType: ClickActionType.OPEN_LINK,
-    windowUrl: "https://youtu.be/d36GBndnL38?t=66",
-    parentIds: [],
-  };
-  let youtube3nextRow: DataNode = {
-    id: "74_1",
-    name: "Nanotechnologia na ślepotę",
-    color: "red",
-    level: 4,
-    visibleZoomMin: (zoomMap as any)[4].visibleZoomMin,
-    visibleZoomMax: (zoomMap as any)[4].visibleZoomMax,
-    icon: "./img/czn-logo.svg",
-    iconRadius: getRadius(4),
-    action: "",
-    parentId: "74",
-    radius: getRadius(4),
-    clickActionType: ClickActionType.OPEN_LINK,
-    windowUrl: "https://youtu.be/riZfnPrk7OU?t=1013",
-    parentIds: [],
-  };
-  
-  let youtube4nextRow: DataNode = {
-    id: "46_1",
-    name: "Automatyczny reaktor chemiczny",
-    color: "red",
-    level: 4,
-    visibleZoomMin: (zoomMap as any)[4].visibleZoomMin,
-    visibleZoomMax: (zoomMap as any)[4].visibleZoomMax,
-    icon: "./img/czn-logo.svg",
-    iconRadius: getRadius(4),
-    action: "",
-    parentId: "46",
-    radius: getRadius(4),
-    clickActionType: ClickActionType.OPEN_LINK,
-    windowUrl: "https://youtu.be/6vjV26Aq1BU?t=76",
-    parentIds: [],
-  };
-  
-  
-  results.push(youtube1nextRow);
-  results.push(youtube2nextRow);
-  results.push(youtube3nextRow);
-  results.push(youtube4nextRow);
+  // let youtube1nextRow: DataNode = {
+  //   id: "34_1",
+  //   name: "Narodziny galaktyk",
+  //   color: "red",
+  //   level: 4,
+  //   visibleZoomMin: (zoomMap as any)[4].visibleZoomMin,
+  //   visibleZoomMax: (zoomMap as any)[4].visibleZoomMax,
+  //   icon: "./img/czn-logo.svg",
+  //   iconRadius: getRadius(4),
+  //   action: "",
+  //   parentId: "34",
+  //   radius: getRadius(4),
+  //   clickActionType: ClickActionType.OPEN_LINK,
+  //   windowUrl: "https://youtu.be/3Cec-5MOTlw?t=901",
+  //   parentIds: [],
+  // };
+  // let youtube2nextRow: DataNode = {
+  //   id: "67_1",
+  //   name: "Bardzo kulturalne szympansy",
+  //   color: "red",
+  //   level: 4,
+  //   visibleZoomMin: (zoomMap as any)[4].visibleZoomMin,
+  //   visibleZoomMax: (zoomMap as any)[4].visibleZoomMax,
+  //   icon: "./img/czn-logo.svg",
+  //   iconRadius: getRadius(4),
+  //   action: "",
+  //   parentId: "67",
+  //   radius: getRadius(4),
+  //   clickActionType: ClickActionType.OPEN_LINK,
+  //   windowUrl: "https://youtu.be/d36GBndnL38?t=66",
+  //   parentIds: [],
+  // };
+  // let youtube3nextRow: DataNode = {
+  //   id: "74_1",
+  //   name: "Nanotechnologia na ślepotę",
+  //   color: "red",
+  //   level: 4,
+  //   visibleZoomMin: (zoomMap as any)[4].visibleZoomMin,
+  //   visibleZoomMax: (zoomMap as any)[4].visibleZoomMax,
+  //   icon: "./img/czn-logo.svg",
+  //   iconRadius: getRadius(4),
+  //   action: "",
+  //   parentId: "74",
+  //   radius: getRadius(4),
+  //   clickActionType: ClickActionType.OPEN_LINK,
+  //   windowUrl: "https://youtu.be/riZfnPrk7OU?t=1013",
+  //   parentIds: [],
+  // };
+
+  // let youtube4nextRow: DataNode = {
+  //   id: "46_1",
+  //   name: "Automatyczny reaktor chemiczny",
+  //   color: "red",
+  //   level: 4,
+  //   visibleZoomMin: (zoomMap as any)[4].visibleZoomMin,
+  //   visibleZoomMax: (zoomMap as any)[4].visibleZoomMax,
+  //   icon: "./img/czn-logo.svg",
+  //   iconRadius: getRadius(4),
+  //   action: "",
+  //   parentId: "46",
+  //   radius: getRadius(4),
+  //   clickActionType: ClickActionType.OPEN_LINK,
+  //   windowUrl: "https://youtu.be/6vjV26Aq1BU?t=76",
+  //   parentIds: [],
+  // };
+
+  // results.push(youtube1nextRow);
+  // results.push(youtube2nextRow);
+  // results.push(youtube3nextRow);
+  // results.push(youtube4nextRow);
 
   const ROOT_ID = "0";
   const levelsMap = {
@@ -750,7 +741,7 @@ function checkImage(imageSrc: string, good: any, bad: any) {
   img.onerror = bad;
   img.src = imageSrc;
 }
-
-var json_data_file_name = "./data/output.json";
+// var json_data_file_name = "./data/2020_06_01_start.json";
+var json_data_file_name = "./data/2020_09_16_v1_new_structure.json";
 
 d3.json(json_data_file_name, onDataLoaded as any);
