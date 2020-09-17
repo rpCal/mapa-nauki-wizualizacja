@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="1000px" height="1000px" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 1000 1000"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .str0 {stroke:#1F1A17;stroke-width:8.33386}
+    .str1 {stroke:#1F1A17;stroke-width:8.33386;stroke-dasharray:8.334 8.334}
+    .fil2 {fill:none}
+    .fil3 {fill:#1F1A17}
+    .fil1 {fill:white}
+    .fil0 {fill:#F1D851}
+   ]]>
+  </style>
+ </defs>
+ <g id="Warstwa_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <circle class="fil0" cx="499.235" cy="501.716" r="485.835"/>
+  <g id="_229489392">
+   <polygon id="_229488456" class="fil1 str0" points="213.77,438.174 245.889,456.717 278.007,475.261 278.007,512.347 278.007,549.434 245.889,567.978 213.77,586.522 181.653,567.978 149.534,549.434 149.534,512.347 149.534,475.261 181.653,456.717 "/>
+   <polygon id="_229488744" class="fil1 str0" points="384.969,653.712 408.055,682.738 431.139,711.765 417.544,746.269 403.948,780.775 367.268,786.253 330.587,791.733 307.503,762.706 284.418,733.679 298.014,699.174 311.609,664.669 348.29,659.19 "/>
+   <polygon id="_229488720" class="fil1 str0" points="455.465,437.413 487.584,455.955 519.702,474.5 519.702,511.587 519.702,548.673 487.584,567.217 455.465,585.761 423.346,567.217 391.229,548.673 391.229,511.587 391.229,474.5 423.346,455.955 "/>
+   <polygon id="_229488288" class="fil1 str0" points="628.196,322.52 662.324,337.036 696.452,351.552 700.945,388.366 705.438,425.179 675.801,447.478 646.166,469.776 612.038,455.26 577.909,440.743 573.417,403.929 568.924,367.115 598.56,344.817 "/>
+   <polygon id="_229488552" class="fil1 str0" points="769.626,309.619 797.799,340.126 825.969,370.633 805.661,406.852 785.353,443.071 744.63,434.95 703.908,426.828 699.047,385.59 694.189,344.351 731.907,326.984 "/>
+   <line id="_229488624" class="fil2 str0" x1="151.31" y1="549.89" x2="80.3788" y2= "590.872" />
+   <polyline id="_229488408" class="fil2 str0" points="275.833,477.383 335.204,443.231 395.1,475.806 "/>
+   <polyline id="_229488336" class="fil2 str0" points="519.624,547.263 582.674,582.991 582.148,653.396 650.977,689.124 "/>
+   <line id="_229488792" class="fil2 str0" x1="516.472" y1="475.806" x2="578.996" y2= "440.603" />
+   <polyline id="_229488192" class="fil2 str0" points="782.855,440.603 806.499,504.179 874.277,522.043 886.887,587.719 "/>
+   <polyline id="_229488144" class="fil2 str0" points="566.422,758.723 503.34,698.908 427.635,712.476 "/>
+   <path id="_229488168" class="fil2 str0" d="M786.533 233.592l-14.7118 70.9312c-0.788977,2.68347 -1.20945,3.20906 -1.57559,5.77914"/>
+   <circle id="_229488240" class="fil1 str0" cx="570.962" cy="367.682" r="24.1986"/>
+   <circle id="_229488432" class="fil1 str0" cx="875.623" cy="518.483" r="24.1986"/>
+   <circle id="_229489296" class="fil3 str0" cx="576.984" cy="579.448" r="24.1986"/>
+   <circle id="_229489368" class="fil1 str0" cx="702.279" cy="427.211" r="24.1986"/>
+   <line id="_229489200" class="fil2 str1" x1="582.253" y1="653.202" x2="503.223" y2= "700.178" />
+   <circle id="_229489344" class="fil1 str0" transform="matrix(-1.03233 0.35082 -0.35082 -1.03233 504.22 699.886)" r="22.1941"/>
+  </g>
+ </g>
+</svg>

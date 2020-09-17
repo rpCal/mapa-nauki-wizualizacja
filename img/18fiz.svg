@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="1000px" height="1000px" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 1000 1000"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .str0 {stroke:#1F1A17;stroke-width:16.6665}
+    .str1 {stroke:#1F1A17;stroke-width:16.6665;stroke-dasharray:33.333 16.667}
+    .fil2 {fill:none}
+    .fil1 {fill:white}
+    .fil0 {fill:#E47E71}
+   ]]>
+  </style>
+ </defs>
+ <g id="Warstwa_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <circle class="fil0" cx="499.745" cy="501.557" r="485.835"/>
+  <g id="_229488624">
+   <circle id="_229490856" class="fil1 str0" cx="338.951" cy="193.321" r="90.7619"/>
+   <circle id="_229488264" class="fil1 str0" cx="301.947" cy="823.173" r="90.7619"/>
+   <polyline id="_229055832" class="fil2 str0" points="312.844,741.868 451.233,502.17 323.484,280.901 "/>
+   <polyline id="_229044624" class="fil2 str0" points="350.21,739.24 488.6,499.542 360.851,278.273 "/>
+   <polyline id="_229054176" class="fil2 str0" points="376.962,762.132 526.2,503.644 388.437,265.03 "/>
+   <path id="_229054392" class="fil2 str0" d="M520.297 509.75c17.6717,-37.9524 14.4366,-55.6973 52.3052,-19.8201 35.3528,33.4937 49.3158,7.18938 64.9536,-46.4185 11.674,-40.0181 45.7725,-7.02993 55.7989,2.67756 28.5083,27.6047 46.2225,25.4516 51.2469,-5.52638 3.9378,-24.2823 11.6646,-73.539 45.3709,-49.6914 31.6878,22.4209 52.493,59.9977 62.1792,4.50355 5.27363,-30.2173 14.5595,-74.1886 59.9363,-22.5331"/>
+   <circle id="_229492344" class="fil1 str0" cx="898.536" cy="356.848" r="41.4933"/>
+   <line id="_229492248" class="fil2 str1" x1="663.716" y1="425.363" x2="751.268" y2= "172.54" />
+   <circle id="_197931144" class="fil1 str0" cx="743.712" cy="171.041" r="33.6101"/>
+  </g>
+ </g>
+</svg>
