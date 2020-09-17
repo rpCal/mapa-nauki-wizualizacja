@@ -34,7 +34,7 @@ var onDataLoaded = function (error, graph) {
             .attr("height", height)
             .call(d3
             .zoom()
-            .scaleExtent([0.2, 7.2])
+            .scaleExtent([0.8, 9])
             .on("zoom", function () {
             svg.attr("transform", d3.event.transform);
             zoom_value_k = d3.event.transform.k;
@@ -93,10 +93,10 @@ var onDataLoaded = function (error, graph) {
                     return 30;
                 }
                 if (d.level === 3) {
-                    return 2;
+                    return 1;
                 }
                 if (d.level === 4) {
-                    return 2;
+                    return 1;
                 }
             }
             return 30;
@@ -141,8 +141,8 @@ var onDataLoaded = function (error, graph) {
             .attr("class", function (d) {
             return "node-item node-item-level-" + d.level + " node-item-zoom-min-" + d.visibleZoomMin + " node-item-zoom-max-" + d.visibleZoomMax + " ";
         })
-            .on("mousedown", function (d) {
-            console.log("jak jesy?", d, d.clickActionType);
+            .on("click", function (d) {
+            //console.log("jak jest?", d, d.clickActionType);
             if (d.clickActionType !== undefined) {
                 if (d.clickActionType === ClickActionType.OPEN_LINK) {
                     if (d.windowUrl !== undefined) {
@@ -155,6 +155,12 @@ var onDataLoaded = function (error, graph) {
                     }
                 }
             }
+        })
+            .on("mouseover", function (d) {
+            d3.select(this).style("cursor", "pointer");
+        })
+            .on("mouseout", function (d) {
+            d3.select(this).style("cursor", "default");
         });
         node
             .append("rect")
@@ -217,7 +223,7 @@ var onDataLoaded = function (error, graph) {
             .attr("xlink:href", function (d) {
             return d.icon !== undefined ? d.icon : "";
         });
-        var fontSize = [30, 20, 9, 5, 2];
+        var fontSize = [30, 20, 8, 3, 2];
         node
             .append("text")
             .attr("class", function (d) {
@@ -232,7 +238,7 @@ var onDataLoaded = function (error, graph) {
             .attr("text-anchor", "middle")
             .attr("fill", "rgba(0,0,0,0.7)")
             .attr("transform", function (d) {
-            return "translate(0, " + (d.radius + 5) + ")";
+            return "translate(" + d.radius / 2 + ", " + (d.radius + 5) + ")";
         })
             .attr("alignment-baseline", "central");
         if (simulation) {
@@ -283,7 +289,7 @@ var ticked = function (link, node) {
 };
 var prepareDataNodes = function (input) {
     var results = [];
-    var lvlSize = [50, 40, 20, 10, 5];
+    var lvlSize = [50, 40, 20, 5, 1];
     var getRadius = function (lvl) { return lvlSize[lvl]; };
     var zoomMap = {
         0: {
@@ -299,7 +305,7 @@ var prepareDataNodes = function (input) {
             visibleZoomMax: 4.1,
         },
         3: {
-            visibleZoomMin: 1.7,
+            visibleZoomMin: 2.7,
             visibleZoomMax: 7,
         },
         4: {

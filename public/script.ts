@@ -82,7 +82,7 @@ const onDataLoaded = function (error: any, graph: any[]) {
       .call(
         d3
           .zoom()
-          .scaleExtent([0.2, 7.2])
+          .scaleExtent([0.8, 9])
           .on("zoom", function () {
             svg.attr("transform", d3.event.transform);
             zoom_value_k = d3.event.transform.k;
@@ -165,10 +165,10 @@ const onDataLoaded = function (error: any, graph: any[]) {
                 return 30;
               }
               if ((d as any).level === 3) {
-                return 2;
+                return 1;
               }
               if ((d as any).level === 4) {
-                return 2;
+                return 1;
               }
             }
             return 30;
@@ -228,8 +228,8 @@ const onDataLoaded = function (error: any, graph: any[]) {
       .attr("class", function (d) {
         return `node-item node-item-level-${d.level} node-item-zoom-min-${d.visibleZoomMin} node-item-zoom-max-${d.visibleZoomMax} `;
       })
-      .on("mousedown", function (d) {
-        console.log("jak jesy?", d, d.clickActionType);
+      .on("click", function (d) {
+        //console.log("jak jest?", d, d.clickActionType);
         if (d.clickActionType !== undefined) {
           if (d.clickActionType === ClickActionType.OPEN_LINK) {
             if (d.windowUrl !== undefined) {
@@ -242,6 +242,12 @@ const onDataLoaded = function (error: any, graph: any[]) {
             }
           }
         }
+      })
+	  .on("mouseover": function(d) {
+        d3.select(this).style("cursor", "pointer"); 
+      })
+	  .on("mouseout": function(d) {
+        d3.select(this).style("cursor", "default"); 
       });
 
     node
@@ -308,7 +314,7 @@ const onDataLoaded = function (error: any, graph: any[]) {
         return d.icon !== undefined ? d.icon : "";
       });
 
-    const fontSize = [30, 20, 9, 5, 2];
+    const fontSize = [30, 20, 8, 3, 2];
 
     node
       .append("text")
@@ -324,7 +330,7 @@ const onDataLoaded = function (error: any, graph: any[]) {
       .attr("text-anchor", "middle")
       .attr("fill", "rgba(0,0,0,0.7)")
       .attr("transform", function (d) {
-        return `translate(0, ${d.radius + 5})`;
+        return `translate(${d.radius/2}, ${d.radius + 5})`;
       })
       .attr("alignment-baseline", "central");
 
@@ -382,7 +388,7 @@ var ticked = function (link: any, node: any) {
 const prepareDataNodes = (input: any) => {
   const results: DataNode[] = [];
 
-  const lvlSize = [50, 40, 20, 10, 5];
+  const lvlSize = [50, 40, 20, 5, 1];
   const getRadius = (lvl: number) => lvlSize[lvl];
   const zoomMap = {
     0: {
@@ -398,7 +404,7 @@ const prepareDataNodes = (input: any) => {
       visibleZoomMax: 4.1,
     },
     3: {
-      visibleZoomMin: 1.7,
+      visibleZoomMin: 2.7,
       visibleZoomMax: 7,
     },
     4: {

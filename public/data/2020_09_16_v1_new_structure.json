@@ -316,10 +316,10 @@
     "category_name": "Chemia",
     "parent": "0",
     "level": 1,
-    "action": "OPEN_LINK",
+    "action": "OPEN_MODAL",
     "icon": "img/40che.svg",
     "title": "",
-    "innerhtml": "<p>Chemia ma fatalną reklamę. Nie ma chyba przedmiotu szkolnego, który byłby tak bezosobowy, smętny i najzwyczajniej w świecie nudny, co chemia. Kiedy jednak poczyta się trochę na temat świata – na temat tego, jak działają planety, i życie, i ciało ludzkie, i ropa naftowa, i lekarstwa, i komputery: nagle się okazuje, że chemia i jej okolice to jedyne nauki, od których można oczekiwać jakichkolwiek realnych odpowiedzi.</p><p>Wystarczy pomyśleć o LEGO. Albo o literach. Cząstki elementarne to klocki lego. Albo litery. I fizycy z dumą będą godzinami opowiadać o tym, że klocki dzielą się na jedno- i dwu-wypustkowe, i że litery dzielą się na takie z brzuszkiem i takie z kropką, i że jedne są symetryczne, a drugie nie. Tylko potem pojawia się pytanie, jak zbudować w pełni funkcjonalną replikę Millenium Falcona z wysuwającym się działkiem laserowym, albo jak skomponować naprawdę wzruszający sonet. I od tego właśnie są chemicy.</p><p>Jeśli wiesz, o czym ja mówię.</p>",
+    "innerhtml": "<p>Chemia ma fatalną reklamę. Nie ma chyba przedmiotu szkolnego, który byłby tak bezosobowy, smętny i najzwyczajniej w świecie nudny, co chemia. Kiedy jednak poczyta się trochę na temat świata – na temat tego, jak działają planety, i życie, i ciało ludzkie, i ropa naftowa, i lekarstwa, i komputery: nagle się okazuje, że chemia i jej okolice to jedyne nauki, od których można oczekiwać jakichkolwiek realnych odpowiedzi.</p><p>Wystarczy pomyśleć o LEGO. Albo o literach. Cząstki elementarne to klocki lego. Albo litery. I fizycy z dumą będą godzinami opowiadać o tym, że klocki dzielą się na jedno- i dwu-wypustkowe, i że litery dzielą się na takie z brzuszkiem i takie z kropką, i że jedne są symetryczne, a drugie nie. Tylko potem pojawia się pytanie, jak zbudować w pełni funkcjonalną replikę Millenium Falcona z wysuwającym się działkiem laserowym, albo jak skomponować naprawdę wzruszający sonet. I od tego właśnie są chemicy.</p>",
     "timestamp_miniaturki": "",
     "link_do_filmu": "",
     "opis_filmu": ""
@@ -741,16 +741,16 @@
     "opis_filmu": ""
   },
   {
-    "id": "34",
+    "id": "34_1",
     "category_name": "Kosmologia i astrofizyka",
-    "parent": "18",
-    "level": 2,
+    "parent": "34",
+    "level": 3,
     "action": "OPEN_LINK",
-    "icon": "img/icon-astronomia-obserwacyjna.png",
+    "icon": "img/czn-logo.svg",
     "title": "Kosmologia i astrofizyka",
-    "innerhtml": "To są dopiero fajne nauki...",
+    "innerhtml": "",
     "timestamp_miniaturki": "--",
     "link_do_filmu": "https://youtu.be/d36GBndnL38?t=383",
-    "opis_filmu": "Czerwiec 2020 - artykuł o setkach subtelnych spososób, na jakie szympansy łowią termity, i o różnicach kulturowych pomiędzy szympansami z różnych naturalnych społeczności"
+    "opis_filmu": ""
   }
 ]
