@@ -19,9 +19,8 @@
     "level": 1,
     "action": "OPEN_MODAL",
     "icon": "img/01fil.svg",
-    "description": "Tu powinien się znaleźć długi opis filozofii, który wejdzie w modalBody.",
     "title": "",
-    "innerhtml": "",
+    "innerhtml": "Tu powinien się znaleźć długi opis filozofii, który wejdzie w modalBody.",
     "timestamp_miniaturki": "",
     "link_do_filmu": "",
     "opis_filmu": ""
