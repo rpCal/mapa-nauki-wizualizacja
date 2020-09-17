@@ -5,11 +5,11 @@ interface InputData {
   action: string | undefined;
   category_name: string | undefined;
   parent: string | undefined;
-  title: "";
-  innerhtml: "";
-  timestamp_miniaturki: "";
-  link_do_filmu: "";
-  opis_filmu: "";
+  title: string | undefined;
+  innerhtml: string | undefined;
+  timestamp_miniaturki: string | undefined;
+  link_do_filmu: string | undefined;
+  opis_filmu: string | undefined;
 }
 
 console.log("Halo!" + new Date());
@@ -463,82 +463,15 @@ const prepareDataNodes = (input: any) => {
       parentId: parentId,
       radius: radius,
       parentIds: [],
-      clickActionType: clickActionType
+      clickActionType: clickActionType,
+      modalTitle: e.title,
+      modalBody: e.innerhtml,
+      windowUrl: e.link_do_filmu,
+      // opis_filmu
     };
 
     results.push(newRow);
   });
-
-  // let youtube1nextRow: DataNode = {
-  //   id: "34_1",
-  //   name: "Narodziny galaktyk",
-  //   color: "red",
-  //   level: 4,
-  //   visibleZoomMin: (zoomMap as any)[4].visibleZoomMin,
-  //   visibleZoomMax: (zoomMap as any)[4].visibleZoomMax,
-  //   icon: "./img/czn-logo.svg",
-  //   iconRadius: getRadius(4),
-  //   action: "",
-  //   parentId: "34",
-  //   radius: getRadius(4),
-  //   clickActionType: ClickActionType.OPEN_LINK,
-  //   windowUrl: "https://youtu.be/3Cec-5MOTlw?t=901",
-  //   parentIds: [],
-  // };
-  // let youtube2nextRow: DataNode = {
-  //   id: "67_1",
-  //   name: "Bardzo kulturalne szympansy",
-  //   color: "red",
-  //   level: 4,
-  //   visibleZoomMin: (zoomMap as any)[4].visibleZoomMin,
-  //   visibleZoomMax: (zoomMap as any)[4].visibleZoomMax,
-  //   icon: "./img/czn-logo.svg",
-  //   iconRadius: getRadius(4),
-  //   action: "",
-  //   parentId: "67",
-  //   radius: getRadius(4),
-  //   clickActionType: ClickActionType.OPEN_LINK,
-  //   windowUrl: "https://youtu.be/d36GBndnL38?t=66",
-  //   parentIds: [],
-  // };
-  // let youtube3nextRow: DataNode = {
-  //   id: "74_1",
-  //   name: "Nanotechnologia na ślepotę",
-  //   color: "red",
-  //   level: 4,
-  //   visibleZoomMin: (zoomMap as any)[4].visibleZoomMin,
-  //   visibleZoomMax: (zoomMap as any)[4].visibleZoomMax,
-  //   icon: "./img/czn-logo.svg",
-  //   iconRadius: getRadius(4),
-  //   action: "",
-  //   parentId: "74",
-  //   radius: getRadius(4),
-  //   clickActionType: ClickActionType.OPEN_LINK,
-  //   windowUrl: "https://youtu.be/riZfnPrk7OU?t=1013",
-  //   parentIds: [],
-  // };
-
-  // let youtube4nextRow: DataNode = {
-  //   id: "46_1",
-  //   name: "Automatyczny reaktor chemiczny",
-  //   color: "red",
-  //   level: 4,
-  //   visibleZoomMin: (zoomMap as any)[4].visibleZoomMin,
-  //   visibleZoomMax: (zoomMap as any)[4].visibleZoomMax,
-  //   icon: "./img/czn-logo.svg",
-  //   iconRadius: getRadius(4),
-  //   action: "",
-  //   parentId: "46",
-  //   radius: getRadius(4),
-  //   clickActionType: ClickActionType.OPEN_LINK,
-  //   windowUrl: "https://youtu.be/6vjV26Aq1BU?t=76",
-  //   parentIds: [],
-  // };
-
-  // results.push(youtube1nextRow);
-  // results.push(youtube2nextRow);
-  // results.push(youtube3nextRow);
-  // results.push(youtube4nextRow);
 
   const ROOT_ID = "0";
   const levelsMap = {
