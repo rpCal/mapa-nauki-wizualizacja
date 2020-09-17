@@ -142,7 +142,7 @@ var onDataLoaded = function (error, graph) {
             return "node-item node-item-level-" + d.level + " node-item-zoom-min-" + d.visibleZoomMin + " node-item-zoom-max-" + d.visibleZoomMax + " ";
         })
             .on("mousedown", function (d) {
-            console.log('jak jesy?', d, d.clickActionType);
+            console.log("jak jesy?", d, d.clickActionType);
             if (d.clickActionType !== undefined) {
                 if (d.clickActionType === ClickActionType.OPEN_LINK) {
                     if (d.windowUrl !== undefined) {
@@ -361,78 +361,13 @@ var prepareDataNodes = function (input) {
             parentId: parentId,
             radius: radius,
             parentIds: [],
-            clickActionType: clickActionType
+            clickActionType: clickActionType,
+            modalTitle: e.title,
+            modalBody: e.innerhtml,
+            windowUrl: e.link_do_filmu,
         };
         results.push(newRow);
     });
-    // let youtube1nextRow: DataNode = {
-    //   id: "34_1",
-    //   name: "Narodziny galaktyk",
-    //   color: "red",
-    //   level: 4,
-    //   visibleZoomMin: (zoomMap as any)[4].visibleZoomMin,
-    //   visibleZoomMax: (zoomMap as any)[4].visibleZoomMax,
-    //   icon: "./img/czn-logo.svg",
-    //   iconRadius: getRadius(4),
-    //   action: "",
-    //   parentId: "34",
-    //   radius: getRadius(4),
-    //   clickActionType: ClickActionType.OPEN_LINK,
-    //   windowUrl: "https://youtu.be/3Cec-5MOTlw?t=901",
-    //   parentIds: [],
-    // };
-    // let youtube2nextRow: DataNode = {
-    //   id: "67_1",
-    //   name: "Bardzo kulturalne szympansy",
-    //   color: "red",
-    //   level: 4,
-    //   visibleZoomMin: (zoomMap as any)[4].visibleZoomMin,
-    //   visibleZoomMax: (zoomMap as any)[4].visibleZoomMax,
-    //   icon: "./img/czn-logo.svg",
-    //   iconRadius: getRadius(4),
-    //   action: "",
-    //   parentId: "67",
-    //   radius: getRadius(4),
-    //   clickActionType: ClickActionType.OPEN_LINK,
-    //   windowUrl: "https://youtu.be/d36GBndnL38?t=66",
-    //   parentIds: [],
-    // };
-    // let youtube3nextRow: DataNode = {
-    //   id: "74_1",
-    //   name: "Nanotechnologia na ślepotę",
-    //   color: "red",
-    //   level: 4,
-    //   visibleZoomMin: (zoomMap as any)[4].visibleZoomMin,
-    //   visibleZoomMax: (zoomMap as any)[4].visibleZoomMax,
-    //   icon: "./img/czn-logo.svg",
-    //   iconRadius: getRadius(4),
-    //   action: "",
-    //   parentId: "74",
-    //   radius: getRadius(4),
-    //   clickActionType: ClickActionType.OPEN_LINK,
-    //   windowUrl: "https://youtu.be/riZfnPrk7OU?t=1013",
-    //   parentIds: [],
-    // };
-    // let youtube4nextRow: DataNode = {
-    //   id: "46_1",
-    //   name: "Automatyczny reaktor chemiczny",
-    //   color: "red",
-    //   level: 4,
-    //   visibleZoomMin: (zoomMap as any)[4].visibleZoomMin,
-    //   visibleZoomMax: (zoomMap as any)[4].visibleZoomMax,
-    //   icon: "./img/czn-logo.svg",
-    //   iconRadius: getRadius(4),
-    //   action: "",
-    //   parentId: "46",
-    //   radius: getRadius(4),
-    //   clickActionType: ClickActionType.OPEN_LINK,
-    //   windowUrl: "https://youtu.be/6vjV26Aq1BU?t=76",
-    //   parentIds: [],
-    // };
-    // results.push(youtube1nextRow);
-    // results.push(youtube2nextRow);
-    // results.push(youtube3nextRow);
-    // results.push(youtube4nextRow);
     var ROOT_ID = "0";
     var levelsMap = {
         "1": "#A4CDDF",

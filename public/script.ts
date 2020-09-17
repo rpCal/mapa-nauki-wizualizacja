@@ -229,7 +229,7 @@ const onDataLoaded = function (error: any, graph: any[]) {
         return `node-item node-item-level-${d.level} node-item-zoom-min-${d.visibleZoomMin} node-item-zoom-max-${d.visibleZoomMax} `;
       })
       .on("mousedown", function (d) {
-        console.log('jak jesy?', d, d.clickActionType)
+        console.log("jak jesy?", d, d.clickActionType);
         if (d.clickActionType !== undefined) {
           if (d.clickActionType === ClickActionType.OPEN_LINK) {
             if (d.windowUrl !== undefined) {
@@ -409,6 +409,7 @@ const prepareDataNodes = (input: any) => {
 
   input.forEach((e: InputData) => {
     let level = 0;
+    
     if (e.level === "1 - Pierwszy") {
       level = 1;
     } else if (e.level === "2 - Drugi") {
