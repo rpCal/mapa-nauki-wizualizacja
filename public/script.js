@@ -93,7 +93,7 @@ var onDataLoaded = function (error, graph) {
                     return 30;
                 }
                 if (d.level === 3) {
-                    return 1;
+                    return 5;
                 }
                 if (d.level === 4) {
                     return 1;
@@ -224,6 +224,7 @@ var onDataLoaded = function (error, graph) {
             return d.icon !== undefined ? d.icon : "";
         });
         var fontSize = [30, 20, 8, 3, 2];
+        var transformText = [0, 45, 23, 6, 2];
         node
             .append("text")
             .attr("class", function (d) {
@@ -238,7 +239,7 @@ var onDataLoaded = function (error, graph) {
             .attr("text-anchor", "middle")
             .attr("fill", "rgba(0,0,0,0.7)")
             .attr("transform", function (d) {
-            return "translate(" + d.radius / 2 + ", " + (d.radius + 5) + ")";
+            return "translate(" + d.radius / 2 + ", " + transformText[d.level] + ")";
         })
             .attr("alignment-baseline", "central");
         if (simulation) {
@@ -302,11 +303,11 @@ var prepareDataNodes = function (input) {
         },
         2: {
             visibleZoomMin: 1.1,
-            visibleZoomMax: 4.1,
+            visibleZoomMax: 5.1,
         },
         3: {
             visibleZoomMin: 2.7,
-            visibleZoomMax: 7,
+            visibleZoomMax: 9,
         },
         4: {
             visibleZoomMin: 1.5,
@@ -507,5 +508,5 @@ function checkImage(imageSrc, good, bad) {
     img.src = imageSrc;
 }
 // var json_data_file_name = "./data/2020_06_01_start.json";
-var json_data_file_name = "./data/2020_09_16_v1_new_structure.json";
+var json_data_file_name = "./data/2020_09_26_v2.json";
 d3.json(json_data_file_name, onDataLoaded);

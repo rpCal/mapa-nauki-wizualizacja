@@ -165,7 +165,7 @@ const onDataLoaded = function (error: any, graph: any[]) {
                 return 30;
               }
               if ((d as any).level === 3) {
-                return 1;
+                return 5;
               }
               if ((d as any).level === 4) {
                 return 1;
@@ -243,10 +243,10 @@ const onDataLoaded = function (error: any, graph: any[]) {
           }
         }
       })
-	  .on("mouseover": function(d) {
+	  .on("mouseover", function(d) {
         d3.select(this).style("cursor", "pointer"); 
       })
-	  .on("mouseout": function(d) {
+	  .on("mouseout", function(d) {
         d3.select(this).style("cursor", "default"); 
       });
 
@@ -315,7 +315,8 @@ const onDataLoaded = function (error: any, graph: any[]) {
       });
 
     const fontSize = [30, 20, 8, 3, 2];
-
+    const transformText = [0, 45, 23, 6, 2];
+	
     node
       .append("text")
       .attr("class", function (d) {
@@ -330,7 +331,7 @@ const onDataLoaded = function (error: any, graph: any[]) {
       .attr("text-anchor", "middle")
       .attr("fill", "rgba(0,0,0,0.7)")
       .attr("transform", function (d) {
-        return `translate(${d.radius/2}, ${d.radius + 5})`;
+		return `translate(${d.radius/2}, ${transformText[d.level]})`;
       })
       .attr("alignment-baseline", "central");
 
@@ -401,11 +402,11 @@ const prepareDataNodes = (input: any) => {
     },
     2: {
       visibleZoomMin: 1.1,
-      visibleZoomMax: 4.1,
+      visibleZoomMax: 5.1,
     },
     3: {
       visibleZoomMin: 2.7,
-      visibleZoomMax: 7,
+      visibleZoomMax: 9,
     },
     4: {
       visibleZoomMin: 1.5,
@@ -682,6 +683,6 @@ function checkImage(imageSrc: string, good: any, bad: any) {
   img.src = imageSrc;
 }
 // var json_data_file_name = "./data/2020_06_01_start.json";
-var json_data_file_name = "./data/2020_09_16_v1_new_structure.json";
+var json_data_file_name = "./data/2020_09_26_v2.json";
 
 d3.json(json_data_file_name, onDataLoaded as any);
