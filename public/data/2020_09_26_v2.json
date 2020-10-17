@@ -534,24 +534,11 @@
   },
   {
     "id": "64",
-    "category_name": "Petrologia",
+    "category_name": "Mineralogia i petrologia",
     "parent": "57",
     "level": 2,
     "action": "",
     "icon": "img/icon-petrologia.png",
-    "title": "",
-    "innerhtml": "",
-    "timestamp_miniaturki": "",
-    "link_do_filmu": "",
-    "opis_filmu": ""
-  },
-  {
-    "id": "65",
-    "category_name": "Mineralogia",
-    "parent": "57",
-    "level": 2,
-    "action": "",
-    "icon": "img/icon-mineralogia.png",
     "title": "",
     "innerhtml": "",
     "timestamp_miniaturki": "",
@@ -655,7 +642,7 @@
     "parent": "0",
     "level": 1,
     "action": "",
-    "icon": "",
+    "icon": "img/73stos.svg",
     "title": "",
     "innerhtml": "",
     "timestamp_miniaturki": "",
@@ -668,7 +655,7 @@
     "parent": "73",
     "level": 2,
     "action": "",
-    "icon": "",
+    "icon": "img/74med.svg",
     "title": "",
     "innerhtml": "",
     "timestamp_miniaturki": "",
@@ -677,24 +664,11 @@
   },
   {
     "id": "75",
-    "category_name": "Nauki inżynieryjne",
+    "category_name": "Nauki techniczne i inżynieryjne",
     "parent": "73",
     "level": 2,
     "action": "",
-    "icon": "",
-    "title": "",
-    "innerhtml": "",
-    "timestamp_miniaturki": "",
-    "link_do_filmu": "",
-    "opis_filmu": ""
-  },
-  {
-    "id": "76",
-    "category_name": "Nauki techniczne",
-    "parent": "73",
-    "level": 2,
-    "action": "",
-    "icon": "",
+    "icon": "img/75techn.svg",
     "title": "",
     "innerhtml": "",
     "timestamp_miniaturki": "",
@@ -707,7 +681,7 @@
     "parent": "73",
     "level": 2,
     "action": "",
-    "icon": "",
+    "icon": "img/77roln.svg",
     "title": "",
     "innerhtml": "",
     "timestamp_miniaturki": "",
@@ -954,8 +928,46 @@
     "innerhtml": "",
     "link_do_filmu": "https://youtu.be/k22QfIS_h-A?t=1265",
     "opis_filmu": ""
+  },
+  {
+    "id": "72_mentor",
+    "category_name": "Jak zostać złym mentorem?",
+    "parent": "72",
+    "level": 3,
+    "action": "OPEN_LINK",
+    "icon": "img/czn-logo2.svg",
+    "title": "",
+    "innerhtml": "",
+    "link_do_filmu": "https://youtu.be/9-FT3LkMph4?t=62",
+    "opis_filmu": ""
+  },
+  {
+    "id": "52_hiv",
+    "category_name": "Wygrać z HIV",
+    "parent": "52",
+    "level": 3,
+    "action": "OPEN_LINK",
+    "icon": "img/czn-logo2.svg",
+    "title": "",
+    "innerhtml": "",
+    "link_do_filmu": "https://youtu.be/9-FT3LkMph4?t=670",
+    "opis_filmu": ""
+  },
+  {
+    "id": "56_zolw",
+    "category_name": "Potężny żółw",
+    "parent": "56",
+    "level": 3,
+    "action": "OPEN_LINK",
+    "icon": "img/czn-logo2.svg",
+    "title": "",
+    "innerhtml": "",
+    "link_do_filmu": "https://youtu.be/9-FT3LkMph4?t=1230",
+    "opis_filmu": ""
   }
 ]
+
+
 
 
 
