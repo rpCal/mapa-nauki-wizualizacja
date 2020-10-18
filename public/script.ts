@@ -314,7 +314,7 @@ const onDataLoaded = function (error: any, graph: any[]) {
         return d.icon !== undefined ? d.icon : "";
       });
 
-    const fontSize = [30, 20, 8, 3, 2];
+    const fontSize = [20, 15, 6, 3, 2];
     const transformText = [0, 45, 23, 6, 2];
 	
     node
@@ -389,7 +389,7 @@ var ticked = function (link: any, node: any) {
 const prepareDataNodes = (input: any) => {
   const results: DataNode[] = [];
 
-  const lvlSize = [50, 40, 20, 5, 1];
+  const lvlSize = [50, 50, 20, 5, 1];
   const getRadius = (lvl: number) => lvlSize[lvl];
   const zoomMap = {
     0: {
@@ -683,6 +683,6 @@ function checkImage(imageSrc: string, good: any, bad: any) {
   img.src = imageSrc;
 }
 // var json_data_file_name = "./data/2020_06_01_start.json";
-var json_data_file_name = "./data/2020_09_26_v2.json";
+var json_data_file_name = "./data/2020_10_18_v3.json";
 
 d3.json(json_data_file_name, onDataLoaded as any);
