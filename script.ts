@@ -71,8 +71,8 @@ const onDataLoaded = function (error: any, graph: any[]) {
     };
   });
 
-  dataNodes.forEach(e => {
-    if(e.parentIdsPlus){
+  dataNodes.forEach((e) => {
+    if (e.parentIdsPlus) {
       dataLinks.push({
         id: e.id,
         source: e.id,
@@ -82,7 +82,7 @@ const onDataLoaded = function (error: any, graph: any[]) {
         visibleZoomMax: e.visibleZoomMax,
         value: 1,
         excluded: false,
-      })
+      });
       dataLinks.push({
         id: e.parentIdsPlus,
         source: e.parentIdsPlus,
@@ -92,9 +92,9 @@ const onDataLoaded = function (error: any, graph: any[]) {
         visibleZoomMax: e.visibleZoomMax,
         value: 1,
         excluded: false,
-      })
+      });
     }
-  })
+  });
 
   function startGraph() {
     var width = window.innerWidth - 50;
@@ -169,27 +169,30 @@ const onDataLoaded = function (error: any, graph: any[]) {
         })
       )
       // .force("charge", function (d) {
-      //   console.log("??", (d as any).level);
+      //   // console.log("??", (d as any).level);
       //   return d3.forceManyBody().strength(function (d1) {
       //     console.log("??", (d1 as any).level);
       //     return 100;
       //   });
       // })
-      // .force(
-      //   "charge",
-      //   d3.forceManyBody().strength(-500).theta(1.0).distanceMax(100)
-      // )
+      .force(
+        "charge",
+        d3.forceManyBody().strength(-250).theta(1.0).distanceMax(50)
+      )
       .force(
         "collide",
         d3
           .forceCollide()
           .radius(function (d) {
             if (d && (d as any).level !== undefined) {
+              if ((d as any).level === 0) {
+                return 70;
+              }
               if ((d as any).level === 1) {
-                return 30;
+                return 35;
               }
               if ((d as any).level === 2) {
-                return 30;
+                return 20;
               }
               if ((d as any).level === 3) {
                 return 5;
@@ -202,6 +205,8 @@ const onDataLoaded = function (error: any, graph: any[]) {
           })
           .iterations(3)
       )
+
+
       .force("center", d3.forceCenter(width / 2, height / 2));
 
     const canvas = document.querySelector("#canvas");
@@ -270,11 +275,11 @@ const onDataLoaded = function (error: any, graph: any[]) {
           }
         }
       })
-	  .on("mouseover", function(d) {
-        d3.select(this).style("cursor", "pointer"); 
+      .on("mouseover", function (d) {
+        d3.select(this).style("cursor", "pointer");
       })
-	  .on("mouseout", function(d) {
-        d3.select(this).style("cursor", "default"); 
+      .on("mouseout", function (d) {
+        d3.select(this).style("cursor", "default");
       });
 
     node
@@ -343,7 +348,7 @@ const onDataLoaded = function (error: any, graph: any[]) {
 
     const fontSize = [20, 15, 6, 3, 2];
     const transformText = [0, 45, 23, 6, 2];
-	
+
     node
       .append("text")
       .attr("class", function (d) {
@@ -358,7 +363,7 @@ const onDataLoaded = function (error: any, graph: any[]) {
       .attr("text-anchor", "middle")
       .attr("fill", "rgba(0,0,0,0.7)")
       .attr("transform", function (d) {
-		return `translate(${d.radius/2}, ${transformText[d.level]})`;
+        return `translate(${d.radius / 2}, ${transformText[d.level]})`;
       })
       .attr("alignment-baseline", "central");
 
@@ -443,7 +448,7 @@ const prepareDataNodes = (input: any) => {
 
   input.forEach((e: InputData) => {
     let level = 0;
-    
+
     if (e.level === "1 - Pierwszy") {
       level = 1;
     } else if (e.level === "2 - Drugi") {
@@ -502,7 +507,7 @@ const prepareDataNodes = (input: any) => {
       modalTitle: e.title,
       modalBody: e.innerhtml,
       windowUrl: e.link_do_filmu,
-      parentIdsPlus: e.dodatkowa 
+      parentIdsPlus: e.dodatkowa,
       // opis_filmu
     };
 
