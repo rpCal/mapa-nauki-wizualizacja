@@ -168,13 +168,6 @@ const onDataLoaded = function (error: any, graph: any[]) {
           return d.id;
         })
       )
-      // .force("charge", function (d) {
-      //   // console.log("??", (d as any).level);
-      //   return d3.forceManyBody().strength(function (d1) {
-      //     console.log("??", (d1 as any).level);
-      //     return 100;
-      //   });
-      // })
       .force(
         "charge",
         d3.forceManyBody().strength(-250).theta(1.0).distanceMax(50)
