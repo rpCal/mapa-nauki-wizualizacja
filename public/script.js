@@ -35,6 +35,16 @@ var onDataLoaded = function (error, graph) {
                 value: 1,
                 excluded: false,
             });
+            dataLinks.push({
+                id: e.parentIdsPlus,
+                source: e.parentIdsPlus,
+                target: e.id,
+                level: e.level,
+                visibleZoomMin: e.visibleZoomMin,
+                visibleZoomMax: e.visibleZoomMax,
+                value: 1,
+                excluded: false,
+            });
         }
     });
     function startGraph() {
@@ -86,25 +96,25 @@ var onDataLoaded = function (error, graph) {
             return d.id;
         }))
             // .force("charge", function (d) {
-            //   console.log("??", (d as any).level);
+            //   // console.log("??", (d as any).level);
             //   return d3.forceManyBody().strength(function (d1) {
             //     console.log("??", (d1 as any).level);
             //     return 100;
             //   });
             // })
-            // .force(
-            //   "charge",
-            //   d3.forceManyBody().strength(-500).theta(1.0).distanceMax(100)
-            // )
+            .force("charge", d3.forceManyBody().strength(-250).theta(1.0).distanceMax(50))
             .force("collide", d3
             .forceCollide()
             .radius(function (d) {
             if (d && d.level !== undefined) {
+                if (d.level === 0) {
+                    return 70;
+                }
                 if (d.level === 1) {
-                    return 30;
+                    return 35;
                 }
                 if (d.level === 2) {
-                    return 30;
+                    return 20;
                 }
                 if (d.level === 3) {
                     return 5;
@@ -386,8 +396,7 @@ var prepareDataNodes = function (input) {
             modalTitle: e.title,
             modalBody: e.innerhtml,
             windowUrl: e.link_do_filmu,
-            parentIdsPlus: e.dodatkowa
-            // opis_filmu
+            parentIdsPlus: e.dodatkowa,
         };
         results.push(newRow);
     });
