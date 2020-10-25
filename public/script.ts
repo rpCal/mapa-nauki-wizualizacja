@@ -10,6 +10,7 @@ interface InputData {
   timestamp_miniaturki: string | undefined;
   link_do_filmu: string | undefined;
   opis_filmu: string | undefined;
+  dodatkowa: string | undefined;
 }
 
 console.log("Halo!" + new Date());
@@ -35,6 +36,7 @@ interface DataNode {
   parentId: string;
   radius: number;
   parentIds: string[];
+  parentIdsPlus?: string;
 }
 interface DataLink {
   id: string;
@@ -68,6 +70,21 @@ const onDataLoaded = function (error: any, graph: any[]) {
       excluded: false,
     };
   });
+
+  dataNodes.forEach(e => {
+    if(e.parentIdsPlus){
+      dataLinks.push({
+        id: e.id,
+        source: e.id,
+        target: e.parentIdsPlus,
+        level: e.level,
+        visibleZoomMin: e.visibleZoomMin,
+        visibleZoomMax: e.visibleZoomMax,
+        value: 1,
+        excluded: false,
+      })
+    }
+  })
 
   function startGraph() {
     var width = window.innerWidth - 50;
@@ -475,6 +492,7 @@ const prepareDataNodes = (input: any) => {
       modalTitle: e.title,
       modalBody: e.innerhtml,
       windowUrl: e.link_do_filmu,
+      parentIdsPlus: e.dodatkowa 
       // opis_filmu
     };
 

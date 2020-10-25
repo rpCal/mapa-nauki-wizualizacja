@@ -23,6 +23,20 @@ var onDataLoaded = function (error, graph) {
             excluded: false,
         };
     });
+    dataNodes.forEach(function (e) {
+        if (e.parentIdsPlus) {
+            dataLinks.push({
+                id: e.id,
+                source: e.id,
+                target: e.parentIdsPlus,
+                level: e.level,
+                visibleZoomMin: e.visibleZoomMin,
+                visibleZoomMax: e.visibleZoomMax,
+                value: 1,
+                excluded: false,
+            });
+        }
+    });
     function startGraph() {
         var width = window.innerWidth - 50;
         var height = window.innerHeight - 50;
@@ -372,6 +386,8 @@ var prepareDataNodes = function (input) {
             modalTitle: e.title,
             modalBody: e.innerhtml,
             windowUrl: e.link_do_filmu,
+            parentIdsPlus: e.dodatkowa
+            // opis_filmu
         };
         results.push(newRow);
     });
