@@ -10,6 +10,7 @@ interface InputData {
   timestamp_miniaturki: string | undefined;
   link_do_filmu: string | undefined;
   opis_filmu: string | undefined;
+  dodatkowa: string | undefined;
 }
 
 console.log("Halo!" + new Date());
@@ -35,6 +36,7 @@ interface DataNode {
   parentId: string;
   radius: number;
   parentIds: string[];
+  parentIdsPlus?: string;
 }
 interface DataLink {
   id: string;
@@ -69,6 +71,21 @@ const onDataLoaded = function (error: any, graph: any[]) {
     };
   });
 
+  dataNodes.forEach(e => {
+    if(e.parentIdsPlus){
+      dataLinks.push({
+        id: e.id,
+        source: e.id,
+        target: e.parentIdsPlus,
+        level: e.level,
+        visibleZoomMin: e.visibleZoomMin,
+        visibleZoomMax: e.visibleZoomMax,
+        value: 1,
+        excluded: false,
+      })
+    }
+  })
+
   function startGraph() {
     var width = window.innerWidth - 50;
     var height = window.innerHeight - 50;
@@ -82,7 +99,7 @@ const onDataLoaded = function (error: any, graph: any[]) {
       .call(
         d3
           .zoom()
-          .scaleExtent([0.2, 7.2])
+          .scaleExtent([0.8, 9])
           .on("zoom", function () {
             svg.attr("transform", d3.event.transform);
             zoom_value_k = d3.event.transform.k;
@@ -165,10 +182,10 @@ const onDataLoaded = function (error: any, graph: any[]) {
                 return 30;
               }
               if ((d as any).level === 3) {
-                return 2;
+                return 5;
               }
               if ((d as any).level === 4) {
-                return 2;
+                return 1;
               }
             }
             return 30;
@@ -228,8 +245,8 @@ const onDataLoaded = function (error: any, graph: any[]) {
       .attr("class", function (d) {
         return `node-item node-item-level-${d.level} node-item-zoom-min-${d.visibleZoomMin} node-item-zoom-max-${d.visibleZoomMax} `;
       })
-      .on("mousedown", function (d) {
-        console.log("jak jesy?", d, d.clickActionType);
+      .on("click", function (d) {
+        //console.log("jak jest?", d, d.clickActionType);
         if (d.clickActionType !== undefined) {
           if (d.clickActionType === ClickActionType.OPEN_LINK) {
             if (d.windowUrl !== undefined) {
@@ -242,6 +259,12 @@ const onDataLoaded = function (error: any, graph: any[]) {
             }
           }
         }
+      })
+	  .on("mouseover", function(d) {
+        d3.select(this).style("cursor", "pointer"); 
+      })
+	  .on("mouseout", function(d) {
+        d3.select(this).style("cursor", "default"); 
       });
 
     node
@@ -308,8 +331,9 @@ const onDataLoaded = function (error: any, graph: any[]) {
         return d.icon !== undefined ? d.icon : "";
       });
 
-    const fontSize = [30, 20, 9, 5, 2];
-
+    const fontSize = [20, 15, 6, 3, 2];
+    const transformText = [0, 45, 23, 6, 2];
+	
     node
       .append("text")
       .attr("class", function (d) {
@@ -324,7 +348,7 @@ const onDataLoaded = function (error: any, graph: any[]) {
       .attr("text-anchor", "middle")
       .attr("fill", "rgba(0,0,0,0.7)")
       .attr("transform", function (d) {
-        return `translate(0, ${d.radius + 5})`;
+		return `translate(${d.radius/2}, ${transformText[d.level]})`;
       })
       .attr("alignment-baseline", "central");
 
@@ -382,7 +406,7 @@ var ticked = function (link: any, node: any) {
 const prepareDataNodes = (input: any) => {
   const results: DataNode[] = [];
 
-  const lvlSize = [50, 40, 20, 10, 5];
+  const lvlSize = [50, 50, 20, 5, 1];
   const getRadius = (lvl: number) => lvlSize[lvl];
   const zoomMap = {
     0: {
@@ -395,11 +419,11 @@ const prepareDataNodes = (input: any) => {
     },
     2: {
       visibleZoomMin: 1.1,
-      visibleZoomMax: 4.1,
+      visibleZoomMax: 5.1,
     },
     3: {
-      visibleZoomMin: 1.7,
-      visibleZoomMax: 7,
+      visibleZoomMin: 2.7,
+      visibleZoomMax: 9,
     },
     4: {
       visibleZoomMin: 1.5,
@@ -468,6 +492,7 @@ const prepareDataNodes = (input: any) => {
       modalTitle: e.title,
       modalBody: e.innerhtml,
       windowUrl: e.link_do_filmu,
+      parentIdsPlus: e.dodatkowa 
       // opis_filmu
     };
 
@@ -676,6 +701,6 @@ function checkImage(imageSrc: string, good: any, bad: any) {
   img.src = imageSrc;
 }
 // var json_data_file_name = "./data/2020_06_01_start.json";
-var json_data_file_name = "./data/2020_09_16_v1_new_structure.json";
+var json_data_file_name = "./data/2020_10_18_v3.json";
 
 d3.json(json_data_file_name, onDataLoaded as any);

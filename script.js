@@ -23,6 +23,20 @@ var onDataLoaded = function (error, graph) {
             excluded: false,
         };
     });
+    dataNodes.forEach(function (e) {
+        if (e.parentIdsPlus) {
+            dataLinks.push({
+                id: e.id,
+                source: e.id,
+                target: e.parentIdsPlus,
+                level: e.level,
+                visibleZoomMin: e.visibleZoomMin,
+                visibleZoomMax: e.visibleZoomMax,
+                value: 1,
+                excluded: false,
+            });
+        }
+    });
     function startGraph() {
         var width = window.innerWidth - 50;
         var height = window.innerHeight - 50;
@@ -34,7 +48,7 @@ var onDataLoaded = function (error, graph) {
             .attr("height", height)
             .call(d3
             .zoom()
-            .scaleExtent([0.2, 7.2])
+            .scaleExtent([0.8, 9])
             .on("zoom", function () {
             svg.attr("transform", d3.event.transform);
             zoom_value_k = d3.event.transform.k;
@@ -93,10 +107,10 @@ var onDataLoaded = function (error, graph) {
                     return 30;
                 }
                 if (d.level === 3) {
-                    return 2;
+                    return 5;
                 }
                 if (d.level === 4) {
-                    return 2;
+                    return 1;
                 }
             }
             return 30;
@@ -141,8 +155,8 @@ var onDataLoaded = function (error, graph) {
             .attr("class", function (d) {
             return "node-item node-item-level-" + d.level + " node-item-zoom-min-" + d.visibleZoomMin + " node-item-zoom-max-" + d.visibleZoomMax + " ";
         })
-            .on("mousedown", function (d) {
-            console.log("jak jesy?", d, d.clickActionType);
+            .on("click", function (d) {
+            //console.log("jak jest?", d, d.clickActionType);
             if (d.clickActionType !== undefined) {
                 if (d.clickActionType === ClickActionType.OPEN_LINK) {
                     if (d.windowUrl !== undefined) {
@@ -155,6 +169,12 @@ var onDataLoaded = function (error, graph) {
                     }
                 }
             }
+        })
+            .on("mouseover", function (d) {
+            d3.select(this).style("cursor", "pointer");
+        })
+            .on("mouseout", function (d) {
+            d3.select(this).style("cursor", "default");
         });
         node
             .append("rect")
@@ -217,7 +237,8 @@ var onDataLoaded = function (error, graph) {
             .attr("xlink:href", function (d) {
             return d.icon !== undefined ? d.icon : "";
         });
-        var fontSize = [30, 20, 9, 5, 2];
+        var fontSize = [20, 15, 6, 3, 2];
+        var transformText = [0, 45, 23, 6, 2];
         node
             .append("text")
             .attr("class", function (d) {
@@ -232,7 +253,7 @@ var onDataLoaded = function (error, graph) {
             .attr("text-anchor", "middle")
             .attr("fill", "rgba(0,0,0,0.7)")
             .attr("transform", function (d) {
-            return "translate(0, " + (d.radius + 5) + ")";
+            return "translate(" + d.radius / 2 + ", " + transformText[d.level] + ")";
         })
             .attr("alignment-baseline", "central");
         if (simulation) {
@@ -283,7 +304,7 @@ var ticked = function (link, node) {
 };
 var prepareDataNodes = function (input) {
     var results = [];
-    var lvlSize = [50, 40, 20, 10, 5];
+    var lvlSize = [50, 50, 20, 5, 1];
     var getRadius = function (lvl) { return lvlSize[lvl]; };
     var zoomMap = {
         0: {
@@ -296,11 +317,11 @@ var prepareDataNodes = function (input) {
         },
         2: {
             visibleZoomMin: 1.1,
-            visibleZoomMax: 4.1,
+            visibleZoomMax: 5.1,
         },
         3: {
-            visibleZoomMin: 1.7,
-            visibleZoomMax: 7,
+            visibleZoomMin: 2.7,
+            visibleZoomMax: 9,
         },
         4: {
             visibleZoomMin: 1.5,
@@ -365,6 +386,8 @@ var prepareDataNodes = function (input) {
             modalTitle: e.title,
             modalBody: e.innerhtml,
             windowUrl: e.link_do_filmu,
+            parentIdsPlus: e.dodatkowa
+            // opis_filmu
         };
         results.push(newRow);
     });
@@ -501,5 +524,5 @@ function checkImage(imageSrc, good, bad) {
     img.src = imageSrc;
 }
 // var json_data_file_name = "./data/2020_06_01_start.json";
-var json_data_file_name = "./data/2020_09_16_v1_new_structure.json";
+var json_data_file_name = "./data/2020_10_18_v3.json";
 d3.json(json_data_file_name, onDataLoaded);
