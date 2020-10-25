@@ -83,6 +83,16 @@ const onDataLoaded = function (error: any, graph: any[]) {
         value: 1,
         excluded: false,
       })
+      dataLinks.push({
+        id: e.parentIdsPlus,
+        source: e.parentIdsPlus,
+        target: e.id,
+        level: e.level,
+        visibleZoomMin: e.visibleZoomMin,
+        visibleZoomMax: e.visibleZoomMax,
+        value: 1,
+        excluded: false,
+      })
     }
   })
 
